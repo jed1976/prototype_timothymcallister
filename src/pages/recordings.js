@@ -1,7 +1,8 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import Recording from '../components/recording'
-import styles from "./recordings.module.scss"
+import styles from './recordings.module.scss'
+import photo from '../images/tim-8.jpg'
 
 export default class Recordings extends React.Component {
 
