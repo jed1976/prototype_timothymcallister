@@ -30,11 +30,20 @@ class Recording extends React.Component {
       this.setSavedState()
     }
 
-    const savedState = this.getSavedState()
+    this.media.oncanplay = () => {
+      const savedState = this.getSavedState()
 
-    if (savedState) {
-      this.setState(savedState)
-      this.media.currentTime = savedState.currentTime
+      if (savedState) {
+        this.media.currentTime = savedState.currentTime
+      }
+    }
+
+    this.media.onloadstart = () => {
+      const savedState = this.getSavedState()
+
+      if (savedState) {
+        this.setState(savedState)
+      }
     }
   }
 
@@ -67,6 +76,7 @@ class Recording extends React.Component {
             <img
               className={styles.image}
               onClick={this.toggleMedia}
+              onTouchStart={() => { }}
               src={this.props.imageSrc}
               srcSet={this.props.imageSrcSet}
             />
