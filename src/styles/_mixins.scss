@@ -1,0 +1,61 @@
+// Mixins
+
+@mixin aspect-ratio {
+  height: 0;
+  position: relative;
+}
+
+@mixin aspect-ratio--16x9 { padding-bottom: 56.25%; }
+@mixin aspect-ratio--9x16 { padding-bottom: 177.77%; }
+@mixin aspect-ratio--4x3 {  padding-bottom: 75%; }
+@mixin aspect-ratio--3x4 {  padding-bottom: 133.33%; }
+@mixin aspect-ratio--6x4 {  padding-bottom: 66.6%; }
+@mixin aspect-ratio--4x6 {  padding-bottom: 150%; }
+@mixin aspect-ratio--8x5 {  padding-bottom: 62.5%; }
+@mixin aspect-ratio--5x8 {  padding-bottom: 160%; }
+@mixin aspect-ratio--7x5 {  padding-bottom: 71.42%; }
+@mixin aspect-ratio--5x7 {  padding-bottom: 140%; }
+@mixin aspect-ratio--1x1 {  padding-bottom: 100%; }
+@mixin aspect-ratio--object {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+/* Book paragraph style - paragraphs are indented with no vertical spacing. */
+@mixin indent {
+  margin-bottom: 0;
+  margin-top: 0;
+  text-indent: 1em;
+}
+
+/* Measure is limited to ~66 characters */
+@mixin measure {
+  max-width: 30em;
+}
+
+/* Measure is limited to ~80 characters */
+@mixin measure-wide {
+  max-width: 34em;
+}
+
+/* Measure is limited to ~45 characters */
+@mixin measure-narrow {
+  max-width: 20em;
+}
+
+@mixin smooth-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Combine this class with a width to truncate text (or just leave as is to truncate at width of containing element. */
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

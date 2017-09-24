@@ -1,0 +1,67 @@
+@import '../styles/base';
+
+.header {
+  align-items: center;
+  background-image: url(/static/tim-8.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 2rem 2rem 0 rgba(0,0,0,0.5);
+  display: flex;
+  height: 100vh;
+  margin: auto;
+  margin-top: $s5;
+  width: 90%;
+}
+
+.listBackground {
+  margin-top: $s6;
+  width: 100%;
+}
+
+.recordingsList {
+  background-color: $white-70;
+  list-style: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.title {
+  background-color: $light-purple;
+  color: $near-white;
+  float: right;
+  font-size: $f2;
+  font-weight: $fw8;
+  line-height: $lh-title;
+  margin: 0;
+  padding: $s2 $s4;
+}
+
+@media #{$ns} {
+  .header {
+    box-shadow: 0 4rem 4rem 0 rgba(0,0,0,0.5);
+  }
+
+  .title {
+    padding: $s3 $s5;
+  }
+}
+
+@media #{$l} {
+  .listBackground {
+    margin-top: $s7;
+  }
+
+  .title {
+    font-size: $f-subheadline;
+  }
+}
+
+@media #{$m} {
+  .title {
+    font-size: $f1;
+  }
+}

@@ -1,0 +1,202 @@
+@import '../styles/base';
+
+.date {
+  color: $black-30;
+  display: block;
+  font-size: $f6;
+  font-weight: $fw7;
+  line-height: $lh-title;
+  margin-bottom: $s4;
+  text-transform: uppercase;
+}
+
+.image {
+  box-shadow: 0 1rem 1rem 0 rgba(0,0,0,0.5);
+  cursor: pointer;
+  display: block;
+  transform: scale(1.0);
+  transition: transform 300ms ease-in-out;
+  width: 100%;
+}
+
+.image:active {
+  transform: scale(0.95);
+}
+
+.imageWrapper {
+  display: block;
+  margin-bottom: $s5;
+}
+
+.link {
+  border-color: $black-60;
+  border-radius: $br-pill;
+  border-style: solid;
+  border-width: $bw1;
+  color: $black-60;
+  cursor: pointer;
+  display: block;
+  font-size: $f6;
+  font-weight: $fw7;
+  margin-bottom: $s4;
+  margin-top: $s2;
+  padding: $s3;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 150ms ease-in;
+}
+
+.link:hover,
+.link:focus {
+  opacity: .5;
+}
+
+.media {
+  display: none;
+}
+
+.paragraph {
+  color: $black-60;
+  font-size: $f5;
+  font-weight: $fw4;
+  line-height: $lh-copy;
+  margin: 0 0 $s4 0;
+}
+
+.progress {
+  display: inline-block;
+  height: 100%;
+  transition: width 500ms linear;
+  width: 0;
+}
+
+.progressTrack {
+  background-color: $black-10;
+  height: $h1;
+  margin-bottom: $s3;
+  width: 100%;
+}
+
+.recording {
+  margin-bottom: $s6;
+}
+
+.recording:last-child {
+  margin-bottom: $s5;
+}
+
+.title {
+  font-size: $f3;
+  font-weight: $fw9;
+  line-height: $lh-title;
+  margin: 0 0 $s3 0;
+}
+
+.wrapper:before, .wrapper:after {
+  content: " ";
+  display: table;
+}
+
+.wrapper:after {
+  clear: both;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 80%;
+  *zoom: 1;
+}
+
+@media #{$ns} {
+  .image {
+    box-shadow: 0 2rem 2rem 0 rgba(0,0,0,0.5);
+  }
+
+  .imageWrapper {
+    margin-bottom: 0;
+    width: 50%;
+  }
+
+  .link {
+    display: inline-block;
+  }
+
+  .paragraph {
+    font-weight: $fw3;
+  }
+
+  .recording:nth-child(even) .imageWrapper {
+    float: right;
+  }
+
+  .recording:nth-child(odd) .imageWrapper {
+    float: left;
+  }
+
+  .textWrapper {
+    width: 50%;
+  }
+
+  .recording:nth-child(even) .textWrapper {
+    float: left;
+  }
+
+  .recording:nth-child(odd) .textWrapper {
+    float: right;
+  }
+
+  .wrapper {
+    clear: both;
+  }
+}
+
+@media #{$l} {
+  .date {
+    font-size: $f5;
+    margin-bottom: $s5;
+  }
+
+  .link {
+    padding-left: $s4;
+    padding-right: $s4;
+  }
+
+  .paragraph {
+    font-size: $f4;
+  }
+
+  .recording {
+    margin-bottom: $s7;
+  }
+
+  .recording:last-child {
+    margin-bottom: $s6;
+  }
+
+  .recording:nth-child(even) .textWrapper {
+    padding-right: $s5;
+  }
+
+  .recording:nth-child(odd) .textWrapper {
+    padding-left: $s5;
+  }
+
+  .title {
+    font-size: $f2;
+  }
+}
+
+@media #{$m} {
+  .recording:nth-child(even) .textWrapper {
+    padding-right: $s4;
+  }
+
+  .recording:nth-child(odd) .textWrapper {
+    padding-left: $s4;
+  }
+
+  .title {
+    font-size: $f2;
+  }
+}
