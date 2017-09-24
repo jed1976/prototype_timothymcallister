@@ -32,7 +32,7 @@ module.exports = class HTML extends React.Component {
           {this.props.headComponents}
           {css}
         </head>
-        <body touchstart>
+        <body onTouchStart="">
           {this.props.preBodyComponents}
           <div
             key={`body`}
