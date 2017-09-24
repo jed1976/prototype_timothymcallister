@@ -8,7 +8,7 @@ export default ({ children, data }) =>
       <h1 className={styles.logo}>
         <Link className={styles.link} to="/">
           <span className={styles.subtitle}>Saxophonist</span>
-          <span className={styles.title}>Timothy M<span class="ttl">c</span>Allister</span>
+          <span className={styles.title}>Timothy M<span className={styles.lowercase}>c</span>Allister</span>
         </Link>
       </h1>
     </header>
