@@ -74,6 +74,7 @@ class Recording extends React.Component {
               onTouchStart={() => { }}
               src={this.props.imageSrc}
               srcSet={this.props.imageSrcSet}
+              title="Play sample"
             />
           </div>
 
