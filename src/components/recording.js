@@ -26,16 +26,7 @@ class Recording extends React.Component {
         currentTime: this.media.currentTime,
         progress: `${Math.ceil((this.media.currentTime / this.media.duration) * 100)}%`
       })
-
       this.setSavedState()
-    }
-
-    this.media.oncanplay = () => {
-      const savedState = this.getSavedState()
-
-      if (savedState) {
-        this.media.currentTime = savedState.currentTime
-      }
     }
 
     this.media.onloadstart = () => {
@@ -44,6 +35,10 @@ class Recording extends React.Component {
       if (savedState) {
         this.setState(savedState)
       }
+    }
+
+    this.media.onloadeddata = () => {
+      this.media.currentTime = this.state.currentTime
     }
   }
 
