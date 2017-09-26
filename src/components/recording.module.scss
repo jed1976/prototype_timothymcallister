@@ -10,17 +10,26 @@
   text-transform: uppercase;
 }
 
-.image {
-  box-shadow: 0 1rem 1rem 0 rgba(0,0,0,0.5);
-  cursor: pointer;
-  display: block;
-  transform: scale(1.0);
-  transition: transform 300ms ease-in-out;
+.headphones {
+  color: #fff;
+  display: inline-block;
+  left: $s2;
+  position: absolute;
+  height: 1.5rem;
+  top: $s1;
+  width: 1.5rem;
+}
+
+.headphones svg {
+  height: 100%;
   width: 100%;
 }
 
-.image:active {
-  transform: scale(0.95);
+.image {
+  box-shadow: 0 1rem 1rem 0 rgba(0,0,0,0.5);
+  display: block;
+  transform: scale(1.0);
+  width: 100%;
 }
 
 .imageWrapper {
@@ -65,17 +74,25 @@
 }
 
 .progress {
+  box-sizing: border-box;
   display: inline-block;
   height: 100%;
   transition: width 500ms linear;
+  position: relative;
   width: 0;
 }
 
 .progressTrack {
   background-color: $black-10;
-  height: $h1;
-  margin-bottom: $s3;
+  cursor: pointer;
+  height: $s4;
+  margin-bottom: $s4;
+  transition: opacity 150ms ease;
   width: 100%;
+}
+
+.progressTrack:active {
+  opacity: 0.7;
 }
 
 .recording {
