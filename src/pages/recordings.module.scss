@@ -6,7 +6,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  box-shadow: 0 2rem 2rem 0 rgba(0,0,0,0.5);
+  box-shadow: 0 3rem 2rem 0 rgba(0,0,0,0.35);
   display: flex;
   height: 100vh;
   margin: auto;
@@ -42,7 +42,7 @@
 
 @media #{$ns} {
   .header {
-    box-shadow: 0 4rem 4rem 0 rgba(0,0,0,0.5);
+    box-shadow: 0 6rem 4rem 0 rgba(0,0,0,0.35);
   }
 
   .title {

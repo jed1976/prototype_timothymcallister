@@ -10,26 +10,25 @@
   text-transform: uppercase;
 }
 
-.headphones {
-  color: #fff;
-  display: inline-block;
-  left: $s2;
-  position: absolute;
-  height: 1.5rem;
-  top: $s1;
-  width: 1.5rem;
-}
-
-.headphones svg {
-  height: 100%;
-  width: 100%;
+.footer {
+  text-align: center;
 }
 
 .image {
-  box-shadow: 0 1rem 1rem 0 rgba(0,0,0,0.5);
+  box-shadow: 0 1.5rem 1rem 0 rgba(0,0,0,0.35);
+  cursor: pointer;
   display: block;
-  transform: scale(1.0);
+  transition: all 200ms ease-in-out;
   width: 100%;
+}
+
+.image[title=""] {
+  cursor: default;
+}
+
+.image:active {
+  opacity: 0.9;
+  transform: scale(0.98);
 }
 
 .imageWrapper {
@@ -39,30 +38,24 @@
 
 .link {
   border-color: $black-60;
-  border-radius: $br-pill;
   border-style: solid;
   border-width: $bw1;
+  border-radius: $br-pill;
   color: $black-60;
   cursor: pointer;
   display: block;
   font-size: $f6;
   font-weight: $fw7;
-  margin-bottom: $s4;
-  margin-top: $s2;
-  padding: $s3;
+  padding: $s3 $s5;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  transition: opacity 150ms ease-in;
+  transition: opacity 200ms ease-in-out;
 }
 
 .link:hover,
-.link:focus {
-  opacity: .5;
-}
-
-.media {
-  display: none;
+.link:active {
+  opacity: 0.7;
 }
 
 .paragraph {
@@ -71,10 +64,14 @@
   font-weight: $fw4;
   line-height: $lh-copy;
   margin: 0 0 $s4 0;
+  padding-right: $s4;
+}
+
+.paragraph:last-of-type {
+  margin-bottom: $s5;
 }
 
 .progress {
-  box-sizing: border-box;
   display: inline-block;
   height: 100%;
   transition: width 500ms linear;
@@ -84,15 +81,9 @@
 
 .progressTrack {
   background-color: $black-10;
-  cursor: pointer;
-  height: $s4;
-  margin-bottom: $s4;
-  transition: opacity 150ms ease;
+  height: $s3;
+  margin-bottom: $s3;
   width: 100%;
-}
-
-.progressTrack:active {
-  opacity: 0.7;
 }
 
 .recording {
@@ -127,7 +118,7 @@
 
 @media #{$ns} {
   .image {
-    box-shadow: 0 2rem 2rem 0 rgba(0,0,0,0.5);
+    box-shadow: 0 3rem 2rem 0 rgba(0,0,0,0.35);
   }
 
   .imageWrapper {
@@ -172,11 +163,6 @@
   .date {
     font-size: $f5;
     margin-bottom: $s5;
-  }
-
-  .link {
-    padding-left: $s4;
-    padding-right: $s4;
   }
 
   .paragraph {
