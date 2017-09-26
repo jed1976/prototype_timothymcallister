@@ -74,12 +74,13 @@ class Recording extends React.Component {
     return (
       <li className={styles.recording}>
         <div className={styles.wrapper}>
-          <div className={styles.imageWrapper} onClick={this.toggleMedia} onTouchStart={() => { }}>
+          <div className={styles.imageWrapper} data-title={mediaButtonText}>
             <img
               className={styles.image}
+              onClick={this.toggleMedia}
+              onTouchStart={() => { }}
               src={this.props.imageSrc}
               srcSet={this.props.imageSrcSet}
-              title={mediaButtonText}
             />
           </div>
 
@@ -106,14 +107,6 @@ class Recording extends React.Component {
               ref={media => this.media = media}
               src={this.props.media}
             ></audio>
-
-            {this.props.recordingUrl
-              ?
-              <footer className={styles.footer}>
-                <a className={styles.link} href={this.props.recordingUrl}>More Information</a>
-              </footer>
-              : ''
-            }
           </div>
         </div>
       </li>
