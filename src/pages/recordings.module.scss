@@ -6,6 +6,12 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  border-bottom-color: $light-blue;
+  border-bottom-style: solid;
+  border-bottom-width: $bw5;
+  border-left-color: $blue;
+  border-left-style: solid;
+  border-left-width: $bw5;
   box-shadow: 0 3rem 2rem 0 rgba(0,0,0,0.35);
   display: flex;
   height: 100vh;
@@ -29,9 +35,8 @@
 }
 
 .title {
-  background-color: $light-purple;
-  color: $near-white;
-  float: right;
+  background-color: $near-black;
+  color: $white;
   font-size: $f2;
   font-weight: $fw8;
   line-height: $lh-title;
@@ -42,10 +47,6 @@
 @media #{$ns} {
   .header {
     box-shadow: 0 6rem 4rem 0 rgba(0,0,0,0.35);
-  }
-
-  .title {
-    padding: $s3 $s5;
   }
 }
 
