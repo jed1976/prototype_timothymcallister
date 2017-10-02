@@ -18,14 +18,14 @@ export default class Home extends React.Component {
               <nav className={styles.menu}>
                 <ol className={styles.menuList}>
                   <li><Link to="/biography">Biography</Link></li>
-                  <li><Link to="/recordings">Recordings</Link></li>
-                  <li><Link to="/performances">Performances</Link></li>
-                  <li><Link to="/premieres">Premieres</Link></li>
-                  <li><Link to="/applause">Applause</Link></li>
-                  <li><Link to="/performances">John Adams Concerto</Link></li>
-                  <li><Link to="/premieres">Photos</Link></li>
-                  <li><Link to="/premieres">Contact</Link></li>
-                  <li><Link to="/premieres">News</Link></li>
+                  <li><Link to="/">Recordings</Link></li>
+                  <li><Link to="/">Performances</Link></li>
+                  <li><Link to="/">Premieres</Link></li>
+                  <li><Link to="/">Applause</Link></li>
+                  <li><Link to="/">John Adams Concerto</Link></li>
+                  <li><Link to="/">Photos</Link></li>
+                  <li><Link to="/">Contact</Link></li>
+                  <li><Link to="/">News</Link></li>
                   <li><a href="https://prismquartet.com">PRISM Quartet</a></li>
                 </ol>
               </nav>

@@ -1,55 +1,5 @@
 @import '../styles/base';
 
-// .header {
-//   align-items: center;
-//   background-image: url(../images/tim-8.jpg);
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   display: none;
-//   height: 100vh;
-//   justify-content: flex-end;
-//   margin: auto;
-// }
-
 .list {
-  list-style: none;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-}
-
-.title {
-  background-color: $near-black;
-  color: $white;
   display: none;
-  font-size: $f1;
-  font-weight: $fw7;
-  line-height: $lh-title;
-  margin: 0;
-  padding: $s1 $s3;
-  position: -webkit-sticky;
-  position: sticky;
-  text-transform: uppercase;
-  top: 0;
 }
-
-// @media #{$l} {
-//   .title {
-//     font-size: $f-headline;
-//     padding: $s2 $s4;
-//   }
-// }
-
-// @media #{$m} {
-//   .title {
-//     font-size: $f-subheadline;
-//     padding: $s2 $s4;
-//   }
-// }
-
-// @media #{$ns} {
-//   .header {
-//     height: 200vh;
-//   }
-// }

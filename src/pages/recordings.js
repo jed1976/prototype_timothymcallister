@@ -27,10 +27,6 @@ export default class Recordings extends React.Component {
 
     return (
       <Container>
-        <header className={styles.header}>
-          <h1 className={styles.title}>Recordings</h1>
-        </header>
-
         <ol className={styles.list}>
           {this.props.data.allContentfulRecording.edges.map(({ node }) =>
             <Recording
