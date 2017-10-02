@@ -8,7 +8,8 @@ import styles from './biography.module.scss'
 
 export default (props) => {
   const node = props.data.allContentfulBiography.edges[0].node
-  const paragraphs = node.biography.biography.split('\n').filter(paragraph => paragraph !== '')
+  const paragraphs = node.biography.biography.split('\n\n')
+
   const renderedBiography = paragraphs.map((paragraph, index) => {
     if (index === 0) {
       const dropCap = `<span class=${styles.dropCap}><em>${paragraph.substr(0, 1)}</em></span>`
@@ -16,26 +17,39 @@ export default (props) => {
     }
 
     return (
-      <div className={styles.paragraphWrapper} dangerouslySetInnerHTML={{ __html: marked(paragraph) }} key={index} />
+      <div className={styles.paragraphWrapper}
+          dangerouslySetInnerHTML={{ __html: marked(paragraph) }}
+          key={index}
+       />
     )
   })
 
-  const quote1 = <Quote
-    author="Jean-Marie Londeix"
-    quote="I have great admiration for your great talent...I have been very impressed by your masterful technique, by the simplicity of your playing, by your musical intelligence, by the perfect presentation..."
-    source="Legendary Saxophonist, Conservatoire National de Bourdeaux"></Quote>
+  const quotes = props.data.allContentfulQuote.edges
+  const primaryQuote = quotes[0].node
+  const secondaryQuote = quotes[1].node
 
-  const quote2 = <Quote
-    author="Donald Sinta"
-    quote="breathtaking and spectacular&#8230;a revolution displayed in the hands of an artist"
-    source="Earl V. Moore Distinguished Professor Emeritus of Saxophone, The University of Michigan"></Quote>
+  renderedBiography.splice(2, 0,
+    <Quote
+      author={primaryQuote.author}
+      key={primaryQuote.id}
+      quote={primaryQuote.quote.quote}
+      source={primaryQuote.source}>
+    </Quote>
+  )
 
-  renderedBiography.splice(2, 0, quote1)
-  renderedBiography.splice(renderedBiography.length - 2, 0, quote2)
+  renderedBiography.splice(renderedBiography.length - 2, 0,
+    <Quote
+      author={secondaryQuote.author}
+      key={secondaryQuote.id}
+      quote={secondaryQuote.quote.quote}
+      source={secondaryQuote.source}>
+    </Quote>
+  )
 
   return (
     <Container backgroundColor="#111" foregroundColor="#ccc" logoColor="#fff">
       <Helmet>
+        <title>Biography</title>
       </Helmet>
 
       <div className={styles.image}></div>
@@ -48,8 +62,8 @@ export default (props) => {
             {renderedBiography}
           </div>
 
-          <a className={styles.link} href="">Short Biography</a>
-          <a className={styles.link} href="">Long Biography</a>
+          <a className={styles.link} href={node.shortBiography.file.url}>Short Biography</a>
+          <a className={styles.link} href={node.longBiography.file.url}>Long Biography</a>
         </div>
       </article>
     </Container>
@@ -83,6 +97,31 @@ export const query = graphql`
               contentType
             }
           }
+        }
+      }
+    },
+
+    allContentfulQuote(
+      filter: {
+        tags: {
+          eq: "biography"
+        }
+      },
+      sort: {
+        fields: [date],
+        order: DESC
+      }) {
+      edges {
+        node {
+          id
+          date
+          quote {
+            id
+            quote
+          }
+          author
+          source
+          tags
         }
       }
     }
