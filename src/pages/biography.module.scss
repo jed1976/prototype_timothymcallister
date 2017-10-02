@@ -46,7 +46,7 @@
 }
 
 .link {
-  color: tomato;
+  color: $white;
   display: block;
   font-size: $f6;
   font-weight: $fw7;
@@ -55,7 +55,7 @@
 }
 
 .link:first-of-type {
-  border-bottom-color: $moon-gray;
+  border-bottom-color: tomato;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   padding-bottom: $s3;
@@ -66,7 +66,7 @@
 }
 
 .link:hover {
-  color: $white;
+  color: $moon-gray;
 }
 
 .paragraphWrapper {
