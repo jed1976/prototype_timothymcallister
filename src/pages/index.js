@@ -21,16 +21,14 @@ export default (props) => {
 
             <nav className={styles.menu}>
               <ol className={styles.menuList}>
-                <li><Link to="/biography">Biography</Link></li>
-                <li><Link to="/">Recordings</Link></li>
-                <li><Link to="/">Performances</Link></li>
-                <li><Link to="/">Premieres</Link></li>
-                <li><Link to="/">Applause</Link></li>
-                <li><Link to="/">John Adams Concerto</Link></li>
-                <li><Link to="/">Photos</Link></li>
-                <li><Link to="/">Contact</Link></li>
-                <li><Link to="/">News</Link></li>
-                <li><a href="https://prismquartet.com">PRISM Quartet</a></li>
+                {props.data.allContentfulPage.edges.map(({ node }) =>
+                <li>
+                  {node.slug.match(/http/)
+                    ? <a href={node.slug}>{node.title}</a>
+                    : <Link to={node.slug}>{node.title}</Link>
+                  }
+                </li>
+                )}
               </ol>
             </nav>
 
@@ -55,12 +53,22 @@ export default (props) => {
 }
 
 export const query = graphql`
-  query HomeQuery {
+  query Home {
     site {
       siteMetadata {
         facebook
         title
         twitter
+      }
+    },
+
+    allContentfulPage(sort: { fields: [order] }) {
+      edges {
+        node {
+          id
+          title
+          slug
+        }
       }
     }
   }
