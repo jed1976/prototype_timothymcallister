@@ -16,6 +16,7 @@
 @mixin aspect-ratio--7x5 {  padding-bottom: 71.42%; }
 @mixin aspect-ratio--5x7 {  padding-bottom: 140%; }
 @mixin aspect-ratio--1x1 {  padding-bottom: 100%; }
+
 @mixin aspect-ratio--object {
   position: absolute;
   top: 0;

@@ -1,6 +1,8 @@
 @import '../styles/base';
 
 body {
+  background-color: $moon-gray;
+  color: $near-black;
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -14,69 +16,4 @@ body {
     sans-serif;
   margin: 0;
   padding: 0;
-}
-
-.footer {
-  clear: both;
-  padding: $s5;
-  text-align: center;
-}
-
-.header {
-  display: table;
-  width: 100%;
-}
-
-.link {
-  color: $black-70;
-  text-decoration: none;
-}
-
-.logo {
-  display: table-cell;
-  font-size: $f4;
-  font-weight: $fw9;
-  margin: 0;
-  padding: $s3;
-  text-transform: uppercase;
-}
-
-.lowercase {
-  text-transform: lowercase;
-}
-
-.socialIcon {
-  color: $black-70;
-  cursor: pointer;
-  display: inline-block;
-  margin-left: $s3;
-  margin-right: $s3;
-  transition: opacity 150ms ease-in;
-  width: $w2;
-}
-
-.socialIcon:hover {
-  opacity: .5;
-}
-
-.subtitle {
-  display: block;
-  font-size: $f7;
-  font-weight: $fw7;
-}
-
-.title {
-  display: block;
-}
-
-@media #{$l} {
-  .logo {
-    font-size: $f2;
-  }
-}
-
-@media #{$m} {
-  .logo {
-    font-size: $f3;
-  }
 }

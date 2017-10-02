@@ -1,0 +1,69 @@
+@import '../styles/base';
+
+.header {
+  position: fixed;
+  left: $s3;
+  top: 0;
+  z-index: 999;
+}
+
+.header[data-size="large"] {
+  pointer-events: none;
+  position: static;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.lowerCase {
+  text-transform: lowercase;
+}
+
+.subtitle {
+  display: block;
+  font-style: italic;
+  font-weight: $fw4;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: $f6;
+}
+
+.subtitle[data-size="large"] {
+  font-size: $f5;
+}
+
+.title {
+  border-bottom-color: inherit;
+  border-bottom-style: solid;
+  border-bottom-width: $bw3;
+  display: inline-block;
+  font-size: $f4;
+  font-weight: $fw7;
+  line-height: $lh-title;
+  margin: 0 0 $s1 0;
+  text-transform: uppercase;
+}
+
+.title[data-size="large"] {
+  border-bottom-color: $near-black;
+  font-size: $f3;
+}
+
+@media #{$ns} {
+  .header {
+    left: $s4;
+    top: $s3;
+  }
+
+  .title {
+    font-size: $f3;
+  }
+
+  .title[data-size="large"] {
+    font-size: $f2;
+  }
+}

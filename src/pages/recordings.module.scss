@@ -1,67 +1,55 @@
 @import '../styles/base';
 
-.header {
-  align-items: center;
-  background-image: url(../images/tim-8.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-bottom-color: $light-blue;
-  border-bottom-style: solid;
-  border-bottom-width: $bw5;
-  border-left-color: $blue;
-  border-left-style: solid;
-  border-left-width: $bw5;
-  box-shadow: 0 3rem 2rem 0 rgba(0,0,0,0.35);
-  display: flex;
-  height: 100vh;
-  margin: auto;
-  margin-top: $s5;
-  width: 90%;
-}
+// .header {
+//   align-items: center;
+//   background-image: url(../images/tim-8.jpg);
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   display: none;
+//   height: 100vh;
+//   justify-content: flex-end;
+//   margin: auto;
+// }
 
-.listBackground {
-  margin-top: $s6;
-  width: 100%;
-}
-
-.recordingsList {
-  background-color: $white-70;
+.list {
   list-style: none;
   margin: 0;
+  overflow: hidden;
   padding: 0;
-  position: relative;
-  z-index: 2;
 }
 
 .title {
   background-color: $near-black;
   color: $white;
-  font-size: $f2;
-  font-weight: $fw8;
+  display: none;
+  font-size: $f1;
+  font-weight: $fw7;
   line-height: $lh-title;
   margin: 0;
-  padding: $s2 $s4;
+  padding: $s1 $s3;
+  position: -webkit-sticky;
+  position: sticky;
+  text-transform: uppercase;
+  top: 0;
 }
 
-@media #{$ns} {
-  .header {
-    box-shadow: 0 6rem 4rem 0 rgba(0,0,0,0.35);
-  }
-}
+// @media #{$l} {
+//   .title {
+//     font-size: $f-headline;
+//     padding: $s2 $s4;
+//   }
+// }
 
-@media #{$l} {
-  .listBackground {
-    margin-top: $s7;
-  }
+// @media #{$m} {
+//   .title {
+//     font-size: $f-subheadline;
+//     padding: $s2 $s4;
+//   }
+// }
 
-  .title {
-    font-size: $f-subheadline;
-  }
-}
-
-@media #{$m} {
-  .title {
-    font-size: $f1;
-  }
-}
+// @media #{$ns} {
+//   .header {
+//     height: 200vh;
+//   }
+// }

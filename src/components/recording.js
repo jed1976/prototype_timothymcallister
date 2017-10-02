@@ -5,7 +5,7 @@ import marked from 'marked'
 import styles from './recording.module.scss'
 
 
-class Recording extends React.Component {
+export default class Recording extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -73,42 +73,30 @@ class Recording extends React.Component {
 
     return (
       <li className={styles.recording}>
-        <div className={styles.wrapper}>
-          <div className={styles.imageWrapper} data-title={mediaButtonText}>
-            <img
-              className={styles.image}
-              onClick={this.toggleMedia}
-              onTouchStart={() => { }}
-              src={this.props.imageSrc}
-              srcSet={this.props.imageSrcSet}
-            />
-          </div>
+        <h1 className={styles.title}>{this.props.title}</h1>
 
-          <div className={styles.textWrapper}>
-            <div className={styles.progressTrack}>
-              <span
-                className={styles.progress}
-                ref={progress => this.progress = progress}
-                style={{ backgroundColor: this.props.color, width: this.state.progress }}
-              >
-              </span>
-            </div>
+        <img className={styles.image} src={this.props.imageSrc} srcSet={this.props.imageSrcSet} />
 
-            <h1 className={styles.title} style={{ color: this.props.color }}>{this.props.title}</h1>
+        {renderedDescription}
 
-            <time className={styles.date}>{date}</time>
-
-            {renderedDescription}
-
-            <audio
-              className={styles.media}
-              controls
-              preload="none"
-              ref={media => this.media = media}
-              src={this.props.media}
-            ></audio>
-          </div>
+        <div className={styles.progressTrack}>
+          <span
+            className={styles.progress}
+            ref={progress => this.progress = progress}
+            style={{ width: this.state.progress }}
+          >
+          </span>
         </div>
+
+        <time className={styles.date}>{date}</time>
+
+        <audio
+          className={styles.media}
+          controls
+          preload="none"
+          ref={media => this.media = media}
+          src={this.props.media}
+        ></audio>
       </li>
     )
   }
@@ -124,5 +112,3 @@ Recording.propTypes = {
   recordingUrl: PropTypes.string,
   title: PropTypes.string,
 }
-
-export default Recording

@@ -1,76 +1,120 @@
 @import '../styles/base';
 
-.header {
-  align-items: center;
-  background-image: url(../images/tim-4.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-right-color: $yellow;
-  border-right-style: solid;
-  border-right-width: $bw5;
-  border-top-color: $gold;
-  border-top-style: solid;
-  border-top-width: $bw5;
-  box-shadow: 0 3rem 2rem 0 rgba(0,0,0,0.35);
-  justify-content: flex-end;
-  display: flex;
-  height: 100vh;
-  margin: auto;
-  margin-bottom: $s6;
-  margin-top: $s5;
-  width: 90%;
+.content {
+  padding: $s5 $s3;
 }
 
-.paragraph {
-  color: $black-60;
-  font-size: $f5;
-  font-weight: $fw4;
-  line-height: $lh-copy;
-  margin: 0 auto $s4 auto;
-  @include measure-wide;
+.contentWrapper {
+  background-color: $near-black;
+  position: relative;
+  transform: translate3d(0,0,0);
+  z-index: 9999;
+}
+
+.copy {
+  padding-bottom: $s6;
+}
+
+.dropCap {
+  float: left;
+  height: $h3;
+  margin: $s2 $s3 0 0;
+  padding: $s2;
+  text-align: center;
+  width: $w3;
+
+  em {
+    display: inline-block;
+    color: tomato;
+    font-family: $baskerville;
+    font-size: $f-headline;
+    font-style: italic;
+    font-weight: $fw4;
+    line-height: .75;
+    vertical-align: top;
+  }
+}
+
+.image {
+  background-image: url('../images/tim-2.jpg');
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.link {
+  color: tomato;
+  display: block;
+  font-size: $f6;
+  font-weight: $fw7;
+  text-decoration: none;
+  transition: color 360ms ease;
+}
+
+.link:first-of-type {
+  border-bottom-color: $moon-gray;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  padding-bottom: $s3;
+}
+
+.link:last-of-type {
+  padding-top: $s3;
+}
+
+.link:hover {
+  color: $white;
+}
+
+.paragraphWrapper {
+  overflow: hidden;
+
+  p {
+    font-size: $f5;
+    font-weight: $fw4;
+    line-height: $lh-copy;
+    margin: 0 0 $s4 0;
+  }
+
+  strong {
+    color: $white;
+  }
 }
 
 .title {
-  background-color: $near-black;
   color: $white;
-  display: inline-block;
-  font-size: $f2;
-  font-weight: $fw8;
+  font-family: $baskerville;
+  font-size: $f1;
+  font-style: italic;
+  font-weight: $fw5;
   line-height: $lh-title;
-  margin: 0;
-  padding: $s2 $s4;
+  margin: 0 0 $s6 0;
 }
-
-.wrapper {
-  margin: 0 auto;
-  width: 80%;
-}
-
 
 @media #{$ns} {
-  .header {
-    box-shadow: 0 6rem 4rem 0 rgba(0,0,0,0.35);
-    margin-bottom: $s7;
-  }
-
-  .paragraph {
-    font-weight: $fw3;
-  }
-}
-
-@media #{$l} {
-  .paragraph {
-    font-size: $f4;
-  }
-
-  .title {
-    font-size: $f-subheadline;
+  .content {
+    margin: 0 auto;
+    padding-left: $s4;
+    padding-right: $s4;
   }
 }
 
 @media #{$m} {
-  .title {
-    font-size: $f1;
+  .content {
+    max-width: $w7;
+  }
+}
+
+@media #{$l} {
+  .content {
+    max-width: $w9;
+  }
+
+  .copy {
+    column-count: 2;
+    column-gap: $s5;
   }
 }
