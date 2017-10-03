@@ -57,7 +57,6 @@ export default class Recording extends React.Component {
   }
 
   onPause() {
-    console.log(this)
     this.setState({ mediaState: 'paused' })
   }
 
