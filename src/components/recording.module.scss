@@ -23,19 +23,16 @@
   text-transform: uppercase;
 }
 
-.description {
-  display: flex;
-}
-
 .icon {
   bottom: 0;
   fill: $white;
-  height: $h1;
+  height: 100%;
   left: 0;
   position: absolute;
   right: 0;
   top: 0;
   transition: all 320ms ease;
+  width: 100%;
 
   &[data-icon="pause"] {
     opacity: 0;
@@ -77,6 +74,7 @@
 }
 
 .mediaButton {
+  align-content: center;
   background: none;
   border-color: tomato;
   border-radius: 100%;
@@ -87,6 +85,7 @@
   justify-content: center;
   outline: 0;
   height: $h3;
+  padding: 0;
   transition: all 480ms ease-in-out;
   width: $w3;
 
@@ -113,36 +112,36 @@
   border-color: $white;
 }
 
-.mediaButtonWrapper {
+.mediaPlayer {
+  align-items: center;
   display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  padding: $s4 0;
 }
 
 .paragraphWrapper {
+  margin-bottom: $s5;
   overflow: hidden;
   padding-top: $s4;
-  flex: 3;
 
   p {
     font-size: $f4;
     font-weight: $fw4;
     line-height: $lh-copy;
-    margin: 0 0 $s4 0;
+    margin: 0;
   }
 }
 
 .progress {
   background-color: tomato;
-  display: inline-block;
+  display: block;
   height: $h1;
   transition: all 480ms linear;
 }
 
 .progressTrack {
   background-color: $moon-gray;
+  flex: 1;
   height: $h1;
+  margin-left: $s3;
 }
 
 .title {

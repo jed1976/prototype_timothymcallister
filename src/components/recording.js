@@ -34,7 +34,11 @@ export default class Recording extends React.Component {
   }
 
   onEnded() {
-    this.setState({ currentTime: 0, progress: 0 })
+    this.setState({
+      currentTime: 0,
+      mediaState: 'paused',
+      progress: 0
+    })
     this.setSavedState()
   }
 
@@ -92,14 +96,35 @@ export default class Recording extends React.Component {
           <div className={styles.content}>
             <h1 className={styles.title}>{this.props.title}</h1>
 
-            <div className={styles.progressTrack}>
-              <span
-                className={styles.progress}
-                ref={progress => this.progress = progress}
-                style={{ width: this.state.progress || '100%' }}
+            {this.props.media ?
+            <div className={styles.mediaPlayer}>
+              <button
+                className={styles.mediaButton}
+                data-state={this.state.mediaState}
+                onClick={this.toggleMedia}
+                onTouchStart={() => {}}
               >
-              </span>
+                <div className={styles.mediaButtonsIcons}>
+                  <svg className={styles.icon} data-icon="play" viewBox="0 0 12 14">
+                    <polygon points="0 0 0 14 12 7"></polygon>
+                  </svg>
+                  <svg className={styles.icon} data-icon="pause" viewBox="0 0 14 14">
+                    <path d="M0,0 L0,14 L5,14 L5,0 L0,0 Z M9,0 L9,14 L14,14 L14,0 L9,0 Z"></path>
+                  </svg>
+                </div>
+              </button>
+
+              <div className={styles.progressTrack}>
+                <span
+                  className={styles.progress}
+                  ref={progress => this.progress = progress}
+                  style={{ width: this.state.progress || '100%' }}
+                >
+                </span>
+              </div>
             </div>
+              : ''
+            }
 
             <audio
               className={styles.media}
@@ -113,32 +138,9 @@ export default class Recording extends React.Component {
               src={this.props.media}
             ></audio>
 
-            <div className={styles.description}>
-              <div
-                className={styles.paragraphWrapper}
-                dangerouslySetInnerHTML={{ __html: marked(this.props.description) }} />
-
-              <div className={styles.mediaButtonWrapper}>
-                {this.props.media ?
-                <button
-                  className={styles.mediaButton}
-                  data-state={this.state.mediaState}
-                  onClick={this.toggleMedia}
-                  onTouchStart={() => {}}
-                >
-                  <div className={styles.mediaButtonsIcons}>
-                    <svg className={styles.icon} data-icon="play" viewBox="0 0 12 14">
-                      <polygon points="0 0 0 14 12 7"></polygon>
-                    </svg>
-                    <svg className={styles.icon} data-icon="pause" viewBox="0 0 14 14">
-                      <path d="M0,0 L0,14 L5,14 L5,0 L0,0 Z M9,0 L9,14 L14,14 L14,0 L9,0 Z"></path>
-                    </svg>
-                  </div>
-                </button>
-                  : ''
-                }
-              </div>
-            </div>
+            <div
+              className={styles.paragraphWrapper}
+              dangerouslySetInnerHTML={{ __html: marked(this.props.description) }} />
 
             <time className={styles.date}>{date}</time>
           </div>

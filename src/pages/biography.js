@@ -48,7 +48,7 @@ export default (props) => {
   )
 
   return (
-    <Container backgroundColor="#111" foregroundColor="#ccc" logoColor="#fff">
+    <Container backgroundColor="#111" foregroundColor="#ccc" logoColor="#111">
       <Helmet>
         <title>{pageData.title}</title>
       </Helmet>
