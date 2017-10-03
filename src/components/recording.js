@@ -96,7 +96,7 @@ export default class Recording extends React.Component {
               <span
                 className={styles.progress}
                 ref={progress => this.progress = progress}
-                style={{ width: this.state.progress }}
+                style={{ width: this.state.progress || '100%' }}
               >
               </span>
             </div>
@@ -117,7 +117,9 @@ export default class Recording extends React.Component {
               <div
                 className={styles.paragraphWrapper}
                 dangerouslySetInnerHTML={{ __html: marked(this.props.description) }} />
+
               <div className={styles.mediaButtonWrapper}>
+                {this.props.media ?
                 <button
                   className={styles.mediaButton}
                   data-state={this.state.mediaState}
@@ -133,6 +135,8 @@ export default class Recording extends React.Component {
                     </svg>
                   </div>
                 </button>
+                  : ''
+                }
               </div>
             </div>
 
