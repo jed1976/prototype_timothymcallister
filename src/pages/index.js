@@ -6,22 +6,25 @@ import Link from 'gatsby-link'
 import styles from './index.module.scss'
 
 export default (props) => {
+  const pageData = props.data.allContentfulPage.edges[0].node
 
   return (
     <Container hideLogo>
       <Helmet>
-        <title>{props.data.site.siteMetadata.title}</title>
+        <title>{pageData.title}</title>
       </Helmet>
 
       <div className={styles.section}>
-        <div className={styles.image}></div>
+        <div className={styles.image} style={{ backgroundImage: `url(${pageData.image.file.url})` }}></div>
         <div className={styles.text}>
           <div className={styles.content}>
             <Logo size="large"></Logo>
 
             <nav className={styles.menu}>
               <ol className={styles.menuList}>
-                {props.data.allContentfulPage.edges.map(({ node }) =>
+                {props.data.allContentfulPage.edges
+                  .filter(({ node}) => node.order > 0)
+                  .map(({ node }) =>
                 <li>
                   {node.slug.match(/http/)
                     ? <a href={node.slug}>{node.title}</a>
@@ -62,14 +65,25 @@ export const query = graphql`
       }
     },
 
-    allContentfulPage(sort: { fields: [order] }) {
+    allContentfulPage(
+      sort: {
+        fields: [order]
+      }
+    ) {
       edges {
         node {
           id
-          title
+          image {
+            id
+            file {
+              url
+            }
+          }
+          order
           slug
+          title
         }
       }
-    }
+    },
   }
 `

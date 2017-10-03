@@ -7,6 +7,7 @@ import marked from 'marked'
 import styles from './biography.module.scss'
 
 export default (props) => {
+  const pageData = props.data.allContentfulPage.edges[0].node
   const node = props.data.allContentfulBiography.edges[0].node
   const paragraphs = node.biography.biography.split('\n\n')
 
@@ -49,14 +50,14 @@ export default (props) => {
   return (
     <Container backgroundColor="#111" foregroundColor="#ccc" logoColor="#fff">
       <Helmet>
-        <title>Biography</title>
+        <title>{pageData.title}</title>
       </Helmet>
 
-      <div className={styles.image}></div>
+      <div className={styles.image} style={{ backgroundImage: `url(${pageData.image.file.url})` }}></div>
 
       <article className={styles.contentWrapper}>
         <div className={styles.content}>
-          <h1 className={styles.title}>Biography</h1>
+          <h1 className={styles.title}>{pageData.title}</h1>
 
           <div className={styles.copy}>
             {renderedBiography}
@@ -71,7 +72,7 @@ export default (props) => {
 }
 
 export const query = graphql`
-  query Biography {
+  query BiographyQuery {
     allContentfulBiography {
       edges {
         node {
@@ -122,6 +123,27 @@ export const query = graphql`
           author
           source
           tags
+        }
+      }
+    },
+
+    allContentfulPage(
+      filter: {
+        slug: {
+          eq: "/biography"
+        }
+      }
+    ) {
+      edges {
+        node {
+          id
+          title
+          image {
+            id
+            file {
+              url
+            }
+          }
         }
       }
     }

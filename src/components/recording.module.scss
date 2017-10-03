@@ -1,2 +1,185 @@
 @import '../styles/base';
 
+.content {
+  padding: $s5 $s3;
+}
+
+.contentWrapper {
+  align-items: center;
+  background-color: $near-black;
+  color: $moon-gray;
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  transform: translate3d(0,0,0);
+  z-index: 999;
+}
+
+.date {
+  color: tomato;
+  font-size: $f6;
+  letter-spacing: $tracked;
+  line-height: $lh-title;
+  text-transform: uppercase;
+}
+
+.description {
+  display: flex;
+}
+
+.icon {
+  bottom: 0;
+  fill: $white;
+  height: $h1;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: all 320ms ease;
+
+  &[data-icon="pause"] {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  &[data-icon="play"] {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.image {
+  background-position: center;
+  background-size: cover;
+  // filter: grayscale(1);
+  @include aspect-ratio--object;
+}
+
+.imageLayout {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  margin: 0 auto;
+  padding: $s3;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.imageWrapper {
+  flex: 1;
+  @include aspect-ratio;
+  @include aspect-ratio--1x1;
+}
+
+.item {
+  min-height: 100vh;
+}
+
+.mediaButton {
+  background: none;
+  border-color: tomato;
+  border-radius: 100%;
+  border-style: solid;
+  border-width: $bw1;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  outline: 0;
+  height: $h3;
+  transition: all 480ms ease-in-out;
+  width: $w3;
+
+  &[data-state="playing"] [data-icon="pause"],
+  &[data-state="paused"] [data-icon="play"] {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &[data-state="playing"] [data-icon="play"],
+  &[data-state="paused"] [data-icon="pause"] {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  .mediaButtonsIcons {
+    height: $h1;
+    position: relative;
+    width: $w1;
+  }
+}
+
+.mediaButton:active {
+  border-color: $white;
+}
+
+.mediaButtonWrapper {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  padding: $s4 $s3;
+}
+
+.paragraphWrapper {
+  overflow: hidden;
+  padding-top: $s4;
+  width: $w-two-thirds;
+
+  p {
+    font-size: $f4;
+    font-weight: $fw4;
+    line-height: $lh-copy;
+    margin: 0 0 $s4 0;
+  }
+}
+
+.progress {
+  background-color: tomato;
+  display: inline-block;
+  height: $h1;
+  transition: all 500ms linear;
+}
+
+.progressTrack {
+  background-color: $moon-gray;
+  height: $h1;
+}
+
+.title {
+  color: $white;
+  font-family: $baskerville;
+  font-size: $f1;
+  font-style: italic;
+  font-weight: $fw5;
+  line-height: $lh-title;
+  margin: 0 0 $s6 0;
+  @include measure-narrow;
+}
+
+@media #{$ns} {
+  .content {
+    margin: 0 auto;
+    padding-left: $s4;
+    padding-right: $s4;
+  }
+}
+
+@media #{$m} {
+  .content {
+    max-width: $w6;
+  }
+
+  .imageLayout {
+    max-width: $w5;
+  }
+}
+
+@media #{$l} {
+  .content {
+    max-width: $w7;
+  }
+
+  .imageLayout {
+    max-width: $w6;
+  }
+}

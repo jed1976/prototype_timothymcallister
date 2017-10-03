@@ -10,42 +10,52 @@ export default class Recording extends React.Component {
     super(props)
     this.state = {
       currentTime: 0,
+      isPlaying: false,
       progress: 0
     }
+    this.mediaState = this.mediaState.bind(this)
+    this.onEnded = this.onEnded.bind(this)
+    this.onTimeUpdate = this.onTimeUpdate.bind(this)
+    this.onLoadedData = this.onLoadedData.bind(this)
+    this.onLoadStart = this.onLoadStart.bind(this)
     this.toggleMedia = this.toggleMedia.bind(this)
   }
 
   componentDidMount() {
     this.media.style.display = 'none'
-
-    this.media.onended = () => {
-      this.setState({ currentTime: 0, progress: 0 })
-      this.setSavedState()
-    }
-
-    this.media.ontimeupdate = () => {
-      this.setState({
-        currentTime: this.media.currentTime,
-        progress: `${Math.ceil((this.media.currentTime / this.media.duration) * 100)}%`
-      })
-      this.setSavedState()
-    }
-
-    this.media.onloadstart = () => {
-      const savedState = this.getSavedState()
-
-      if (savedState) {
-        this.setState(savedState)
-      }
-    }
-
-    this.media.onloadeddata = () => {
-      this.media.currentTime = this.state.currentTime
-    }
   }
 
   getSavedState() {
     return JSON.parse(window.localStorage.getItem(`recording-${this.props.id}`))
+  }
+
+  mediaState() {
+    return this.media.paused
+  }
+
+  onEnded() {
+    this.setState({ currentTime: 0, progress: 0 })
+    this.setSavedState()
+  }
+
+  onLoadedData() {
+    this.media.currentTime = this.state.currentTime
+  }
+
+  onLoadStart() {
+    const savedState = this.getSavedState()
+
+    if (savedState) {
+      this.setState(savedState)
+    }
+  }
+
+  onTimeUpdate() {
+    this.setState({
+      currentTime: this.media.currentTime,
+      progress: `${Math.ceil((this.media.currentTime / this.media.duration) * 100)}%`
+    })
+    this.setSavedState()
   }
 
   setSavedState() {
@@ -55,8 +65,10 @@ export default class Recording extends React.Component {
   toggleMedia() {
     if (this.media.paused) {
       this.media.play()
+      this.setState({ mediaState: 'playing' })
     } else {
       this.media.pause()
+      this.setState({ mediaState: 'paused' })
     }
 
     if (this.props.onMediaToggle) {
@@ -65,45 +77,74 @@ export default class Recording extends React.Component {
   }
 
   render() {
-    const description = this.props.description.split('\n').filter(item => item !== '')
-    const renderedDescription = description.map((paragraph, index) =>
-      <div className={styles.paragraph} dangerouslySetInnerHTML={{ __html: marked(paragraph) }} key={index} />)
     const date = dateformat(this.props.date, 'mmmm d, yyyy')
     const mediaButtonText = this.props.media ? 'Play Sample' : ''
 
     return (
-      <li className={styles.recording}>
-        <h1 className={styles.title}>{this.props.title}</h1>
-
-        <img className={styles.image} src={this.props.imageSrc} srcSet={this.props.imageSrcSet} />
-
-        {renderedDescription}
-
-        <div className={styles.progressTrack}>
-          <span
-            className={styles.progress}
-            ref={progress => this.progress = progress}
-            style={{ width: this.state.progress }}
-          >
-          </span>
+      <li className={styles.item} key={this.props.id}>
+        <div className={styles.imageLayout}>
+          <div className={styles.imageWrapper}>
+            <div className={styles.image} style={{ backgroundImage: `url(${this.props.imageSrc})` }}></div>
+          </div>
         </div>
 
-        <time className={styles.date}>{date}</time>
+        <article className={styles.contentWrapper}>
+          <div className={styles.content}>
+            <h1 className={styles.title}>{this.props.title}</h1>
 
-        <audio
-          className={styles.media}
-          controls
-          preload="none"
-          ref={media => this.media = media}
-          src={this.props.media}
-        ></audio>
+            <div className={styles.progressTrack}>
+              <span
+                className={styles.progress}
+                ref={progress => this.progress = progress}
+                style={{ width: this.state.progress }}
+              >
+              </span>
+            </div>
+
+            <audio
+              className={styles.media}
+              controls
+              onEnded={this.onEnded}
+              onLoadStart={this.onLoadStart}
+              onLoadedData={this.onLoadedData}
+              onTimeUpdate={this.onTimeUpdate}
+              preload="none"
+              ref={media => this.media = media}
+              src={this.props.media}
+            ></audio>
+
+            <div className={styles.description}>
+              <div
+                className={styles.paragraphWrapper}
+                dangerouslySetInnerHTML={{ __html: marked(this.props.description) }} />
+              <div className={styles.mediaButtonWrapper}>
+                <button
+                  className={styles.mediaButton}
+                  data-state={this.state.mediaState}
+                  onClick={this.toggleMedia}
+                  onTouchStart={() => {}}
+                >
+                  <div className={styles.mediaButtonsIcons}>
+                    <svg className={styles.icon} data-icon="play" viewBox="0 0 12 14">
+                      <polygon points="0 0 0 14 12 7"></polygon>
+                    </svg>
+                    <svg className={styles.icon} data-icon="pause" viewBox="0 0 14 14">
+                      <path d="M0,0 L0,14 L5,14 L5,0 L0,0 Z M9,0 L9,14 L14,14 L14,0 L9,0 Z"></path>
+                    </svg>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <time className={styles.date}>{date}</time>
+          </div>
+        </article>
       </li>
     )
   }
 }
 
 Recording.propTypes = {
-  color: PropTypes.string,
   description: PropTypes.string,
   imageSrc: PropTypes.string,
   imageSrcSet: PropTypes.string,

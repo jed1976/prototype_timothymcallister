@@ -40,7 +40,7 @@ export default class Premieres extends React.Component {
 }
 
 export const query = graphql`
-  query Premieres {
+  query PremieresQuery {
     allContentfulPremiere(sort: { fields: [date, title], order: DESC }) {
       edges {
         node {

@@ -5,7 +5,7 @@ import styles from './logo.module.scss'
 
 const Logo = props => {
   return (
-    <header className={styles.header} data-size={props.size} style={{ color: props.logoColor }}>
+    <header className={styles.header} data-size={props.size} style={{ color: props.color }}>
       <h1 className={styles.logo} title="Main Menu">
         <Link className={styles.link} to="/">
           <span className={styles.title} data-size={props.size}>Timothy M
