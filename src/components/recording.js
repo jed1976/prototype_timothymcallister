@@ -15,16 +15,22 @@ export default class Recording extends React.Component {
     }
     this.mediaState = this.mediaState.bind(this)
     this.onEnded = this.onEnded.bind(this)
-    this.onTimeUpdate = this.onTimeUpdate.bind(this)
     this.onLoadedData = this.onLoadedData.bind(this)
     this.onLoadStart = this.onLoadStart.bind(this)
     this.onPause = this.onPause.bind(this)
     this.onPlay = this.onPlay.bind(this)
+    this.onTimeUpdate = this.onTimeUpdate.bind(this)
+    this.onUnload = this.onUnload.bind(this)
     this.toggleMedia = this.toggleMedia.bind(this)
   }
 
   componentDidMount() {
     this.media.style.display = 'none'
+    window.addEventListener('beforeunload', this.onUnload)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('beforeunload', this.onUnload)
   }
 
   componentDidUpdate() {
@@ -72,6 +78,10 @@ export default class Recording extends React.Component {
       currentTime: this.media.currentTime,
       progress: `${Math.ceil((this.media.currentTime / this.media.duration) * 100)}%`
     })
+  }
+
+  onUnload() {
+    this.media.pause()
   }
 
   setSavedState() {
