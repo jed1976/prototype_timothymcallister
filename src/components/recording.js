@@ -27,6 +27,10 @@ export default class Recording extends React.Component {
     this.media.style.display = 'none'
   }
 
+  componentDidUpdate() {
+    this.setSavedState()
+  }
+
   getSavedState() {
     return JSON.parse(window.localStorage.getItem(`recording-${this.props.id}`))
   }
@@ -41,7 +45,6 @@ export default class Recording extends React.Component {
       mediaState: 'paused',
       progress: 0
     })
-    this.setSavedState()
   }
 
   onLoadedData() {
@@ -69,10 +72,10 @@ export default class Recording extends React.Component {
       currentTime: this.media.currentTime,
       progress: `${Math.ceil((this.media.currentTime / this.media.duration) * 100)}%`
     })
-    this.setSavedState()
   }
 
   setSavedState() {
+    console.log(JSON.stringify(this.state))
     window.localStorage.setItem(`recording-${this.props.id}`, JSON.stringify(this.state))
   }
 
