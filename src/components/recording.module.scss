@@ -17,6 +17,7 @@
 
 .date {
   color: tomato;
+  flex: 1;
   font-size: $f6;
   letter-spacing: $tracked;
   line-height: $lh-title;
@@ -71,6 +72,16 @@
 
 .item {
   min-height: 100vh;
+}
+
+.link {
+  color: $white;
+  text-decoration: none;
+  transition: color 360ms ease;
+}
+
+.link:hover {
+  color: $moon-gray;
 }
 
 .mediaButton {

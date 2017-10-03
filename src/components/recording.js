@@ -94,7 +94,12 @@ export default class Recording extends React.Component {
 
         <article className={styles.contentWrapper}>
           <div className={styles.content}>
-            <h1 className={styles.title}>{this.props.title}</h1>
+            <h1 className={styles.title}>
+            {this.props.recordingUrl
+              ? <a className={styles.link} href={this.props.recordingUrl} title="Learn More">{this.props.title}</a>
+              : this.props.title
+            }
+            </h1>
 
             {this.props.media ?
             <div className={styles.mediaPlayer}>
