@@ -10,7 +10,7 @@ export default class Recording extends React.Component {
     super(props)
     this.state = {
       currentTime: 0,
-      isPlaying: false,
+      mediaState: 'paused',
       progress: 0
     }
     this.mediaState = this.mediaState.bind(this)
@@ -18,6 +18,8 @@ export default class Recording extends React.Component {
     this.onTimeUpdate = this.onTimeUpdate.bind(this)
     this.onLoadedData = this.onLoadedData.bind(this)
     this.onLoadStart = this.onLoadStart.bind(this)
+    this.onPause = this.onPause.bind(this)
+    this.onPlay = this.onPlay.bind(this)
     this.toggleMedia = this.toggleMedia.bind(this)
   }
 
@@ -54,6 +56,15 @@ export default class Recording extends React.Component {
     }
   }
 
+  onPause() {
+    console.log(this)
+    this.setState({ mediaState: 'paused' })
+  }
+
+  onPlay() {
+    this.setState({ mediaState: 'playing' })
+  }
+
   onTimeUpdate() {
     this.setState({
       currentTime: this.media.currentTime,
@@ -69,10 +80,8 @@ export default class Recording extends React.Component {
   toggleMedia() {
     if (this.media.paused) {
       this.media.play()
-      this.setState({ mediaState: 'playing' })
     } else {
       this.media.pause()
-      this.setState({ mediaState: 'paused' })
     }
 
     if (this.props.onMediaToggle) {
@@ -137,6 +146,8 @@ export default class Recording extends React.Component {
               onEnded={this.onEnded}
               onLoadStart={this.onLoadStart}
               onLoadedData={this.onLoadedData}
+              onPause={this.onPause}
+              onPlay={this.onPlay}
               onTimeUpdate={this.onTimeUpdate}
               preload="none"
               ref={media => this.media = media}
