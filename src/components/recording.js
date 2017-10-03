@@ -75,7 +75,6 @@ export default class Recording extends React.Component {
   }
 
   setSavedState() {
-    console.log(JSON.stringify(this.state))
     window.localStorage.setItem(`recording-${this.props.id}`, JSON.stringify(this.state))
   }
 
