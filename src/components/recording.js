@@ -123,7 +123,7 @@ export default class Recording extends React.Component {
                 <span
                   className={styles.progress}
                   ref={progress => this.progress = progress}
-                  style={{ width: this.state.progress || '100%' }}
+                  style={{ width: this.state.progress || 0 }}
                 >
                 </span>
               </div>
