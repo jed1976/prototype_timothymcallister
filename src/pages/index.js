@@ -56,7 +56,7 @@ export default (props) => {
 }
 
 export const query = graphql`
-  query Home {
+  query HomeQuery {
     site {
       siteMetadata {
         facebook

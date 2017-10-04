@@ -23,17 +23,19 @@
 
 .subtitle {
   display: block;
-  font-style: italic;
+  // font-style: italic;
   font-weight: $fw4;
   margin: 0;
 }
 
 .subtitle {
-  font-size: $f6;
+  font-size: $f7;
+  letter-spacing: $tracked;
+  text-transform: uppercase;
 }
 
 .subtitle[data-size="large"] {
-  font-size: $f5;
+  font-size: $f6;
 }
 
 .title {
@@ -54,10 +56,6 @@
 }
 
 @media #{$l} {
-  .title {
-    font-size: $f3;
-  }
-
   .title[data-size="large"] {
     font-size: $f2;
   }

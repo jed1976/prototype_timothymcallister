@@ -86,11 +86,11 @@
 .title {
   color: $white;
   font-family: $baskerville;
-  font-size: $f1;
+  font-size: $f2;
   font-style: italic;
   font-weight: $fw5;
   line-height: $lh-title;
-  margin: 0 0 $s6 0;
+  margin: 0 0 $s5 0;
 }
 
 @media #{$ns} {
@@ -98,6 +98,10 @@
     margin: 0 auto;
     padding-left: $s4;
     padding-right: $s4;
+  }
+
+  .title {
+    font-size: $f1;
   }
 }
 

@@ -107,19 +107,14 @@ export default class Recording extends React.Component {
     return (
       <li className={styles.item} key={this.props.id}>
         <div className={styles.imageLayout}>
-          <div className={styles.imageWrapper}>
+          <a className={styles.imageWrapper} href={this.props.recordingUrl} title="Visit producer site">
             <div className={styles.image} style={{ backgroundImage: `url(${this.props.imageSrc})` }}></div>
-          </div>
+          </a>
         </div>
 
         <article className={styles.contentWrapper}>
           <div className={styles.content}>
-            <h1 className={styles.title}>
-            {this.props.recordingUrl
-              ? <a className={styles.link} href={this.props.recordingUrl} title="Learn More">{this.props.title}</a>
-              : this.props.title
-            }
-            </h1>
+            <h1 className={styles.title}>{this.props.title}</h1>
 
             {this.props.media ?
             <div className={styles.mediaPlayer}>
