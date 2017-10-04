@@ -83,16 +83,13 @@
   color: $moon-gray;
 }
 
-.mediaButton {
-  align-content: center;
+.mediaButton {  
   background: none;
   border-color: tomato;
   border-radius: 100%;
   border-style: solid;
   border-width: $bw1;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
   outline: 0;
   height: $h3;
   padding: 0;
@@ -113,8 +110,9 @@
 
   .mediaButtonsIcons {
     height: $h1;
+    overflow: hidden;
     position: relative;
-    width: $w1;
+    width: 100%;
   }
 }
 
