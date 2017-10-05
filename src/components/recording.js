@@ -25,7 +25,7 @@ export default class Recording extends React.Component {
   }
 
   componentDidMount() {
-    this.media.style.display = 'none'    
+    this.media.style.display = 'none'
     window.addEventListener('beforeunload', this.onUnload)
   }
 
@@ -146,21 +146,19 @@ export default class Recording extends React.Component {
               : ''
             }
 
-            <noscript>
-              <audio
-                className={styles.media}
-                controls
-                onEnded={this.onEnded}
-                onLoadStart={this.onLoadStart}
-                onLoadedData={this.onLoadedData}
-                onPause={this.onPause}
-                onPlay={this.onPlay}
-                onTimeUpdate={this.onTimeUpdate}
-                preload="none"
-                ref={media => this.media = media}
-                src={this.props.media}
-              ></audio>
-            </noscript>
+            <audio
+              className={styles.media}
+              controls
+              onEnded={this.onEnded}
+              onLoadStart={this.onLoadStart}
+              onLoadedData={this.onLoadedData}
+              onPause={this.onPause}
+              onPlay={this.onPlay}
+              onTimeUpdate={this.onTimeUpdate}
+              preload="none"
+              ref={media => this.media = media}
+              src={this.props.media}
+            ></audio>            
 
             <div
               className={styles.paragraphWrapper}
