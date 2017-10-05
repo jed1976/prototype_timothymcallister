@@ -6,9 +6,9 @@
   flex-direction: column;
   justify-content: space-around;
   margin: 0 auto;
-  max-width: $w6;
   min-height: 100vh;
   padding: $s4;
+  @include measure;
 }
 
 .image {
@@ -98,7 +98,7 @@
   transform: translate3d(0,0,0);
 }
 
-@media #{$l} {
+@media #{$ns} {
   .section {
     flex-direction: row;
   }

@@ -1,7 +1,9 @@
 @import '../styles/base';
 
 .content {
+  margin: 0 auto;
   padding: $s5 $s3;
+  @include measure;
 }
 
 .contentWrapper {
@@ -95,9 +97,7 @@
 
 @media #{$ns} {
   .content {
-    margin: 0 auto;
-    padding-left: $s4;
-    padding-right: $s4;
+    max-width: $w6;
   }
 
   .title {
@@ -105,15 +105,9 @@
   }
 }
 
-@media #{$m} {
-  .content {
-    max-width: $w6;
-  }
-}
-
 @media #{$l} {
   .content {
-    max-width: $w9;
+    max-width: $w8;
   }
 
   .copy {

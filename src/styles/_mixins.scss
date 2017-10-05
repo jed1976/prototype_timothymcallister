@@ -1,8 +1,10 @@
 // Mixins
 
 @mixin aspect-ratio {
+  display: block;
   height: 0;
   position: relative;
+  width: 100%;
 }
 
 @mixin aspect-ratio--16x9 { padding-bottom: 56.25%; }

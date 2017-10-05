@@ -23,14 +23,10 @@
 
 .subtitle {
   display: block;
-  // font-style: italic;
-  font-weight: $fw4;
-  margin: 0;
-}
-
-.subtitle {
   font-size: $f7;
-  letter-spacing: $tracked;
+  font-weight: $fw4;
+  letter-spacing: $tracked-mega;
+  margin: 0;
   text-transform: uppercase;
 }
 
@@ -43,7 +39,7 @@
   border-bottom-style: solid;
   border-bottom-width: $bw3;
   display: inline-block;
-  font-size: $f4;
+  font-size: $f5;
   font-weight: $fw7;
   line-height: $lh-title;
   margin: 0 0 $s1 0;

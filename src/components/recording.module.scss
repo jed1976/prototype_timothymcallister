@@ -1,7 +1,9 @@
 @import '../styles/base';
 
 .content {
+  margin: 0 auto;
   padding: $s5 $s3;
+  @include measure;
 }
 
 .contentWrapper {
@@ -46,27 +48,28 @@
   }
 }
 
-.image {
-  background-position: center;
-  background-size: cover;
-  @include aspect-ratio--object;
-}
-
 .imageLayout {
   align-items: center;
   display: flex;
   height: 100vh;
+  justify-content: center;
   margin: 0 auto;
-  padding: $s3;
+  max-width: $w5;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-}
 
-.imageWrapper {
-  flex: 1;
-  @include aspect-ratio;
-  @include aspect-ratio--1x1;
+  .imageWrapper {
+    @include aspect-ratio;
+    @include aspect-ratio--1x1;
+
+    .image {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      @include aspect-ratio--object;
+    }
+  }
 }
 
 .item {
@@ -83,7 +86,7 @@
   color: $moon-gray;
 }
 
-.mediaButton {  
+.mediaButton {
   background: none;
   border-color: tomato;
   border-radius: 100%;
@@ -165,29 +168,8 @@
 
 @media #{$ns} {
   .content {
-    margin: 0 auto;
-    padding-left: $s4;
-    padding-right: $s4;
-  }
-
-  .title {
-    font-size: $f1;
-  }
-}
-
-@media #{$m} {
-  .content {
-    max-width: $w6;
-  }
-
-  .imageLayout {
-    max-width: $w5;
-  }
-}
-
-@media #{$l} {
-  .content {
-    max-width: $w7;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .imageLayout {
