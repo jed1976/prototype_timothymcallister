@@ -25,9 +25,7 @@ export default class Recording extends React.Component {
   }
 
   componentDidMount() {
-    this.media.style.display = 'none'
-    this.mediaPlayer ? this.mediaPlayer.style.display = 'flex' : ''
-
+    this.media.style.display = 'none'    
     window.addEventListener('beforeunload', this.onUnload)
   }
 
