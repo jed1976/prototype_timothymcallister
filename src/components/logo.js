@@ -8,10 +8,10 @@ const Logo = props => {
     <header className={styles.header} data-size={props.size} style={{ color: props.color }}>
       <h1 className={styles.logo} title="Main Menu">
         <Link className={styles.link} to="/">
-          <span className={styles.title} data-size={props.size}>Timothy M
+          <span className={styles.title}>Timothy M
             <span className={styles.lowerCase}>c</span>Allister
           </span>
-          <span className={styles.subtitle} data-size={props.size}>Saxophonist</span>
+          <span className={styles.subtitle}>Saxophonist</span>
         </Link>
       </h1>
     </header>

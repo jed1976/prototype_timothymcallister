@@ -26,6 +26,8 @@ export default class Recording extends React.Component {
 
   componentDidMount() {
     this.media.style.display = 'none'
+    this.mediaPlayer.style.display = 'flex';
+
     window.addEventListener('beforeunload', this.onUnload)
   }
 
@@ -117,7 +119,7 @@ export default class Recording extends React.Component {
             <h1 className={styles.title}>{this.props.title}</h1>
 
             {this.props.media ?
-            <div className={styles.mediaPlayer}>
+            <div className={styles.mediaPlayer} ref={mediaPlayer => this.mediaPlayer = mediaPlayer}>
               <button
                 className={styles.mediaButton}
                 data-state={this.state.mediaState}
@@ -146,19 +148,21 @@ export default class Recording extends React.Component {
               : ''
             }
 
-            <audio
-              className={styles.media}
-              controls
-              onEnded={this.onEnded}
-              onLoadStart={this.onLoadStart}
-              onLoadedData={this.onLoadedData}
-              onPause={this.onPause}
-              onPlay={this.onPlay}
-              onTimeUpdate={this.onTimeUpdate}
-              preload="none"
-              ref={media => this.media = media}
-              src={this.props.media}
-            ></audio>
+            <noscript>
+              <audio
+                className={styles.media}
+                controls
+                onEnded={this.onEnded}
+                onLoadStart={this.onLoadStart}
+                onLoadedData={this.onLoadedData}
+                onPause={this.onPause}
+                onPlay={this.onPlay}
+                onTimeUpdate={this.onTimeUpdate}
+                preload="none"
+                ref={media => this.media = media}
+                src={this.props.media}
+              ></audio>
+            </noscript>
 
             <div
               className={styles.paragraphWrapper}

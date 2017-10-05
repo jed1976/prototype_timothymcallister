@@ -86,6 +86,10 @@
   color: $moon-gray;
 }
 
+.media {
+  width: 100%;
+}
+
 .mediaButton {
   background: none;
   border-color: tomato;
@@ -125,7 +129,7 @@
 
 .mediaPlayer {
   align-items: center;
-  display: flex;
+  display: none;
 }
 
 .paragraphWrapper {
