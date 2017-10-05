@@ -25,10 +25,8 @@ export default class Recording extends React.Component {
   }
 
   componentDidMount() {
-    if (this.media) {
-      this.media.style.display = 'none'
-      this.mediaPlayer.style.display = 'flex'
-    }
+    this.media.style.display = 'none'
+    this.mediaPlayer ? this.mediaPlayer.style.display = 'flex' : ''
 
     window.addEventListener('beforeunload', this.onUnload)
   }
@@ -146,25 +144,25 @@ export default class Recording extends React.Component {
                 >
                 </span>
               </div>
-
-              <noscript>
-                <audio
-                  className={styles.media}
-                  controls
-                  onEnded={this.onEnded}
-                  onLoadStart={this.onLoadStart}
-                  onLoadedData={this.onLoadedData}
-                  onPause={this.onPause}
-                  onPlay={this.onPlay}
-                  onTimeUpdate={this.onTimeUpdate}
-                  preload="none"
-                  ref={media => this.media = media}
-                  src={this.props.media}
-                ></audio>
-              </noscript>
             </div>
               : ''
             }
+
+            <noscript>
+              <audio
+                className={styles.media}
+                controls
+                onEnded={this.onEnded}
+                onLoadStart={this.onLoadStart}
+                onLoadedData={this.onLoadedData}
+                onPause={this.onPause}
+                onPlay={this.onPlay}
+                onTimeUpdate={this.onTimeUpdate}
+                preload="none"
+                ref={media => this.media = media}
+                src={this.props.media}
+              ></audio>
+            </noscript>
 
             <div
               className={styles.paragraphWrapper}
