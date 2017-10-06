@@ -50,6 +50,7 @@ export default (props) => {
                 hour: 'numeric',
                 minute: 'numeric',
                 month: 'long',
+                year: 'numeric',
                 timeZone: 'UTC'
               }).format(new Date(node.date))
               const locationName = encodeURIComponent(node.locationName)
