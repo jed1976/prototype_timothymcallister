@@ -21,6 +21,7 @@
   color: tomato;
   flex: 1;
   font-size: $f6;
+  font-weight: $fw5;
   letter-spacing: $tracked;
   line-height: $lh-title;
   text-transform: uppercase;
@@ -138,7 +139,7 @@
   padding-top: $s4;
 
   p {
-    font-size: $f4;
+    font-size: $f5;
     font-weight: $fw4;
     line-height: $lh-copy;
     margin: 0;

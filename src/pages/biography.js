@@ -57,8 +57,6 @@ export default (props) => {
 
       <article className={styles.contentWrapper}>
         <div className={styles.content}>
-          <h1 className={styles.title}>{pageData.title}</h1>
-
           <div className={styles.copy}>
             {renderedBiography}
           </div>

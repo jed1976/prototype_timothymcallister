@@ -1,5 +1,6 @@
 module.exports = {
   siteMetadata: {
+    googleStaticMapsKey: `AIzaSyBaFRlWnwLZLU6lJQNFJF8He3pGG1owjXI`,
     title: `Timothy McAllister`,
     twitter: `http://twitter.com/McAllisterSax`,
     facebook: `http://www.facebook.com/timothy.mcallister`,
