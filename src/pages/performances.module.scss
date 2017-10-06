@@ -67,9 +67,8 @@
   color: tomato;
   font-size: $f2;
   font-weight: $fw7;
-  left: 0;
   margin: 0;
-  padding: $s4;
+  padding: $s3;
 }
 
 .monthWrapper:nth-child(odd) {
@@ -157,9 +156,14 @@
 
 @media #{$ns} {
   .monthTitle {
+    font-size: $f1;
+    left: 0;
+    padding: $s4;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
     z-index: 9999;
   }
 
