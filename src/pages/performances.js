@@ -6,8 +6,6 @@ import marked from 'marked'
 import styles from './performances.module.scss'
 
 export default (props) => {
-  const googleAPIKey = props.data.site.siteMetadata.googleAPIKey
-  const mapboxAPIKey = props.data.site.siteMetadata.mapboxAPIKey
   const currentYear = new Date().getUTCFullYear()
   const pageData = props.data.allContentfulPage.edges[0].node
   const performancesForCurrentYear = props.data.allContentfulPerformance.edges
@@ -24,6 +22,34 @@ export default (props) => {
       .filter(({ node }) => new Date(node.date).getUTCMonth() === month)
   })
 
+  const getFormattedDate = date => {
+    return new Intl.DateTimeFormat('en-US', {
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'UTC'
+    }).format(new Date(date))
+  }
+
+  const getFormattedMonth = month => {
+    return new Date(`${month+1}/01/01`).toLocaleString('en-us', { month: 'long' })
+  }
+
+  const getMapURL = location => {
+    const mapboxAPIKey = props.data.site.siteMetadata.mapboxAPIKey
+    const center = `${location.lon},${location.lat}`
+    const pin = encodeURIComponent(`https:${props.data.contentfulAsset.file.url}`)
+
+    return `https://api.mapbox.com/styles/v1/handwhittled/cj8g66zr00xg42rk6yw7tot91/static/url-${pin}(${center})/${center},3.00,0.00,25.00/600x600@2x?&attribution=false&access_token=${mapboxAPIKey}`
+  }
+
+  const getEventURL = (locationName, location) => {
+    locationName = encodeURIComponent(locationName)
+    return `http://www.google.com/maps/place/${locationName}/@${location.lat},${location.lon},13z`
+  }
+
   return (
     <Container backgroundColor="#fff" foregroundColor="#ccc" logoColor="#fff">
       <Helmet>
@@ -35,43 +61,27 @@ export default (props) => {
       <div className={styles.contentWrapper}>
         <div className={styles.content}>
           {months.map(month => {
-            const formattedMonth = new Date(`${month+1}/01/01`).toLocaleString('en-us', { month: 'long' })
             return (
-          <article className={styles.monthWrapper} key={formattedMonth}>
-            <h1 className={styles.monthTitle}>{formattedMonth}</h1>
+          <article className={styles.monthWrapper} key={getFormattedMonth(month)}>
+            <h1 className={styles.monthTitle}>{getFormattedMonth(month)}</h1>
 
             <ol className={styles.performanceList}>
             {performances[month].map(({ node }, index) => {
-              const center1 = `${node.location.lat},${node.location.lon}`
-              const map1 = `https://maps.googleapis.com/maps/api/staticmap?key=${googleAPIKey}&center=${center1}&zoom=4&size=640x640&scale=2&markers=${center1}&format=png&maptype=roadmap&style=feature:water%7Celement:geometry%7Ccolor:0x333333&style=feature:landscape%7Ccolor:0xcccccc&style=element:labels%7Cvisibility:off&style=element:labels.icon%7Cvisibility:off&style=feature:administrative%7Cvisibility:off&style=feature:administrative.land_parcel%7Cvisibility:off&style=feature:administrative.neighborhood%7Cvisibility:off&style=feature:poi%7Cvisibility:off&style=feature:road%7Cvisibility:off&style=feature:road%7Celement:labels.icon%7Cvisibility:off&style=feature:transit%7Cvisibility:off`
-
-              const center = `${node.location.lon},${node.location.lat}`
-              const map = `https://api.mapbox.com/styles/v1/handwhittled/cj8g19dhu0t7v2rqutsx8g9m9/static/pin-s+ff6347(${center})/${center},3.00,0.00,20.00/600x600@2x?access_token=${mapboxAPIKey}`
-
-              const formattedDate = new Intl.DateTimeFormat('en-US', {
-                day: 'numeric',
-                hour: 'numeric',
-                minute: 'numeric',
-                month: 'long',
-                year: 'numeric',
-                timeZone: 'UTC'
-              }).format(new Date(node.date))
-              const locationName = encodeURIComponent(node.locationName)
-              const url = `http://www.google.com/maps/place/${locationName}/@${center1},13z`
+              const url = getEventURL(node.locationName, node.location)
 
               return (
               <li className={styles.performance} key={node.id}>
                 <div className={styles.performanceWrapper}>
                   <div className={styles.performanceDetails}>
                     <h2 className={styles.performanceTitle}>{node.title}</h2>
-                    <time className={styles.performanceDate}>{formattedDate}</time>
+                    <time className={styles.performanceDate}>{getFormattedDate(node.date)}</time>
 
                     <div className={styles.paragraphWrapper} dangerouslySetInnerHTML={{ __html: marked(node.description.description) }} />
                   </div>
 
                   <div className={styles.map}>
                     <a className={styles.mapWrapper} href={url}>
-                      <div className={styles.mapImage} style={{ backgroundImage: `url('${map}')` }}></div>
+                      <div className={styles.mapImage} style={{ backgroundImage: `url('${getMapURL(node.location)}')` }}></div>
                     </a>
                   </div>
 
@@ -140,6 +150,15 @@ export const query = graphql`
             }
           }
         }
+      }
+    },
+
+    contentfulAsset(title: { eq: "Map Marker"} ) {
+      id
+      file {
+        url
+        fileName
+        contentType
       }
     },
 
