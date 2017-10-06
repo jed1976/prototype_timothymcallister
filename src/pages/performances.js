@@ -6,7 +6,8 @@ import marked from 'marked'
 import styles from './performances.module.scss'
 
 export default (props) => {
-  const key = props.data.site.siteMetadata.googleStaticMapsKey
+  const googleAPIKey = props.data.site.siteMetadata.googleAPIKey
+  const mapboxAPIKey = props.data.site.siteMetadata.mapboxAPIKey
   const currentYear = new Date().getUTCFullYear()
   const pageData = props.data.allContentfulPage.edges[0].node
   const performancesForCurrentYear = props.data.allContentfulPerformance.edges
@@ -41,8 +42,12 @@ export default (props) => {
 
             <ol className={styles.performanceList}>
             {performances[month].map(({ node }, index) => {
-              const center = `${node.location.lat},${node.location.lon}`
-              const map = `https://maps.googleapis.com/maps/api/staticmap?markers=color:0xFF6347%7Clabel:%7C${center}&center=${center}&zoom=4&size=640x640&scale=2&style=element:labels|visibility:off&style=element:geometry.stroke|visibility:off&style=feature:landscape|element:geometry|saturation:-100&style=feature:water|saturation:-100|invert_lightness:true&key=${key}`
+              const center1 = `${node.location.lat},${node.location.lon}`
+              const map1 = `https://maps.googleapis.com/maps/api/staticmap?key=${googleAPIKey}&center=${center1}&zoom=4&size=640x640&scale=2&markers=${center1}&format=png&maptype=roadmap&style=feature:water%7Celement:geometry%7Ccolor:0x333333&style=feature:landscape%7Ccolor:0xcccccc&style=element:labels%7Cvisibility:off&style=element:labels.icon%7Cvisibility:off&style=feature:administrative%7Cvisibility:off&style=feature:administrative.land_parcel%7Cvisibility:off&style=feature:administrative.neighborhood%7Cvisibility:off&style=feature:poi%7Cvisibility:off&style=feature:road%7Cvisibility:off&style=feature:road%7Celement:labels.icon%7Cvisibility:off&style=feature:transit%7Cvisibility:off`
+
+              const center = `${node.location.lon},${node.location.lat}`
+              const map = `https://api.mapbox.com/styles/v1/handwhittled/cj8g19dhu0t7v2rqutsx8g9m9/static/pin-s+ff6347(${center})/${center},3.00,0.00,20.00/600x600@2x?access_token=${mapboxAPIKey}`
+
               const formattedDate = new Intl.DateTimeFormat('en-US', {
                 day: 'numeric',
                 hour: 'numeric',
@@ -52,7 +57,7 @@ export default (props) => {
                 timeZone: 'UTC'
               }).format(new Date(node.date))
               const locationName = encodeURIComponent(node.locationName)
-              const url = `http://www.google.com/maps/place/${locationName}/@${center},13z`
+              const url = `http://www.google.com/maps/place/${locationName}/@${center1},13z`
 
               return (
               <li className={styles.performance} key={node.id}>
@@ -66,7 +71,7 @@ export default (props) => {
 
                   <div className={styles.map}>
                     <a className={styles.mapWrapper} href={url}>
-                      <div className={styles.mapImage} style={{ backgroundImage: `url(${map})` }}></div>
+                      <div className={styles.mapImage} style={{ backgroundImage: `url('${map}')` }}></div>
                     </a>
                   </div>
 
@@ -140,7 +145,8 @@ export const query = graphql`
 
     site {
       siteMetadata {
-        googleStaticMapsKey
+        googleAPIKey
+        mapboxAPIKey
       }
     }
   }
