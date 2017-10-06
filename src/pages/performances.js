@@ -45,13 +45,13 @@ export default (props) => {
             {performances[month].map(({ node }, index) => {
               const center = `${node.location.lat},${node.location.lon}`
               const map = `https://maps.googleapis.com/maps/api/staticmap?markers=color:0xFF6347%7Clabel:%7C${center}&center=${center}&zoom=4&size=640x640&scale=2&style=element:labels|visibility:off&style=element:geometry.stroke|visibility:off&style=feature:landscape|element:geometry|saturation:-100&style=feature:water|saturation:-100|invert_lightness:true&key=${key}`
-              const options = {
+              const formattedDate = new Intl.DateTimeFormat('en-US', {
                 day: 'numeric',
                 hour: 'numeric',
-                minute: '2-digit',
+                minute: 'numeric',
                 month: 'long',
-              }
-              const date = new Date(node.date).toLocaleString('en-US', options)
+                timeZone: 'UTC'
+              }).format(new Date(node.date))
               const locationName = encodeURIComponent(node.locationName)
               const url = `http://www.google.com/maps/place/${locationName}/@${center},13z`
 
@@ -60,7 +60,7 @@ export default (props) => {
                 <div className={styles.performanceWrapper}>
                   <div className={styles.performanceDetails}>
                     <h2 className={styles.performanceTitle}>{node.title}</h2>
-                    <time className={styles.performanceDate}>{date}</time>
+                    <time className={styles.performanceDate}>{formattedDate}</time>
 
                     <div className={styles.paragraphWrapper} dangerouslySetInnerHTML={{ __html: marked(node.description.description) }} />
                   </div>
