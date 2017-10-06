@@ -33,8 +33,6 @@ export default (props) => {
 
       <div className={styles.contentWrapper}>
         <div className={styles.content}>
-          <h1 className={styles.title}>{currentYear} {pageData.title}</h1>
-
           {months.map(month => {
             const formattedMonth = new Date(`${month+1}/01/01`).toLocaleString('en-us', { month: 'long' })
             return (
