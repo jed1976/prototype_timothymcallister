@@ -1,13 +1,14 @@
 module.exports = {
   siteMetadata: {
-    googleAPIKey: `AIzaSyBaFRlWnwLZLU6lJQNFJF8He3pGG1owjXI`,
-    mapboxAPIKey: `pk.eyJ1IjoiaGFuZHdoaXR0bGVkIiwiYSI6ImNqOGcxOGhkcTA2bGszMm82YWprcHF5ZWMifQ.d4k3x4NJtNt6CEPWxnWTwg`,
     title: `Timothy McAllister`,
     twitter: `http://twitter.com/McAllisterSax`,
     facebook: `http://www.facebook.com/timothy.mcallister`,
+    siteUrl: `https://timothymcallister.com`,
   },
+  pathPrefix: `/static`,
   plugins: [
     `gatsby-plugin-sass`,
+    `gatsby-plugin-netlify`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

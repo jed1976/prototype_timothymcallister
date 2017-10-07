@@ -37,13 +37,13 @@ export default (props) => {
     return new Date(`${month+1}/01/01`).toLocaleString('en-us', { month: 'long' })
   }
 
-  const getMapURL = location => {
-    const mapboxAPIKey = props.data.site.siteMetadata.mapboxAPIKey
-    const center = `${location.lon},${location.lat}`
-    const pin = encodeURIComponent(`https:${props.data.contentfulAsset.file.url}`)
-
-    return `https://api.mapbox.com/styles/v1/handwhittled/cj8g66zr00xg42rk6yw7tot91/static/url-${pin}(${center})/${center},3.00,0.00,25.00/600x600@2x?&attribution=false&access_token=${mapboxAPIKey}`
-  }
+  // const getMapURL = location => {
+  //   const mapboxAPIKey = props.data.site.siteMetadata.mapboxAPIKey
+  //   const center = `${location.lon},${location.lat}`
+  //   const pin = encodeURIComponent(`https:${props.data.contentfulAsset.file.url}`)
+  //
+  //   return `https://api.mapbox.com/styles/v1/handwhittled/cj8g66zr00xg42rk6yw7tot91/static/url-${pin}(${center})/${center},3.00,0.00,25.00/600x600@2x?&attribution=false&access_token=${mapboxAPIKey}`
+  // }
 
   const getEventURL = (locationName, location) => {
     locationName = encodeURIComponent(locationName)
@@ -81,7 +81,7 @@ export default (props) => {
 
                   <div className={styles.map}>
                     <a className={styles.mapWrapper} href={url}>
-                      <div className={styles.mapImage} style={{ backgroundImage: `url('${getMapURL(node.location)}')` }}></div>
+                      <div className={styles.mapImage} style={{ backgroundImage: `url('${__PATH_PREFIX__}/${node.fields.mapImage}')` }}></div>
                     </a>
                   </div>
 
@@ -118,6 +118,9 @@ export const query = graphql`
           id
           title
           date
+          fields {
+            mapImage
+          }
           location {
             lon
             lat
@@ -150,22 +153,6 @@ export const query = graphql`
             }
           }
         }
-      }
-    },
-
-    contentfulAsset(title: { eq: "Map Marker"} ) {
-      id
-      file {
-        url
-        fileName
-        contentType
-      }
-    },
-
-    site {
-      siteMetadata {
-        googleAPIKey
-        mapboxAPIKey
       }
     }
   }
