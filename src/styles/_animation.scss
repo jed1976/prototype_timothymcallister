@@ -1,0 +1,10 @@
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@mixin fade {
+  animation-duration: 240ms;
+  animation-name: fade;
+  animation-timing-function: ease;
+}

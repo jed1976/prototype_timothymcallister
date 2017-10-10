@@ -22,6 +22,7 @@ export default class Performances extends React.Component {
 
   getFormattedDate(date) {
     return new Intl.DateTimeFormat('en-us', {
+      weekday: 'long',
       day: 'numeric',
       hour: 'numeric',
       minute: 'numeric',

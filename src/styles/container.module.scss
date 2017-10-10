@@ -1,5 +1,6 @@
 @import '../styles/base';
 
 .container {
+  @include fade;
   min-height: 100vh;
 }

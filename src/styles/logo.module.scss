@@ -18,10 +18,11 @@
   .subtitle {
     display: block;
     font-size: $f7;
+    font-variant: small-caps;
     font-weight: $fw4;
     letter-spacing: $tracked-mega;
     margin: 0;
-    text-transform: uppercase;
+    text-transform: lowercase;
   }
 
   .title {
