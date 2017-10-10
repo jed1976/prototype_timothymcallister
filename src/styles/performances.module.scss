@@ -157,7 +157,7 @@
   font-weight: $fw3;
   float: right;
   font-size: $f3;
-  margin: $s4;
+  margin: $s4 $s3;
   outline: 0;
   padding-right: $s3;
   -moz-appearance: none;
@@ -189,6 +189,7 @@
 
   .yearSelector {
     font-size: $f2;
+    margin: $s4;
     position: -webkit-sticky;
     position: sticky;
     top: $s4;
