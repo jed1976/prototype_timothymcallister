@@ -4,7 +4,7 @@ import Link from 'gatsby-link'
 import styles from '../styles/premieres.module.scss'
 
 export default (props) => {
-  const years = this.props.data.allContentfulPremiere.edges
+  const years = props.data.allContentfulPremiere.edges
     .map(({ node }) => new Date(node.date).getUTCFullYear())
     .filter((value, index, self) => self.indexOf(value) === index)
     .sort()
@@ -13,7 +13,7 @@ export default (props) => {
   const premieres = {}
 
   years.map(year => {
-    premieres[year] = this.props.data.allContentfulPremiere.edges
+    premieres[year] = props.data.allContentfulPremiere.edges
       .filter(({ node }) => new Date(node.date).getUTCFullYear() === year)
   })
 
