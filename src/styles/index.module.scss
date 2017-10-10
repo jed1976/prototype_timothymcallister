@@ -1,0 +1,105 @@
+@import '../styles/base';
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: $s4;
+  @include measure;
+}
+
+.image {
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex: 1;
+  height: 100vh;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.menu {
+  margin: $s5 0;
+  order: 3;
+}
+
+.menuList {
+  display: flex;
+  font-family: $baskerville;
+  flex-wrap: wrap;
+  font-size: $f4;
+  font-style: italic;
+  font-weight: $fw5;
+  list-style: none;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+
+.menuList li {
+  border-top-color: $near-black;
+  border-top-style: solid;
+  border-top-width: 1px;
+  flex: 50%;
+}
+
+.menuList li:nth-child(1),
+.menuList li:nth-child(2) {
+  border-top: 0;
+}
+
+.menuList a {
+  color: $near-black;
+  display: block;
+  padding: $s2 0 $s3 0;
+  text-decoration: none;
+  transition: color 360ms ease;
+}
+
+.menuList a:hover {
+  color: white;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+.socialIcon {
+  display: inline-block;
+  fill: currentColor;
+  height: $h2;
+  margin-right: $s4;
+  width: $w2;
+}
+
+.socialFooter {
+  order: 4;
+
+  a {
+    color: $near-black;
+    transition: color 300ms ease;
+  }
+
+  a:hover {
+    color: white;
+  }
+}
+
+.text {
+  background-color: tomato;
+  flex: 1;
+  transform: translate3d(0,0,0);
+}
+
+@media #{$ns} {
+  .section {
+    flex-direction: row;
+  }
+}

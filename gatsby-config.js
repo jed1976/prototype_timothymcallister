@@ -4,8 +4,7 @@ module.exports = {
     twitter: `http://twitter.com/McAllisterSax`,
     facebook: `http://www.facebook.com/timothy.mcallister`,
     siteUrl: `https://timothymcallister.com`,
-  },
-  pathPrefix: `/static`,
+  },  
   plugins: [
     `gatsby-plugin-sass`,
     `gatsby-plugin-netlify`,
