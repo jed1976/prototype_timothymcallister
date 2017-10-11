@@ -8,8 +8,7 @@
 
 .contentWrapper {
   align-items: center;
-  background-color: $near-black;
-  color: $moon-gray;
+  background-color: $darkColor;
   display: flex;
   min-height: 100vh;
   position: relative;
@@ -18,7 +17,7 @@
 }
 
 .date {
-  color: tomato;
+  color: $primaryColor;
   flex: 1;
   font-size: $f6;
   font-weight: $fw5;
@@ -29,7 +28,7 @@
 
 .icon {
   bottom: 0;
-  fill: $white;
+  fill: $lightColor;
   height: 100%;
   left: 0;
   position: absolute;
@@ -50,7 +49,7 @@
 }
 
 .imageLayout {
-  align-items: center;  
+  align-items: center;
   display: flex;
   height: 100vh;
   justify-content: center;
@@ -74,17 +73,18 @@
 }
 
 .item {
+  background-color: $lightColor;
   min-height: 100vh;
 }
 
 .link {
-  color: $white;
+  color: $lightColor;
   text-decoration: none;
   transition: color 360ms ease;
 }
 
 .link:hover {
-  color: $moon-gray;
+  color: $midColor;
 }
 
 .media {
@@ -93,7 +93,7 @@
 
 .mediaButton {
   background: none;
-  border-color: tomato;
+  border-color: $primaryColor;
   border-radius: 100%;
   border-style: solid;
   border-width: $bw1;
@@ -125,7 +125,7 @@
 }
 
 .mediaButton:hover {
-  border-color: $white;
+  border-color: $lightColor;
 }
 
 .mediaPlayer {
@@ -139,6 +139,7 @@
   padding-top: $s4;
 
   p {
+    color: $midColor;
     font-size: $f5;
     font-weight: $fw4;
     line-height: $lh-copy;
@@ -147,21 +148,21 @@
 }
 
 .progress {
-  background-color: tomato;
+  background-color: $primaryColor;
   display: block;
   height: $h1;
   transition: all 480ms linear;
 }
 
 .progressTrack {
-  background-color: $dark-gray;
+  background-color: darken($midColor, 40%);
   flex: 1;
   height: $h1;
   margin-left: $s3;
 }
 
 .title {
-  color: $white;
+  color: $lightColor;
   font-family: $baskerville;
   font-size: $f2;
   font-style: italic;

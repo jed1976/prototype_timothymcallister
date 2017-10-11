@@ -24,7 +24,7 @@ export default class Recordings extends React.Component {
     const pageData = this.props.data.allContentfulPage.edges[0].node
 
     return (
-      <Container backgroundColor="#f4f4f4" logoColor="#111">
+      <Container logoColor="#111">
         <Helmet>
           <title>{pageData.title}</title>
         </Helmet>

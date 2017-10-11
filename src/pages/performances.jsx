@@ -51,8 +51,6 @@ export default class Performances extends React.Component {
     const performancesForCurrentYear = this.props.data.allContentfulPerformance.edges
       .filter(({ node }) => new Date(node.date).getUTCFullYear() == this.state.currentYear)
 
-      console.log(this.state.currentYear)
-
     const months = performancesForCurrentYear
       .map(({ node }) => new Date(node.date).getUTCMonth())
       .filter((value, index, self) => self.indexOf(value) === index)
@@ -69,7 +67,7 @@ export default class Performances extends React.Component {
     })
 
     return (
-      <Container backgroundColor="#fff" foregroundColor="#ccc" logoColor="#111">
+      <Container logoColor="#111">
         <Helmet>
           <title>{pageData.title}</title>
         </Helmet>

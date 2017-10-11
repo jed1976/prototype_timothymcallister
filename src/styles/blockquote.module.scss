@@ -1,10 +1,10 @@
 @import '../styles/base';
 
 .blockquote {
-  border-left-color: tomato;
+  border-left-color: $primaryColor;
   border-left-style: solid;
   border-left-width: $bw4;
-  color: tomato;
+  color: $primaryColor;
   font-size: $f6;
   margin: $s4 auto $s5 auto;
   max-width: $w6;
@@ -18,7 +18,7 @@
   }
 
   .quote {
-    color: $white;
+    color: $lightColor;
     font-family: Baskerville, serif;
     font-size: $f3;
     line-height: $lh-copy;

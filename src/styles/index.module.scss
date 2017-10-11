@@ -41,7 +41,7 @@
 }
 
 .menuList li {
-  border-top-color: $near-black;
+  border-top-color: $darkColor;
   border-top-style: solid;
   border-top-width: 1px;
   flex: 50%;
@@ -53,7 +53,7 @@
 }
 
 .menuList a {
-  color: $near-black;
+  color: $darkColor;
   display: block;
   padding: $s2 0 $s3 0;
   text-decoration: none;
@@ -61,10 +61,10 @@
 }
 
 .menuList a:hover {
-  color: white;
+  color: $lightColor;
 }
 
-.section {  
+.section {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -83,17 +83,17 @@
   order: 4;
 
   a {
-    color: $near-black;
+    color: $darkColor;
     transition: color 300ms ease;
   }
 
   a:hover {
-    color: white;
+    color: $lightColor;
   }
 }
 
 .text {
-  background-color: tomato;
+  background-color: $primaryColor;
   flex: 1;
   transform: translate3d(0,0,0);
 }

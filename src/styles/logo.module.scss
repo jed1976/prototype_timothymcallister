@@ -3,7 +3,7 @@
 .header {
   position: fixed;
   left: $s3;
-  top: 0;
+  top: -$s2;
   z-index: 1;
 
   .link {
@@ -47,7 +47,7 @@
   }
 
   .title {
-    border-bottom-color: $near-black;
+    border-bottom-color: $darkColor;
     font-size: $f3;
   }
 }

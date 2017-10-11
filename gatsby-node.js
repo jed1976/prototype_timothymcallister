@@ -11,7 +11,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
 
   if (node.internal.type === 'ContentfulPerformance') {
     const center = `${node.location.lon},${node.location.lat}`
-    const imageName = `${center}.png`    
+    const imageName = `${center}.png`
     const imagePath = path.join(process.cwd(), `public`, `static`, imageName)
 
     if (node.location.lon !== '0' && node.location.lat !== '0') {

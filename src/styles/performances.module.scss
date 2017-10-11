@@ -1,7 +1,7 @@
 @import '../styles/base';
 
 .contentWrapper {
-  background-color: $white;
+  background-color: $lightColor;
   position: relative;
   transform: translate3d(0,0,0);
   z-index: 9999;
@@ -13,7 +13,6 @@
 }
 
 .image {
-  background-image: url('../images/tim-3.jpg');
   background-position: center;
   background-size: cover;
   height: 100vh;
@@ -23,7 +22,7 @@
 }
 
 .link {
-  color: $near-black;
+  color: $darkColor;
   display: block;
   font-size: $f6;
   font-weight: $fw7;
@@ -34,13 +33,13 @@
 }
 
 .link:first-of-type {
-  border-bottom-color: tomato;
+  border-bottom-color: $primaryColor;
   border-bottom-style: solid;
   border-bottom-width: 1px;
 }
 
 .link:hover {
-  color: $moon-gray;
+  color: $midColor;
 }
 
 .mapImage {
@@ -56,9 +55,9 @@
 }
 
 .monthTitle {
-  color: tomato;
+  color: $primaryColor;
   font-size: $f3;
-  font-weight: $fw3;
+  font-weight: $fw7;
   letter-spacing: $tracked;
   line-height: $lh-title;
   margin: 0;
@@ -67,22 +66,21 @@
 }
 
 .monthWrapper:nth-child(odd) {
-  background-color: $near-black;
+  background-color: $darkColor;
 
   .link,
   .performanceTitle {
-    color: $white;
+    color: $lightColor;
   }
 
-  .paragraphWrapper {
-    color: $moon-gray;
+  .paragraphWrapper p {
+    color: $midColor;
   }
 }
 
 .paragraphWrapper {
-  color: $silver;
-
   p {
+    color: $midColor;
     font-size: $f5;
     font-weight: $fw4;
     line-height: $lh-copy;
@@ -98,7 +96,7 @@
 }
 
 .performanceDate {
-  color: tomato;
+  color: $primaryColor;
   display: block;
   flex: 1;
   font-size: $f6;
@@ -117,7 +115,7 @@
 }
 
 .performanceTitle {
-  color: $near-black;
+  color: $darkColor;
   font-family: $baskerville;
   font-size: $f2;
   font-style: italic;
@@ -135,7 +133,7 @@
 }
 
 .title {
-  color: $near-black;
+  color: $darkColor;
   font-family: $baskerville;
   font-size: $f2;
   font-style: italic;
@@ -146,20 +144,21 @@
 
 .yearSelector {
   background-color: transparent;
-  background-image: url("data:image/svg+xml;utf8,<svg width='16' height='9' xmlns='http://www.w3.org/2000/svg'><polygon fill='%23FF5B4D' points='8 8.88888889 16 0 0 0'></polygon></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg width='12' height='7' xmlns='http://www.w3.org/2000/svg'><polygon fill='#{$primaryColor}' points='6 6.66666667 12 0 0 0'></polygon></svg>");
   background-position: center right;
   background-repeat: no-repeat;
   border: 0;
   border-radius: 0;
   box-sizing: content-box;
-  color: tomato;
+  color: $primaryColor;
   cursor: pointer;
-  font-weight: $fw3;
+  font-weight: $fw7;
   float: right;
   font-size: $f3;
   margin: $s4 $s3;
   outline: 0;
   padding-right: $s3;
+  text-align: right;
   -moz-appearance: none;
   -webkit-appearance: none;
 }

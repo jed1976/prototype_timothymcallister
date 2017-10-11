@@ -7,7 +7,7 @@
 }
 
 .contentWrapper {
-  background-color: $near-black;
+  background-color: $darkColor;
   position: relative;
   transform: translate3d(0,0,0);
   z-index: 9999;
@@ -27,7 +27,7 @@
 
   em {
     display: inline-block;
-    color: tomato;
+    color: $primaryColor;
     font-family: $baskerville;
     font-size: $f-headline;
     font-style: italic;
@@ -47,7 +47,7 @@
 }
 
 .link {
-  color: $white;
+  color: $lightColor;
   display: block;
   font-size: $f6;
   font-weight: $fw7;
@@ -56,7 +56,7 @@
 }
 
 .link:first-of-type {
-  border-bottom-color: tomato;
+  border-bottom-color: $primaryColor;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   padding-bottom: $s3;
@@ -67,13 +67,14 @@
 }
 
 .link:hover {
-  color: $moon-gray;
+  color: $midColor;
 }
 
 .paragraphWrapper {
   overflow: hidden;
 
   p {
+    color: $midColor;
     font-size: $f5;
     font-weight: $fw4;
     line-height: $lh-copy;
@@ -81,12 +82,12 @@
   }
 
   strong {
-    color: $white;
+    color: $lightColor;
   }
 }
 
 .title {
-  color: $white;
+  color: $lightColor;
   font-family: $baskerville;
   font-size: $f2;
   font-style: italic;

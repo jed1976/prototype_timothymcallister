@@ -5,19 +5,14 @@ import styles from '../styles/container.module.scss'
 
 const Container = props => {
   return (
-  <section className={styles.container} style={{ backgroundColor: props.backgroundColor }}>
+  <section className={styles.container}>
     {!props.hideLogo ? <Logo color={props.logoColor} size={props.logoSize}></Logo> : '' }
-
-    <div style={{ color: props.foregroundColor }}>
-      {props.children}
-    </div>
+    {props.children}    
   </section>
   )
 }
 
 Container.PropTypes = {
-  backgroundColor: PropTypes.string,
-  foregroundColor: PropTypes.string,
   logoColor: PropTypes.string,
   logoIsVisible: PropTypes.bool,
 }
