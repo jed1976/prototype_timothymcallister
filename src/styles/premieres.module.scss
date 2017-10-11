@@ -73,7 +73,7 @@
   letter-spacing: $tracked;
   line-height: $lh-title;
   margin: 0;
-  padding: $s4 0;
+  padding: calc(#{$s3} + #{$s3} ) 0;
   text-transform: uppercase;
 }
 
@@ -95,7 +95,7 @@
   .yearTitle {
     font-size: $f1;
     left: 0;
-    padding: $s5 0;
+    padding: calc(#{$s4} + #{$s2}) 0;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
