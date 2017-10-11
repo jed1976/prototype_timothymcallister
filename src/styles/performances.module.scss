@@ -61,7 +61,7 @@
   letter-spacing: $tracked;
   line-height: $lh-title;
   margin: 0;
-  padding: $s4 $s3;
+  padding: calc(#{$s3} + #{$s3} ) $s3;
   text-transform: uppercase;
 }
 
@@ -167,7 +167,7 @@
   .monthTitle {
     font-size: $f1;
     left: 0;
-    padding: $s5 $s4;
+    padding: calc(#{$s4} + #{$s2}) $s3;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -187,7 +187,6 @@
 
   .yearSelector {
     font-size: $f2;
-    margin: $s4;
     position: -webkit-sticky;
     position: sticky;
     top: $s4;
