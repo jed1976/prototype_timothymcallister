@@ -18,9 +18,7 @@ export default (props) => {
   years.map(year => {
     premieres[year] = props.data.allContentfulPremiere.edges
       .filter(({ node }) => new Date(node.date).getUTCFullYear() === year)
-  })
-
-  console.log(pageData.image)
+  })  
 
   return (
     <Container>
