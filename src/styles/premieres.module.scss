@@ -31,15 +31,6 @@
   z-index: 9999;
 }
 
-.image {
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-}
-
 .item {
   margin: $s5 auto;
   max-width: $w6;

@@ -37,15 +37,6 @@
   }
 }
 
-.image {
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-}
-
 .link {
   color: $lightColor;
   display: block;
@@ -99,7 +90,7 @@
 @media #{$ns} {
   .content {
     max-width: $w6;
-  }
+  }  
 
   .title {
     font-size: $f1;

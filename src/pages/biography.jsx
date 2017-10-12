@@ -53,7 +53,9 @@ export default (props) => {
         <title>{pageData.title}</title>
       </Helmet>
 
-      <div className={styles.image} style={{ backgroundImage: `url(${pageData.image.responsiveResolution.src})` }}></div>
+      <header className={styles.image} style={{ backgroundImage: `url(${pageData.image.responsiveResolution.src})` }}>
+        <h1 className={styles.pageTitle}>{pageData.title}</h1>
+      </header>
 
       <article className={styles.contentWrapper}>
         <div className={styles.content}>
