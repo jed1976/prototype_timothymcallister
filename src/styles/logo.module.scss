@@ -3,8 +3,8 @@
 .header {
   color: inherit;
   position: fixed;
-  left: $s4;
-  top: 0;
+  left: $s3;
+  top: -$s2;
   z-index: 1;
 
   .link {
@@ -51,5 +51,12 @@
 
   .title {
     font-size: $f3;
+  }
+}
+
+@media #{$ns} {
+  .header {
+    left: $s4;
+    top: 0;
   }
 }

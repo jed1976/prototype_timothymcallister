@@ -6,7 +6,7 @@
   border-left-width: $bw3;
   color: $primaryColor;
   font-size: $f6;
-  margin: $s4 $s4 $s5 $s4;
+  margin: $s3 $s3 $s4 $s3;
   max-width: $w6;
   padding-left: $s4;
 
@@ -19,7 +19,7 @@
 
   .quote {
     color: $lightColor;
-    font-family: Baskerville, serif;
+    font-family: $baskerville;
     font-size: $f3;
     line-height: $lh-copy;
     margin: 0 0 $s4 0;
@@ -32,6 +32,12 @@
     line-height: $lh-copy;
     margin: 0;
     @include measure;
+  }
+}
+
+@media #{$ns} {
+  .quote {
+    margin: $s4 $s4 $s5 $s4;
   }
 }
 
