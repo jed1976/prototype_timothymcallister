@@ -1,5 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import Hero from '../components/hero'
 import Container from '../components/container'
 import Recording from '../components/recording'
 import marked from 'marked'
@@ -28,6 +29,8 @@ export default class Recordings extends React.Component {
         <Helmet>
           <title>{pageData.title}</title>
         </Helmet>
+
+        <Hero image={pageData.image.responsiveResolution.src} title={pageData.title} />
 
         <ol className={styles.list}>
           {this.props.data.allContentfulRecording.edges.map(({ node }) =>
@@ -102,6 +105,11 @@ export const query = graphql`
         node {
           id
           title
+          image {
+            responsiveResolution(quality: 50, width: 1600) {
+              src
+            }
+          }
         }
       }
     }

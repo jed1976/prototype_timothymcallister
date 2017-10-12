@@ -17,7 +17,7 @@
   max-width: $w5;
   position: -webkit-sticky;
   position: sticky;
-  top: 0;  
+  top: 0;
 
   .imageWrapper {
     @include aspect-ratio;
@@ -109,7 +109,7 @@
   }
 }
 
-.recording {
+.recording {  
   background-color: $lightColor;
   min-height: 100vh;
 }
