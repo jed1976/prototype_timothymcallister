@@ -1,6 +1,7 @@
 import React from 'react'
 import Container from '../components/container'
 import Helmet from 'react-helmet'
+import Hero from '../components/hero'
 import Link from 'gatsby-link'
 import styles from '../styles/premieres.module.scss'
 
@@ -26,31 +27,28 @@ export default (props) => {
         <title>{pageData.title}</title>
       </Helmet>
 
-      <header className={styles.image} style={{ backgroundImage: `url(${pageData.image.responsiveResolution.src})` }}>
-        <h1 className={styles.pageTitle}>{pageData.title}</h1>
-      </header>
+      <Hero image={pageData.image.responsiveResolution.src} title={pageData.title} />
 
-      <div className={styles.contentWrapper}>
-        <div className={styles.content}>
-          {years.map(year => {
-            return (
-          <section className={styles.yearWrapper} key={year}>
-            <h1 className={styles.yearTitle}>{year}</h1>
+      {years.map(year => {
+        return (
+      <section className={styles.contentWrapper} key={year}>          
+        <h1 className={styles.stickyHeading}>{year}</h1>
 
-            <ol className={styles.list}>
-            {premieres[year].map(({ node }) =>
-              <li className={styles.item} key={node.id}>
-                <h1 className={styles.title}>{node.title}</h1>
-                <h2 className={styles.composer}>{node.composer}</h2>
-                <p className={styles.category}>{node.category}</p>
-              </li>
-            )}
-            </ol>
-          </section>
-            )
-          })}
-        </div>
-      </div>
+        <ol className={styles.list}>
+        {premieres[year].map(({ node }) =>
+          <li className={styles.content} key={node.id}>
+            <h1 className={styles.heading}>{node.title}</h1>
+            <h2 className={styles.caption}>{node.composer}</h2>
+
+            <footer className={styles.linkFooter}>
+              <span className={styles.link}>{node.category}</span>
+            </footer>
+          </li>
+        )}
+        </ol>
+      </section>
+        )
+      })}
     </Container>
   )
 }

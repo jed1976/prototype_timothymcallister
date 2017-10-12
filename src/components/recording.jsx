@@ -104,18 +104,18 @@ export default class Recording extends React.Component {
     const mediaButtonText = this.props.media ? 'Play Sample' : ''
 
     return (
-      <li className={styles.item} key={this.props.id}>
-        <div className={styles.imageLayout}>
+      <li className={styles.recording} key={this.props.id}>
+        <header className={styles.imageLayout}>
           <a className={styles.imageWrapper} href={this.props.recordingUrl} title="Visit producer site">
             <div className={styles.image} style={{ backgroundImage: `url(${this.props.imageSrc})` }}></div>
           </a>
-        </div>
+        </header>
 
         <article className={styles.contentWrapper}>
           <div className={styles.content}>
-            <h1 className={styles.title}>{this.props.title}</h1>
+            <h1 className={styles.heading}>{this.props.title}</h1>
 
-            <h2 className={styles.date}>{date}</h2>
+            <h2 className={styles.caption}>{date}</h2>
 
             {this.props.media ?
             <div className={styles.mediaPlayer} ref={mediaPlayer => this.mediaPlayer = mediaPlayer}>

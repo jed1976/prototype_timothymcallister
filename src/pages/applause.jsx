@@ -1,6 +1,7 @@
 import React from 'react'
 import Container from '../components/container'
 import Helmet from 'react-helmet'
+import Hero from '../components/hero'
 import Link from 'gatsby-link'
 import styles from '../styles/applause.module.scss'
 
@@ -13,9 +14,7 @@ export default (props) => {
         <title>{pageData.title}</title>
       </Helmet>
 
-      <header className={styles.image} style={{ backgroundImage: `url(${pageData.image.responsiveResolution.src})` }}>
-        <h1 className={styles.pageTitle}>{pageData.title}</h1>
-      </header>
+      <Hero image={pageData.image.responsiveResolution.src} title={pageData.title} />
 
       <div className={styles.contentWrapper}>
         <div className={styles.content}>

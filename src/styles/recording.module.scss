@@ -1,51 +1,11 @@
 @import '../styles/base';
 
-.content {
-  margin: 0 auto;
-  padding: $s5 $s3;
-  max-width: $w6;
-}
-
 .contentWrapper {
   align-items: center;
   background-color: $darkColor;
+  color: $lightColor;
   display: flex;
   min-height: 100vh;
-  position: relative;
-  transform: translate3d(0,0,0);
-  z-index: 999;
-}
-
-.date {
-  color: $primaryColor;  
-  font-size: $f6;
-  font-weight: $fw5;
-  letter-spacing: $tracked;
-  line-height: $lh-title;
-  margin-bottom: $s4;
-  text-transform: uppercase;
-}
-
-.icon {
-  bottom: 0;
-  fill: $lightColor;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transition: all 320ms ease;
-  width: 100%;
-
-  &[data-icon="pause"] {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-
-  &[data-icon="play"] {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 .imageLayout {
@@ -57,8 +17,7 @@
   max-width: $w5;
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
-  transform: translate3d(0,0,0);
+  top: 0;  
 
   .imageWrapper {
     @include aspect-ratio;
@@ -71,21 +30,6 @@
       @include aspect-ratio--object;
     }
   }
-}
-
-.item {
-  background-color: $lightColor;
-  min-height: 100vh;
-}
-
-.link {
-  color: $lightColor;
-  text-decoration: none;
-  transition: color 360ms ease;
-}
-
-.link:hover {
-  color: $midColor;
 }
 
 .media {
@@ -105,6 +49,29 @@
   transition: all 480ms ease-in-out;
   width: $w3;
 
+  &:hover {
+    border-color: $lightColor;
+  }
+
+  .mediaButtonsIcons {
+    height: $h1;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    .icon {
+      bottom: 0;
+      fill: $lightColor;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: all 320ms ease;
+      width: 100%;
+    }
+  }
+
   &[data-state="playing"] [data-icon="pause"],
   &[data-state="paused"] [data-icon="play"] {
     opacity: 1;
@@ -116,42 +83,16 @@
     opacity: 0;
     transform: translateX(100%);
   }
-
-  .mediaButtonsIcons {
-    height: $h1;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-  }
-}
-
-.mediaButton:hover {
-  border-color: $lightColor;
 }
 
 .mediaPlayer {
   align-items: center;
   display: flex;
+  margin-top: $s4;
 }
 
-.paragraphWrapper {
-  overflow: hidden;
-  padding-top: $s4;
-
-  p {
-    color: $midColor;
-    font-size: $f5;
-    font-weight: $fw4;
-    line-height: $lh-copy;
-    margin: 0;
-  }
-}
-
-.progress {
-  background-color: $primaryColor;
-  display: block;
-  height: $h1;
-  transition: all 480ms linear;
+.paragraphWrapper p {
+  margin: $s4 0;
 }
 
 .progressTrack {
@@ -159,25 +100,21 @@
   flex: 1;
   height: $h1;
   margin-left: $s3;
+
+  .progress {
+    background-color: $primaryColor;
+    display: block;
+    height: $h1;
+    transition: all 480ms linear;
+  }
 }
 
-.title {
-  color: $lightColor;
-  font-family: $baskerville;
-  font-size: $f2;
-  font-style: italic;
-  font-weight: $fw5;
-  line-height: $lh-title;
-  margin: 0 0 $s4 0;
-  @include measure;
+.recording {
+  background-color: $lightColor;
+  min-height: 100vh;
 }
 
 @media #{$ns} {
-  .content {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
   .imageLayout {
     max-width: $w6;
   }

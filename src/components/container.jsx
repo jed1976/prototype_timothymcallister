@@ -6,14 +6,13 @@ import styles from '../styles/container.module.scss'
 const Container = props => {
   return (
   <section className={styles.container}>
-    {!props.hideLogo ? <Logo color={props.logoColor} size={props.logoSize}></Logo> : '' }
-    {props.children}    
+    {!props.hideLogo ? <Logo size={props.logoSize}></Logo> : '' }
+    {props.children}
   </section>
   )
 }
 
 Container.PropTypes = {
-  logoColor: PropTypes.string,
   logoIsVisible: PropTypes.bool,
 }
 

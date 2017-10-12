@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 
 let stylesStr
 if (process.env.NODE_ENV === `production`) {
@@ -34,7 +34,7 @@ module.exports = class HTML extends React.Component {
         </head>
         <body>
           {this.props.preBodyComponents}
-          <div
+          <main
             key={`body`}
             id="___gatsby"
             dangerouslySetInnerHTML={{ __html: this.props.body }}

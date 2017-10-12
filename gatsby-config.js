@@ -7,14 +7,9 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-sass`,
-    `gatsby-plugin-netlify`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `src`,
-        path: `${__dirname}/src/`,
-      },
-    },
+
+    `gatsby-plugin-netlify`,        
+
     {
       resolve: `gatsby-source-contentful`,
       options: {

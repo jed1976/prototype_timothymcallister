@@ -6,9 +6,9 @@
   flex-direction: column;
   justify-content: space-around;
   margin: 0 auto;
+  max-width: $w6;
   min-height: 100vh;
   padding: $s4;
-  @include measure;
 }
 
 .image {
@@ -29,9 +29,7 @@
 
 .menuList {
   display: flex;
-  font-family: $baskerville;
   flex-wrap: wrap;
-  font-size: $f4;
   font-style: italic;
   font-weight: $fw5;
   list-style: none;
@@ -41,7 +39,7 @@
 }
 
 .menuList li {
-  border-top-color: $darkColor;
+  border-top-color: inherit;
   border-top-style: solid;
   border-top-width: 1px;
   flex: 50%;
@@ -53,9 +51,11 @@
 }
 
 .menuList a {
-  color: $darkColor;
+  color: inherit;
   display: block;
-  padding: $s2 0 $s3 0;
+  font-family: $baskerville;
+  font-size: $f4;
+  padding: $s3 0;
   text-decoration: none;
   transition: color 360ms ease;
 }

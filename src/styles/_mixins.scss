@@ -30,6 +30,13 @@
   z-index: 100;
 }
 
+/* Fade animation */ 
+@mixin fade {
+  animation-duration: 320ms;
+  animation-name: fade;
+  animation-timing-function: ease;
+}
+
 /* Book paragraph style - paragraphs are indented with no vertical spacing. */
 @mixin indent {
   margin-bottom: 0;

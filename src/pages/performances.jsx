@@ -1,6 +1,7 @@
 import React from 'react'
 import Container from '../components/container'
 import Helmet from 'react-helmet'
+import Hero from '../components/hero'
 import Link from 'gatsby-link'
 import marked from 'marked'
 import styles from '../styles/performances.module.scss'
@@ -67,66 +68,62 @@ export default class Performances extends React.Component {
     })
 
     return (
-      <Container logoColor="#111">
+      <Container>
         <Helmet>
           <title>{pageData.title}</title>
         </Helmet>
 
-        <header className={styles.image} style={{ backgroundImage: `url(${pageData.image.responsiveResolution.src})` }}>
-          <h1 className={styles.pageTitle}>{pageData.title}</h1>
-        </header>
+        <Hero image={pageData.image.responsiveResolution.src} title={pageData.title} />
 
         <div className={styles.contentWrapper} ref={(contentWrapper) => this.contentWrapper = contentWrapper}>
-          <div className={styles.content}>
-            <select
-              className={styles.yearSelector}
-              defaultValue={this.state.currentYear}
-              name="yearSelector"
-              onChange={(e) => this.onChange(e)}>
-                {years.map(year => <option key={year} value={year}>{year}</option>)}
-            </select>
+          <select
+            className={styles.yearSelector}
+            defaultValue={this.state.currentYear}
+            name="yearSelector"
+            onChange={(e) => this.onChange(e)}>
+              {years.map(year => <option key={year} value={year}>{year}</option>)}
+          </select>
 
-            {months.map(month => {
+          {months.map(month => {
+            return (
+          <section className={styles.monthWrapper} key={this.getFormattedMonth(month)}>
+            <h1 className={styles.stickyHeading}>{this.getFormattedMonth(month)}</h1>
+
+            <ol className={styles.performanceList}>
+            {performances[month].map(({ node }, index) => {
+              const url = this.getEventURL(node.locationName, node.location)
+
               return (
-            <section className={styles.monthWrapper} key={this.getFormattedMonth(month)}>
-              <h1 className={styles.monthTitle}>{this.getFormattedMonth(month)}</h1>
+              <li className={styles.performance} key={node.id}>
+                <div className={styles.performanceWrapper}>
+                  <div className={styles.performanceDetails}>
+                    <h2 className={styles.heading}>{node.title}</h2>
+                    <h3 className={styles.caption}>{this.getFormattedDate(node.date)}</h3>
 
-              <ol className={styles.performanceList}>
-              {performances[month].map(({ node }, index) => {
-                const url = this.getEventURL(node.locationName, node.location)
-
-                return (
-                <li className={styles.performance} key={node.id}>
-                  <div className={styles.performanceWrapper}>
-                    <div className={styles.performanceDetails}>
-                      <h2 className={styles.performanceTitle}>{node.title}</h2>
-                      <time className={styles.performanceDate}>{this.getFormattedDate(node.date)}</time>
-
-                      <div className={styles.paragraphWrapper} dangerouslySetInnerHTML={{ __html: marked(node.description.description) }} />
-                    </div>
-
-                    <div className={styles.map}>
-                      <a className={styles.mapWrapper} href={url}>
-                        <div className={styles.mapImage} style={{ backgroundImage: `url('/static/${node.fields.mapImage}')` }}></div>
-                      </a>
-                    </div>
-
-                    <footer className={styles.footer}>
-                      <a className={styles.link} href={url}>{node.locationName}</a>
-                      {node.ticketInformation
-                        ? <a className={styles.link} href={node.ticketInformation}>Ticket Information</a>
-                        : ''
-                      }
-                    </footer>
+                    <div className={styles.paragraphWrapper} dangerouslySetInnerHTML={{ __html: marked(node.description.description) }} />
                   </div>
-                </li>
-                )
-              })}
-              </ol>
-            </section>
+
+                  <div className={styles.map}>
+                    <a className={styles.mapWrapper} href={url}>
+                      <div className={styles.mapImage} style={{ backgroundImage: `url('/static/${node.fields.mapImage}')` }}></div>
+                    </a>
+                  </div>
+
+                  <footer className={styles.linkFooter}>
+                    <a className={styles.link} href={url}>{node.locationName}</a>
+                    {node.ticketInformation
+                      ? <a className={styles.link} href={node.ticketInformation}>Ticket Information</a>
+                      : ''
+                    }
+                  </footer>
+                </div>
+              </li>
               )
             })}
-          </div>
+            </ol>
+          </section>
+            )
+          })}
         </div>
       </Container>
     )

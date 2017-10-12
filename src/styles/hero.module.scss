@@ -1,0 +1,46 @@
+@import '../styles/base';
+
+.image {
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  justify-content: flex-end;
+  padding: $s4;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.title {
+  animation-name: slideIn;
+  animation-duration: 1920ms;
+  animation-timing-function: ease-in-out;
+  color: $lightColor;
+  font-family: $baskerville;
+  font-size: $f0;
+  font-style: italic;
+  font-weight: $fw4;
+  margin: $s6 0 0 0;
+}
+
+@media #{$m} {
+  .image {
+    padding: $s5;
+  }
+
+  .title {
+    font-size: $f-subheadline;
+  }
+}
+
+@media #{$l} {
+  .image {
+    padding: $s6;
+  }
+
+  .title {
+    font-size: $f-headline;
+  }
+}

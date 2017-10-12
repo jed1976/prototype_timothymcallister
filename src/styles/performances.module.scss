@@ -2,35 +2,10 @@
 
 .contentWrapper {
   background-color: $lightColor;
-  position: relative;
-  transform: translate3d(0,0,0);
-  z-index: 9999;
 }
 
-.footer {
-  order: 2;
-  width: 100%;
-}
-
-.link {
-  color: $darkColor;
-  display: block;
-  font-size: $f6;
-  font-weight: $fw7;
-  margin: 0;
-  padding: $s3 0;
-  text-decoration: none;
-  transition: color 360ms ease;
-}
-
-.link:first-of-type {
-  border-bottom-color: $primaryColor;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-}
-
-.link:hover {
-  color: $midColor;
+.linkFooter {
+  margin-top: 0;
 }
 
 .mapImage {
@@ -45,57 +20,23 @@
   @include aspect-ratio--1x1;
 }
 
-.monthTitle {
-  color: $primaryColor;
-  font-size: $f3;
-  font-weight: $fw7;
-  letter-spacing: $tracked;
-  line-height: $lh-title;
-  margin: 0;
-  padding: calc(#{$s3} + #{$s3} ) $s3;
-  text-transform: uppercase;
-}
-
 .monthWrapper:nth-child(odd) {
   background-color: $darkColor;
 
-  .link,
-  .performanceTitle {
+  .heading,
+  .link {
     color: $lightColor;
-  }
-
-  .paragraphWrapper p {
-    color: $midColor;
   }
 }
 
 .paragraphWrapper {
-  p {
-    color: $midColor;
-    font-size: $f5;
-    font-weight: $fw4;
-    line-height: $lh-copy;
-    margin: 0 0 $s3 0;
-  }
+  margin-top: $s4;
 }
 
 .performance {
   align-items: center;
   display: flex;
-  padding: $s5 0;
   min-height: 100vh;
-}
-
-.performanceDate {
-  color: $primaryColor;
-  display: block;
-  flex: 1;
-  font-size: $f6;
-  font-weight: $fw5;
-  letter-spacing: $tracked;
-  line-height: $lh-title;
-  margin-bottom: $s4;
-  text-transform: uppercase;
 }
 
 .performanceList {
@@ -106,22 +47,11 @@
   padding: 0;
 }
 
-.performanceTitle {
-  color: $darkColor;
-  font-family: $baskerville;
-  font-size: $f2;
-  font-style: italic;
-  font-weight: $fw5;
-  line-height: $lh-title;
-  margin: 0 0 $s4 0;
-  @include measure;
-}
-
 .performanceWrapper {
   margin: 0 auto;
-  padding: 0 $s3;
+  max-width: $w6;
+  padding: $s4;
   text-decoration: none;
-  @include measure;
 }
 
 .yearSelector {
@@ -134,10 +64,10 @@
   box-sizing: content-box;
   color: $primaryColor;
   cursor: pointer;
-  font-size: $f3;
-  font-weight: $fw7;
   float: right;
-  margin: $s4 $s3;
+  font-size: $f2;
+  font-weight: $fw4;
+  margin: $s4;
   outline: 0;
   padding-right: $s3;
   text-align: right;
@@ -146,29 +76,11 @@
 }
 
 @media #{$ns} {
-  .monthTitle {
-    font-size: $f1;
-    left: 0;
-    padding: calc(#{$s4} + #{$s2}) $s3;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    -webkit-writing-mode: vertical-rl;
-    writing-mode: vertical-rl;
-    z-index: 9999;
-  }
-
   .performanceList {
     margin-top: -$s7;
   }
 
-  .title {
-    margin-left: $s4;
-    margin-right: $s4;
-  }
-
   .yearSelector {
-    font-size: $f2;
     position: -webkit-sticky;
     position: sticky;
     top: $s4;

@@ -1,6 +1,7 @@
 import React from 'react'
 import Container from '../components/container'
 import Helmet from 'react-helmet'
+import Hero from '../components/hero'
 import Link from 'gatsby-link'
 import Quote from '../components/blockquote'
 import marked from 'marked'
@@ -48,23 +49,23 @@ export default (props) => {
   )
 
   return (
-    <Container backgroundColor="#111" foregroundColor="#ccc" logoColor="#111">
+    <Container>
       <Helmet>
         <title>{pageData.title}</title>
       </Helmet>
 
-      <header className={styles.image} style={{ backgroundImage: `url(${pageData.image.responsiveResolution.src})` }}>
-        <h1 className={styles.pageTitle}>{pageData.title}</h1>
-      </header>
+      <Hero image={pageData.image.responsiveResolution.src} title={pageData.title} />
 
       <article className={styles.contentWrapper}>
         <div className={styles.content}>
-          <div className={styles.copy}>
+          <div className={styles.columns}>
             {renderedBiography}
           </div>
 
-          <a className={styles.link} href={node.shortBiography.file.url}>Short Biography</a>
-          <a className={styles.link} href={node.longBiography.file.url}>Long Biography</a>
+          <footer className={styles.linkFooter}>
+            <a className={styles.link} href={node.shortBiography.file.url}>Short Biography</a>
+            <a className={styles.link} href={node.longBiography.file.url}>Long Biography</a>
+          </footer>
         </div>
       </article>
     </Container>

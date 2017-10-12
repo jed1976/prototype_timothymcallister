@@ -1,17 +1,8 @@
 @import '../styles/base';
 
-.content {
-  margin: 0 auto;
-  padding: $s5 $s3;
-  @include measure;
-}
-
 .contentWrapper {
   align-items: center;
   background-color: $darkColor;
   display: flex;
   min-height: 100vh;
-  position: relative;
-  transform: translate3d(0,0,0);
-  z-index: 999;
 }
