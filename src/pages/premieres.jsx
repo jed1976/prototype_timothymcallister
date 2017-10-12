@@ -31,7 +31,7 @@ export default (props) => {
 
       {years.map(year => {
         return (
-      <section className={styles.contentWrapper} key={year}>          
+      <section className={styles.contentWrapper} key={year}>
         <h1 className={styles.stickyHeading}>{year}</h1>
 
         <ol className={styles.list}>
@@ -40,7 +40,7 @@ export default (props) => {
             <h1 className={styles.heading}>{node.title}</h1>
             <h2 className={styles.caption}>{node.composer}</h2>
 
-            <footer className={styles.linkFooter}>
+            <footer className={styles.detailFooter}>
               <span className={styles.link}>{node.category}</span>
             </footer>
           </li>

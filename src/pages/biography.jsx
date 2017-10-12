@@ -62,7 +62,7 @@ export default (props) => {
             {renderedBiography}
           </div>
 
-          <footer className={styles.linkFooter}>
+          <footer className={styles.detailFooter}>
             <a className={styles.link} href={node.shortBiography.file.url}>Short Biography</a>
             <a className={styles.link} href={node.longBiography.file.url}>Long Biography</a>
           </footer>

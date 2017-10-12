@@ -109,7 +109,7 @@ export default class Performances extends React.Component {
                     </a>
                   </div>
 
-                  <footer className={styles.linkFooter}>
+                  <footer className={styles.detailFooter}>
                     <a className={styles.link} href={url}>{node.locationName}</a>
                     {node.ticketInformation
                       ? <a className={styles.link} href={node.ticketInformation}>Ticket Information</a>

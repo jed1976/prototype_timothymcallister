@@ -15,14 +15,15 @@
 
 .title {
   animation-name: slideIn;
-  animation-duration: 1920ms;
+  animation-duration: 1440ms;
   animation-timing-function: ease-in-out;
   color: $lightColor;
   font-family: $baskerville;
   font-size: $f0;
   font-style: italic;
   font-weight: $fw4;
-  margin: $s6 0 0 0;
+  margin: calc(#{$s6} + #{$s4}) 0 0 0;
+  padding-left: $s1; // Fix for Mobile Safari
 }
 
 @media #{$m} {
@@ -37,7 +38,7 @@
 
 @media #{$l} {
   .image {
-    padding: $s6;
+    padding: $s5;
   }
 
   .title {
