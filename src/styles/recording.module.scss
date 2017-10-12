@@ -3,7 +3,7 @@
 .content {
   margin: 0 auto;
   padding: $s5 $s3;
-  @include measure;
+  max-width: $w6;
 }
 
 .contentWrapper {
@@ -17,12 +17,12 @@
 }
 
 .date {
-  color: $primaryColor;
-  flex: 1;
+  color: $primaryColor;  
   font-size: $f6;
   font-weight: $fw5;
   letter-spacing: $tracked;
   line-height: $lh-title;
+  margin-bottom: $s4;
   text-transform: uppercase;
 }
 
@@ -135,7 +135,6 @@
 }
 
 .paragraphWrapper {
-  margin-bottom: $s5;
   overflow: hidden;
   padding-top: $s4;
 
@@ -169,8 +168,8 @@
   font-style: italic;
   font-weight: $fw5;
   line-height: $lh-title;
-  margin: 0 0 $s5 0;
-  @include measure-narrow;
+  margin: 0 0 $s4 0;
+  @include measure;
 }
 
 @media #{$ns} {

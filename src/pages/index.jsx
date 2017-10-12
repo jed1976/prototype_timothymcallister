@@ -20,7 +20,7 @@ export default class Home extends React.Component {
       } else {
         window.scrollTo(0, 0)
       }
-    }, 50)
+    }, 75)
   }
 
   render() {
@@ -33,7 +33,7 @@ export default class Home extends React.Component {
         </Helmet>
 
         <div className={styles.section}>
-          <div className={styles.image} style={{ backgroundImage: `url(${pageData.image.file.url})` }}></div>
+          <div className={styles.image} style={{ backgroundImage: `url(${pageData.image.responsiveResolution.src})` }}></div>
           <div className={styles.text} ref={(textContainer) => this.textContainer = textContainer}>
             <div className={styles.content}>
               <Logo size="large"></Logo>
@@ -93,9 +93,8 @@ export const query = graphql`
         node {
           id
           image {
-            id
-            file {
-              url
+            responsiveResolution(quality: 75, width: 1600) {
+              src
             }
           }
           order

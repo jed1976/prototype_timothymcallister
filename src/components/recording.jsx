@@ -115,6 +115,8 @@ export default class Recording extends React.Component {
           <div className={styles.content}>
             <h1 className={styles.title}>{this.props.title}</h1>
 
+            <h2 className={styles.date}>{date}</h2>
+
             {this.props.media ?
             <div className={styles.mediaPlayer} ref={mediaPlayer => this.mediaPlayer = mediaPlayer}>
               <button
@@ -162,8 +164,6 @@ export default class Recording extends React.Component {
             <div
               className={styles.paragraphWrapper}
               dangerouslySetInnerHTML={{ __html: marked(this.props.description) }} />
-
-            <time className={styles.date}>{date}</time>
           </div>
         </article>
       </li>

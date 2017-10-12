@@ -122,7 +122,7 @@
   font-style: italic;
   font-weight: $fw5;
   line-height: $lh-title;
-  margin: 0 0 $s3 0;
+  margin: 0 0 $s4 0;
   @include measure;
 }
 
@@ -131,16 +131,6 @@
   padding: 0 $s3;
   text-decoration: none;
   @include measure;
-}
-
-.title {
-  color: $darkColor;
-  font-family: $baskerville;
-  font-size: $f2;
-  font-style: italic;
-  font-weight: $fw5;
-  line-height: $lh-title;
-  margin: 0 $s3 $s5 $s3;
 }
 
 .yearSelector {

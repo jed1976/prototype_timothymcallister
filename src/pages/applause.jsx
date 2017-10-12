@@ -13,7 +13,7 @@ export default (props) => {
         <title>{pageData.title}</title>
       </Helmet>
 
-      <div className={styles.image} style={{ backgroundImage: `url(${pageData.image.file.url})` }}></div>
+      <div className={styles.image} style={{ backgroundImage: `url(${pageData.image.responsiveResolution.src})` }}></div>
 
       <div className={styles.contentWrapper}>
         <div className={styles.content}>
@@ -38,9 +38,8 @@ export const query = graphql`
           id
           title
           image {
-            id
-            file {
-              url
+            responsiveResolution(quality: 50, width: 1600) {
+              src
             }
           }
         }
