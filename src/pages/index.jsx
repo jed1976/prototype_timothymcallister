@@ -93,7 +93,7 @@ export const query = graphql`
         node {
           id
           image {
-            responsiveResolution(quality: 75, width: 1600) {
+            responsiveResolution(quality: 50, width: 2048) {
               src
             }
           }
