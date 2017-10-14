@@ -95,7 +95,7 @@ export const query = graphql`
         node {
           id
           image {
-            responsiveSizes(maxWidth: 1600) {              
+            responsiveSizes(maxWidth: 1600, quality: 75) {              
               aspectRatio
               src
               srcSet

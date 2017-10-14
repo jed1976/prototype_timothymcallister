@@ -68,7 +68,7 @@ export const query = graphql`
           color
           image {
             id
-            responsiveResolution {              
+            responsiveResolution {
               aspectRatio
               src
               srcSet
@@ -102,7 +102,7 @@ export const query = graphql`
           id
           title
           image {
-            responsiveSizes(maxWidth: 2048) {
+            responsiveSizes(maxWidth: 2048, quality: 75) {
               aspectRatio
               src
               srcSet
