@@ -1,23 +1,22 @@
 @import '../styles/base';
 
 .image {
-  align-items: center;
-  background-position: center;
-  background-size: cover;
-  display: flex;
   height: 100vh;
-  justify-content: flex-end;
-  padding: $s4;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+}
+
+.imageWrapper {
+  height: 100%;
+  width: 100%;
 }
 
 .title {
   animation-name: slideIn;
   animation-duration: 1440ms;
   animation-timing-function: ease-in-out;
-  color: $lightColor;
+  color: $primaryColor;
   font-family: $baskerville;
   font-size: $f0;
   font-style: italic;
@@ -26,22 +25,26 @@
   padding-left: $s1; // Fix for Mobile Safari
 }
 
-@media #{$m} {
-  .image {
-    padding: $s5;
-  }
-
-  .title {
-    font-size: $f-subheadline;
-  }
+.titleWrapper {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  left: 0;
+  justify-content: flex-end;
+  padding: $s4;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
 }
 
-@media #{$l} {
-  .image {
+@media #{$ns} {
+  .titleWrapper {
     padding: $s5;
   }
 
   .title {
-    font-size: $f-headline;
+    font-size: $f-title;
+    margin: calc(#{$s6} + #{$s7}) 0 0 0;
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import Hero from '../components/hero'
 import Container from '../components/container'
 import Logo from '../components/logo'
 import Link from 'gatsby-link'
@@ -20,7 +21,7 @@ export default class Home extends React.Component {
       } else {
         window.scrollTo(0, 0)
       }
-    }, 75)
+    }, 50)
   }
 
   render() {
@@ -33,7 +34,8 @@ export default class Home extends React.Component {
         </Helmet>
 
         <div className={styles.section}>
-          <div className={styles.image} style={{ backgroundImage: `url(${pageData.image.responsiveResolution.src})` }}></div>
+          <Hero className={styles.image} image={pageData.image.responsiveSizes} />
+
           <div className={styles.text} ref={(textContainer) => this.textContainer = textContainer}>
             <div className={styles.content}>
               <Logo size="large"></Logo>
@@ -93,8 +95,11 @@ export const query = graphql`
         node {
           id
           image {
-            responsiveResolution(quality: 50, width: 2048) {
+            responsiveSizes(maxWidth: 1600) {              
+              aspectRatio
               src
+              srcSet
+              sizes
             }
           }
           order

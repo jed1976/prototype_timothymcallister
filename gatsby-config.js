@@ -6,9 +6,9 @@ module.exports = {
     siteUrl: `https://timothymcallister.com`,
   },
   plugins: [
-    `gatsby-plugin-sass`,
+    `gatsby-plugin-netlify`,
 
-    `gatsby-plugin-netlify`,        
+    `gatsby-plugin-sass`,    
 
     {
       resolve: `gatsby-source-contentful`,

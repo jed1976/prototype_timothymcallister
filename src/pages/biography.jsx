@@ -54,7 +54,7 @@ export default (props) => {
         <title>{pageData.title}</title>
       </Helmet>
 
-      <Hero image={pageData.image.responsiveResolution.src} title={pageData.title} />
+      <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
       <article className={styles.contentWrapper}>
         <div className={styles.content}>
@@ -140,8 +140,11 @@ export const query = graphql`
           id
           title
           image {
-            responsiveResolution(quality: 50, width: 2048) {
+            responsiveSizes(maxWidth: 2048) {              
+              aspectRatio
               src
+              srcSet
+              sizes
             }
           }
         }

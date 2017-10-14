@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Img from 'gatsby-image'
 import dateformat from 'dateformat'
 import marked from 'marked'
 import styles from '../styles/recording.module.scss'
@@ -106,9 +107,11 @@ export default class Recording extends React.Component {
     return (
       <li className={styles.recording} key={this.props.id}>
         <header className={styles.imageLayout}>
-          <a className={styles.imageWrapper} href={this.props.recordingUrl} title="Visit producer site">
-            <div className={styles.image} style={{ backgroundImage: `url(${this.props.imageSrc})` }}></div>
-          </a>
+          <Img
+            outerWrapperClassName={styles.imageWrapper}
+            className={styles.image}
+            sizes={this.props.imageSrc}            
+          />
         </header>
 
         <article className={styles.contentWrapper}>
@@ -164,6 +167,13 @@ export default class Recording extends React.Component {
             <div
               className={styles.paragraphWrapper}
               dangerouslySetInnerHTML={{ __html: marked(this.props.description) }} />
+
+            {this.props.recordingUrl ?
+            <footer className={styles.detailFooter}>
+              <a className={styles.link} href={this.props.recordingUrl}>More Information</a>
+            </footer>
+            : ''
+            }
           </div>
         </article>
       </li>
@@ -174,7 +184,6 @@ export default class Recording extends React.Component {
 Recording.propTypes = {
   description: PropTypes.string,
   imageSrc: PropTypes.string,
-  imageSrcSet: PropTypes.string,
   media: PropTypes.string,
   onMediaToggle: PropTypes.func,
   recordingUrl: PropTypes.string,

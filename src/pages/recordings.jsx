@@ -30,7 +30,7 @@ export default class Recordings extends React.Component {
           <title>{pageData.title}</title>
         </Helmet>
 
-        <Hero image={pageData.image.responsiveResolution.src} title={pageData.title} />
+        <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
         <ol className={styles.list}>
           {this.props.data.allContentfulRecording.edges.map(({ node }) =>
@@ -39,8 +39,7 @@ export default class Recordings extends React.Component {
             description={node.description ? node.description.description : ""}
             key={node.id}
             id={node.id}
-            imageSrc={node.image.responsiveResolution.src}
-            imageSrcSet={node.image.responsiveResolution.srcSet}
+            imageSrc={node.image.responsiveResolution}
             media={node.media ? node.media.file.url : ""}
             onMediaToggle={this.onMediaToggle}
             recordingUrl={node.recordingUrl}
@@ -69,11 +68,8 @@ export const query = graphql`
           color
           image {
             id
-            responsiveResolution(width: 600) {
-              base64
+            responsiveResolution {              
               aspectRatio
-              width
-              height
               src
               srcSet
             }
@@ -106,8 +102,11 @@ export const query = graphql`
           id
           title
           image {
-            responsiveResolution(quality: 50, width: 2048) {
+            responsiveSizes(maxWidth: 2048) {
+              aspectRatio
               src
+              srcSet
+              sizes
             }
           }
         }

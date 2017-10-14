@@ -10,6 +10,14 @@
   .link {
     color: inherit;
     text-decoration: none;
+    transition-duration: 360ms;
+    transition-property: color;
+    transition-timing-function: ease;
+
+    &:hover,
+    &:active {
+      color: $lightColor;
+    }
   }
 
   .lowerCase {
@@ -41,6 +49,7 @@
 }
 
 .header[data-size="large"] {
+  color: $lightColor;
   pointer-events: none;
   position: static;
 

@@ -8,7 +8,7 @@
   min-height: 100vh;
 }
 
-.imageLayout {
+.imageLayout {  
   align-items: center;
   display: flex;
   height: 100vh;
@@ -20,15 +20,9 @@
   top: 0;
 
   .imageWrapper {
+    overflow: hidden;
     @include aspect-ratio;
     @include aspect-ratio--1x1;
-
-    .image {
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      @include aspect-ratio--object;
-    }
   }
 }
 
@@ -41,7 +35,7 @@
   border-color: $primaryColor;
   border-radius: 100%;
   border-style: solid;
-  border-width: $bw1;
+  border-width: 1px;
   cursor: pointer;
   outline: 0;
   height: $h3;
@@ -88,7 +82,7 @@
 .mediaPlayer {
   align-items: center;
   display: flex;
-  margin-top: $s4;
+  margin-top: $s5;
 }
 
 .paragraphWrapper p {
@@ -98,18 +92,18 @@
 .progressTrack {
   background-color: darken($midColor, 40%);
   flex: 1;
-  height: $h1;
+  height: 1px;
   margin-left: $s3;
 
   .progress {
     background-color: $primaryColor;
     display: block;
-    height: $h1;
+    height: 1px;
     transition: all 480ms linear;
   }
 }
 
-.recording {  
+.recording {
   background-color: $lightColor;
   min-height: 100vh;
 }

@@ -12,14 +12,7 @@
 }
 
 .image {
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  flex: 1;
-  height: 100vh;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
+  flex: 1;  
 }
 
 .menu {
@@ -30,38 +23,39 @@
 .menuList {
   display: flex;
   flex-wrap: wrap;
-  font-style: italic;
-  font-weight: $fw5;
   list-style: none;
   list-style-position: inside;
   margin: 0;
   padding: 0;
-}
 
-.menuList li {
-  border-top-color: inherit;
-  border-top-style: solid;
-  border-top-width: 1px;
-  flex: 50%;
-}
+  li {
+    border-top-color: $primaryColor;
+    border-top-style: solid;
+    border-top-width: 1px;
+    flex: 50%;
+  }
 
-.menuList li:nth-child(1),
-.menuList li:nth-child(2) {
-  border-top: 0;
-}
+  li:nth-child(1),
+  li:nth-child(2) {
+    border-top: 0;
+  }
 
-.menuList a {
-  color: inherit;
-  display: block;
-  font-family: $baskerville;
-  font-size: $f4;
-  padding: $s3 0;
-  text-decoration: none;
-  transition: color 360ms ease;
-}
+  a {
+    color: $lightColor;
+    display: block;
+    font-family: $baskerville;
+    font-size: $f4;
+    font-style: italic;
+    font-weight: $fw5;
+    padding: $s3 0;
+    text-decoration: none;
+    transition: color 360ms ease;
+  }
 
-.menuList a:hover {
-  color: $lightColor;
+  a:hover,
+  a:active {
+    color: $primaryColor;
+  }
 }
 
 .section {
@@ -83,17 +77,18 @@
   order: 4;
 
   a {
-    color: $darkColor;
+    color: $lightColor;
     transition: color 300ms ease;
   }
 
-  a:hover {
-    color: $lightColor;
+  a:hover,
+  a:active {
+    color: $primaryColor;
   }
 }
 
 .text {
-  background-color: $primaryColor;
+  background-color: $darkColor;
   flex: 1;
   transform: translate3d(0,0,0);
 }
