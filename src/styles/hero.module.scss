@@ -1,6 +1,7 @@
 @import '../styles/base';
 
 .image {
+  background-color: $midColor;
   height: 100vh;
   position: -webkit-sticky;
   position: sticky;
@@ -22,7 +23,9 @@
   font-style: italic;
   font-weight: $fw4;
   margin: calc(#{$s6} + #{$s4}) 0 0 0;
-  padding-left: $s1; // Fix for Mobile Safari
+  padding: 0 $s1; // Fix for Mobile Safari
+  text-align: right;
+  white-space: nowrap;
 }
 
 .titleWrapper {
