@@ -1,6 +1,6 @@
 @import '../styles/base';
 
-.content {  
+.content {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -25,7 +25,7 @@
   flex-wrap: wrap;
   list-style: none;
   list-style-position: inside;
-  margin: 0;
+  margin: $s5 0;
   padding: 0;
 
   li {
@@ -74,6 +74,7 @@
 }
 
 .socialFooter {
+  margin-left: -$s2;
   order: 4;
 
   a {
