@@ -1,12 +1,16 @@
 @import '../styles/base';
 
+.content {
+  max-width: 100%;
+  padding: 0;
+}
+
 .contentWrapper {
   background-color: $lightColor;
+}
 
-  .content {
-    max-width: 100%;
-    padding: 0;
-  }
+.detailFooter {
+  margin-top: $s2;
 }
 
 .item {
@@ -19,11 +23,6 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-
-  .itemWrapper {
-    max-width: $w5;
-    width: 100%;
-  }
 }
 
 .item:nth-child(odd) {
@@ -34,11 +33,13 @@
   }
 }
 
-@media #{$ns} {
-  .item {
+.itemWrapper {
+  max-width: $w5;
+  width: 100%;
+}
 
-    .itemWrapper {
-      max-width: $w6;
-    }
+@media #{$ns} {
+  .itemWrapper {
+    max-width: $w6;
   }
 }

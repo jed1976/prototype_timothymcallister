@@ -34,7 +34,7 @@ select {
 
 .contentWrapper {
   position: relative;
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
   z-index: 999;
 }
 
@@ -157,12 +157,5 @@ select {
     -webkit-writing-mode: vertical-rl;
     writing-mode: vertical-rl;
     z-index: 9999;
-  }
-}
-
-@media #{$ns} {
-  .content {
-    margin-top: -$s6;
-    padding-bottom: $s5;
   }
 }
