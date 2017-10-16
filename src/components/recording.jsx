@@ -109,8 +109,8 @@ export default class Recording extends React.Component {
         <header className={styles.imageLayout}>
           <Img
             outerWrapperClassName={styles.imageWrapper}
-            className={styles.image}
-            sizes={this.props.imageSrc}            
+            className={styles.image}            
+            sizes={this.props.imageSrc}
           />
         </header>
 
@@ -183,7 +183,7 @@ export default class Recording extends React.Component {
 
 Recording.propTypes = {
   description: PropTypes.string,
-  imageSrc: PropTypes.string,
+  imageSrc: PropTypes.object,
   media: PropTypes.string,
   onMediaToggle: PropTypes.func,
   recordingUrl: PropTypes.string,

@@ -2,6 +2,7 @@ import React from 'react'
 import Container from '../components/container'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
+import LazyLoad from 'react-lazyload'
 import Link from 'gatsby-link'
 import styles from '../styles/premieres.module.scss'
 
@@ -36,6 +37,7 @@ export default (props) => {
 
         <ol className={styles.list}>
         {premieres[year].map(({ node }) =>
+        <LazyLoad height='100vh' key={node.id} offset={250} once>
           <li className={styles.content} key={node.id}>
             <h1 className={styles.heading}>{node.title}</h1>
             <h2 className={styles.caption}>{node.composer}</h2>
@@ -44,6 +46,7 @@ export default (props) => {
               <span className={styles.link}>{node.category}</span>
             </footer>
           </li>
+        </LazyLoad>
         )}
         </ol>
       </section>
@@ -79,8 +82,9 @@ export const query = graphql`
           id
           title
           image {
-            responsiveSizes(maxWidth: 2048, quality: 75) {              
+            responsiveSizes(maxWidth: 2048, quality: 75) {
               aspectRatio
+              base64
               src
               srcSet
               sizes

@@ -2,6 +2,7 @@ import React from 'react'
 import Container from '../components/container'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
+import LazyLoad from 'react-lazyload'
 import Link from 'gatsby-link'
 import marked from 'marked'
 import styles from '../styles/performances.module.scss'
@@ -23,7 +24,6 @@ export default class Performances extends React.Component {
 
   getFormattedDate(date) {
     return new Intl.DateTimeFormat('en-us', {
-      weekday: 'long',
       day: 'numeric',
       hour: 'numeric',
       minute: 'numeric',
@@ -94,35 +94,37 @@ export default class Performances extends React.Component {
               const url = this.getEventURL(node.locationName, node.location)
 
               return (
-              <li className={styles.performance} key={node.id}>
-                <div className={styles.performanceWrapper}>
-                  <div className={styles.performanceDetails}>
-                    <h2 className={styles.heading}>{node.title}</h2>
-                    <h3 className={styles.caption}>{this.getFormattedDate(node.date)}</h3>
+              <LazyLoad height='100vh' key={node.id} offset={250} once>
+                <li className={styles.performance}>
+                  <div className={styles.performanceWrapper}>
+                    <div className={styles.performanceDetails}>
+                      <h2 className={styles.heading}>{node.title}</h2>
+                      <h3 className={styles.caption}>{this.getFormattedDate(node.date)}</h3>
 
-                    <div className={styles.paragraphWrapper} dangerouslySetInnerHTML={{ __html: marked(node.description.description) }} />
+                      <div className={styles.paragraphWrapper} dangerouslySetInnerHTML={{ __html: marked(node.description.description) }} />
+                    </div>
+
+                    <div className={styles.map}>
+                      <a className={styles.mapWrapper} href={url}>
+                        <div className={styles.mapImage} style={{ backgroundImage: `url('/static/${node.fields.mapImage}')` }}></div>
+                      </a>
+                    </div>
+
+                    <footer className={styles.detailFooter}>
+                      <a className={styles.link} href={url}>{node.locationName}</a>
+                      {node.ticketInformation
+                        ? <a className={styles.link} href={node.ticketInformation}>Ticket Information</a>
+                        : ''
+                      }
+                    </footer>
                   </div>
-
-                  <div className={styles.map}>
-                    <a className={styles.mapWrapper} href={url}>
-                      <div className={styles.mapImage} style={{ backgroundImage: `url('/static/${node.fields.mapImage}')` }}></div>
-                    </a>
-                  </div>
-
-                  <footer className={styles.detailFooter}>
-                    <a className={styles.link} href={url}>{node.locationName}</a>
-                    {node.ticketInformation
-                      ? <a className={styles.link} href={node.ticketInformation}>Ticket Information</a>
-                      : ''
-                    }
-                  </footer>
-                </div>
-              </li>
+                </li>
+              </LazyLoad>
               )
             })}
             </ol>
           </section>
-            )
+          )
           })}
         </div>
       </Container>
@@ -171,8 +173,9 @@ export const query = graphql`
           id
           title
           image {
-            responsiveSizes(maxWidth: 2048, quality: 75) {              
+            responsiveSizes(maxWidth: 2048, quality: 75) {
               aspectRatio
+              base64
               src
               srcSet
               sizes

@@ -1,6 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
+import LazyLoad from 'react-lazyload'
 import Container from '../components/container'
 import Recording from '../components/recording'
 import marked from 'marked'
@@ -34,17 +35,18 @@ export default class Recordings extends React.Component {
 
         <ol className={styles.list}>
           {this.props.data.allContentfulRecording.edges.map(({ node }) =>
-          <Recording
-            date={node.date}
-            description={node.description ? node.description.description : ""}
-            key={node.id}
-            id={node.id}
-            imageSrc={node.image.responsiveResolution}
-            media={node.media ? node.media.file.url : ""}
-            onMediaToggle={this.onMediaToggle}
-            recordingUrl={node.recordingUrl}
-            title={node.title}
-          />
+          <LazyLoad height='100vh' key={node.id} offset={250}>
+            <Recording
+              date={node.date}
+              description={node.description ? node.description.description : ""}
+              id={node.id}
+              imageSrc={node.image.responsiveResolution}
+              media={node.media ? node.media.file.url : ""}
+              onMediaToggle={this.onMediaToggle}
+              recordingUrl={node.recordingUrl}
+              title={node.title}
+            />
+          </LazyLoad>
           )}
         </ol>
       </Container>
@@ -70,6 +72,7 @@ export const query = graphql`
             id
             responsiveResolution {
               aspectRatio
+              base64
               src
               srcSet
             }
@@ -94,8 +97,8 @@ export const query = graphql`
       filter: {
         slug: {
           eq: "/recordings"
-        }
-      }
+        },
+      },
     ) {
       edges {
         node {
@@ -104,6 +107,7 @@ export const query = graphql`
           image {
             responsiveSizes(maxWidth: 2048, quality: 75) {
               aspectRatio
+              base64
               src
               srcSet
               sizes

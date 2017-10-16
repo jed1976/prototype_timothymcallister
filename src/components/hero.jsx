@@ -6,7 +6,7 @@ import styles from '../styles/hero.module.scss'
 const Hero = props => {
   return (
     <header className={`${styles.image} ${props.className}`}>
-      <Img
+      <Img        
         outerWrapperClassName={styles.imageWrapper}
         resolutions={props.image}
         style={{ height: '100%', width: '100%' }}

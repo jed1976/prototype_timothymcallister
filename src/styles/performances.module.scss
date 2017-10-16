@@ -65,7 +65,7 @@
   color: $primaryColor;
   cursor: pointer;
   float: right;
-  font-size: $f2;
+  font-size: $f3;
   font-weight: $fw4;
   margin: $s4;
   outline: 0;
@@ -81,6 +81,7 @@
   }
 
   .yearSelector {
+    font-size: $f2;
     position: -webkit-sticky;
     position: sticky;
     top: $s4;
