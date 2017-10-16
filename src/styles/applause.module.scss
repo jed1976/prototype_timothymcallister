@@ -1,8 +1,38 @@
 @import '../styles/base';
 
+.content {
+  padding: 0;
+  min-width: 100%;
+}
+
 .contentWrapper {
   align-items: center;
   background-color: $darkColor;
   display: flex;
   min-height: 100vh;
+}
+
+.quote {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: $s6 $s4;
+
+  blockquote {
+    margin: 0;
+    max-width: $w8;
+  }
+}
+
+.quote:nth-child(odd) {
+  background-color: $lightColor;
+}
+
+.quote:nth-child(even) {
+  background-color: $darkColor;
+
+  blockquote {
+    color: $lightColor;
+  }
 }

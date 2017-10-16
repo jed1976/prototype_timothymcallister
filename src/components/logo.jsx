@@ -6,14 +6,12 @@ import styles from '../styles/logo.module.scss'
 const Logo = props => {
   return (
     <header className={styles.header} data-size={props.size}>
-      <h1 className={styles.logo} title="Main Menu">
-        <Link className={styles.link} to="/">
-          <span className={styles.title}>Timothy M
-            <span className={styles.lowerCase}>c</span>Allister
-          </span>
-          <span className={styles.subtitle}>Saxophonist</span>
-        </Link>
-      </h1>
+      <Link className={styles.link} to="/">
+        <h2 className={styles.title}>Timothy M
+          <span className={styles.lowerCase}>c</span>Allister
+        </h2>
+        <h6 className={styles.subtitle}>Saxophonist</h6>
+      </Link>
     </header>
   )
 }

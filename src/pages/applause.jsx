@@ -2,11 +2,15 @@ import React from 'react'
 import Container from '../components/container'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
+import LazyLoad from 'react-lazyload'
 import Link from 'gatsby-link'
+import Quote from '../components/quote'
+import shuffle from 'shuffle-array'
 import styles from '../styles/applause.module.scss'
 
 export default (props) => {
   const pageData = props.data.allContentfulPage.edges[0].node
+  const quotes = shuffle(props.data.allContentfulQuote.edges)
 
   return (
     <Container>
@@ -18,7 +22,19 @@ export default (props) => {
 
       <div className={styles.contentWrapper}>
         <div className={styles.content}>
-          1
+          <ol className={styles.list}>
+          {quotes.map(({ node }, index) =>
+          <LazyLoad height='100vh' key={node.id} offset={250} once>
+            <li className={styles.quote}>
+              <Quote
+                author={node.author}
+                quote={node.quote.quote}
+                source={node.source}>
+              </Quote>
+            </li>
+          </LazyLoad>
+          )}
+          </ol>
         </div>
       </div>
     </Container>
@@ -39,13 +55,34 @@ export const query = graphql`
           id
           title
           image {
-            responsiveSizes(maxWidth: 2048, quality: 75) {              
+            responsiveSizes(maxWidth: 2048, quality: 75) {
               aspectRatio
               src
               srcSet
               sizes
             }
           }
+        }
+      }
+    },
+
+    allContentfulQuote(
+      filter: {
+      	tags: {
+          eq: null
+        }
+    	}
+    ) {
+      edges {
+        node {
+          id
+          quote {
+            id
+            quote
+          }
+          author
+          source
+          tags
         }
       }
     }

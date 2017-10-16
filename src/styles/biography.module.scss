@@ -2,6 +2,10 @@
 
 .contentWrapper {
   background-color: $darkColor;
+
+  blockquote {
+    color: $lightColor;
+  }
 }
 
 .detailFooter {

@@ -20,6 +20,8 @@
     "image-downloader": "^3.3.0",
     "marked": "^0.3.6",
     "prop-types": "^15.6.0",
-    "react-lazyload": "^2.2.7"
+    "react-lazyload": "^2.2.7",
+    "shuffle-array": "^1.0.1",
+    "typographic-base": "^1.0.4"
   }
 }

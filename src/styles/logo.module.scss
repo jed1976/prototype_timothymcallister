@@ -4,11 +4,12 @@
   color: inherit;
   position: fixed;
   left: $s3;
-  top: -$s2;
+  top: $s3;
   z-index: 1;
 
   .link {
     color: inherit;
+    display: block;
     text-decoration: none;
     transition-duration: 360ms;
     transition-property: color;
@@ -66,6 +67,6 @@
 @media #{$ns} {
   .header {
     left: $s4;
-    top: 0;
+    top: $s4;
   }
 }

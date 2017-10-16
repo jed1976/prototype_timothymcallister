@@ -4,13 +4,14 @@
   border-left-color: $primaryColor;
   border-left-style: solid;
   border-left-width: $bw3;
-  color: $primaryColor;
+  color: inherit;
   font-size: $f6;
   margin: -$s1 $s3 $s4 $s3;
   max-width: $w6;
   padding-left: $s4;
 
   .author {
+    color: $primaryColor;
     letter-spacing: $tracked;
     line-height: $lh-title;
     margin: 0 0 $s3 0;
@@ -18,7 +19,7 @@
   }
 
   .quote {
-    color: $lightColor;
+    color: inherit;
     font-family: $baskerville;
     font-size: $f3;
     line-height: $lh-copy;
@@ -27,6 +28,7 @@
   }
 
   .source {
+    color: $primaryColor;
     font-size: $f7;
     font-style: italic;
     line-height: $lh-copy;

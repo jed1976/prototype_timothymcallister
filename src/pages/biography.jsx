@@ -3,7 +3,7 @@ import Container from '../components/container'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import Link from 'gatsby-link'
-import Quote from '../components/blockquote'
+import Quote from '../components/quote'
 import marked from 'marked'
 import styles from '../styles/biography.module.scss'
 
