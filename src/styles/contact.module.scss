@@ -1,0 +1,28 @@
+@import '../styles/base';
+
+.address {
+  font-style: normal;
+  line-height: $lh-copy;
+}
+
+.caption {
+  margin-bottom: $s4;
+}
+
+.contentWrapper {
+  background-color: $darkColor;
+  color: $lightColor;
+}
+
+.heading2:last-of-type {
+  margin-bottom: $s3;
+}
+
+.item {
+  min-height: 100vh;
+}
+
+.item:nth-child(even) {
+  background-color: $lightColor;
+  color: $darkColor;
+}

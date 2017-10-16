@@ -99,6 +99,15 @@ select {
   margin: 0 0 $s4 0;
 }
 
+.heading2 {
+  color: inherit;
+  display: block;
+  font-size: $f4;
+  font-weight: $fw7;
+  line-height: $lh-title;
+  margin: 0;
+}
+
 .list {
   list-style: none;
   margin: 0;
@@ -148,5 +157,12 @@ select {
     -webkit-writing-mode: vertical-rl;
     writing-mode: vertical-rl;
     z-index: 9999;
+  }
+}
+
+@media #{$ns} {
+  .content {
+    margin-top: -$s6;
+    padding-bottom: $s5;
   }
 }
