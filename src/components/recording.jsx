@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
 import dateformat from 'dateformat'
+import typographicBase from 'typographic-base'
 import marked from 'marked'
 import styles from '../styles/recording.module.scss'
 
@@ -109,14 +110,14 @@ export default class Recording extends React.Component {
         <header className={styles.imageLayout}>
           <Img
             outerWrapperClassName={styles.imageWrapper}
-            className={styles.image}            
+            className={styles.image}
             sizes={this.props.imageSrc}
           />
         </header>
 
         <article className={styles.contentWrapper}>
           <div className={styles.content}>
-            <h1 className={styles.heading}>{this.props.title}</h1>
+            <h1 className={styles.heading}>{typographicBase(this.props.title, { locale: 'en-us'})}</h1>
 
             <h2 className={styles.caption}>{date}</h2>
 
@@ -166,7 +167,7 @@ export default class Recording extends React.Component {
 
             <div
               className={styles.paragraphWrapper}
-              dangerouslySetInnerHTML={{ __html: marked(this.props.description) }} />
+              dangerouslySetInnerHTML={{ __html: typographicBase(marked(this.props.description), { locale: 'en-us' }) }} />
 
             {this.props.recordingUrl ?
             <footer className={styles.detailFooter}>

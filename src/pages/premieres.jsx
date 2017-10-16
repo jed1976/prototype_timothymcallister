@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import LazyLoad from 'react-lazyload'
 import Link from 'gatsby-link'
+import typographicBase from 'typographic-base'
 import styles from '../styles/premieres.module.scss'
 
 export default (props) => {
@@ -39,7 +40,7 @@ export default (props) => {
         {premieres[year].map(({ node }) =>
         <LazyLoad height='100vh' key={node.id} offset={250} once>
           <li className={styles.content} key={node.id}>
-            <h1 className={styles.heading}>{node.title}</h1>
+            <h1 className={styles.heading}>{typographicBase(node.title, { locale: 'en-us'})}</h1>
             <h2 className={styles.caption}>{node.composer}</h2>
 
             <footer className={styles.detailFooter}>

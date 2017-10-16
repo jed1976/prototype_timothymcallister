@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import Link from 'gatsby-link'
 import Quote from '../components/quote'
+import typographicBase from 'typographic-base'
 import marked from 'marked'
 import styles from '../styles/biography.module.scss'
 
@@ -20,7 +21,7 @@ export default (props) => {
 
     return (
       <div className={styles.paragraphWrapper}
-          dangerouslySetInnerHTML={{ __html: marked(paragraph) }}
+          dangerouslySetInnerHTML={{ __html: typographicBase(marked(paragraph), { locale: 'en-us' }) }}
           key={index}
        />
     )

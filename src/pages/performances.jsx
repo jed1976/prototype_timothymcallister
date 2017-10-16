@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import LazyLoad from 'react-lazyload'
 import Link from 'gatsby-link'
+import typographicBase from 'typographic-base'
 import marked from 'marked'
 import styles from '../styles/performances.module.scss'
 
@@ -98,10 +99,10 @@ export default class Performances extends React.Component {
                 <li className={styles.performance}>
                   <div className={styles.performanceWrapper}>
                     <div className={styles.performanceDetails}>
-                      <h2 className={styles.heading}>{node.title}</h2>
+                      <h2 className={styles.heading}>{typographicBase(node.title, { locale: 'en-us'})}</h2>
                       <h3 className={styles.caption}>{this.getFormattedDate(node.date)}</h3>
 
-                      <div className={styles.paragraphWrapper} dangerouslySetInnerHTML={{ __html: marked(node.description.description) }} />
+                      <div className={styles.paragraphWrapper} dangerouslySetInnerHTML={{ __html: typographicBase(marked(node.description.description), { locale: 'en-us'}) }} />
                     </div>
 
                     <div className={styles.map}>
