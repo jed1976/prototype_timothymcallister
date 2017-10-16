@@ -16,14 +16,17 @@
   min-height: 100vh;
   justify-content: center;
   padding: $s5 $s4;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 
   .itemWrapper {
-    max-width: $w6;
+    max-width: $w5;
     width: 100%;
   }
 }
 
-.item:nth-child(even) {
+.item:nth-child(odd) {
   background-color: $darkColor;
 
   .link {
@@ -33,12 +36,9 @@
 
 @media #{$ns} {
   .item {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
 
     .itemWrapper {
-      max-width: $w7;    
+      max-width: $w6;
     }
   }
 }

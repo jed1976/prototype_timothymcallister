@@ -24,15 +24,17 @@ export default (props) => {
         <div className={styles.content}>
           <ol className={styles.list}>
             {photos.map(({ node }) =>
-            <li className={styles.item} key={node.id}>
-              <div className={styles.itemWrapper}>
-                <Img sizes={node.image.responsiveResolution} />                
+            <LazyLoad height='100vh' key={node.id} offset={250} once>
+              <li className={styles.item}>
+                <div className={styles.itemWrapper}>
+                  <Img sizes={node.image.responsiveResolution} />
 
-                <footer className={styles.detailFooter}>
-                  <a className={styles.link} download href={node.image.responsiveResolution.src}>Download</a>
-                </footer>
-              </div>
-            </li>
+                  <footer className={styles.detailFooter}>
+                    <a className={styles.link} download href={node.image.responsiveResolution.src}>Download</a>
+                  </footer>
+                </div>
+              </li>
+            </LazyLoad>
             )}
             <li className={styles.item} key={new Date().toISOString()}>
               <div className={styles.itemWrapper}>

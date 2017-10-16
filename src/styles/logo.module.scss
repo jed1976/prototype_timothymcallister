@@ -12,12 +12,12 @@
     display: block;
     text-decoration: none;
     transition-duration: 360ms;
-    transition-property: color;
+    transition-property: opacity;
     transition-timing-function: ease;
 
     &:hover,
     &:active {
-      color: $lightColor;
+      opacity: 0.5;
     }
   }
 
