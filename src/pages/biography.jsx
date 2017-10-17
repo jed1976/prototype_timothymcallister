@@ -14,6 +14,8 @@ export default (props) => {
   const paragraphs = node.biography.biography.split('\n\n')
 
   const renderedBiography = paragraphs.map((paragraph, index) => {
+    paragraph = typographicBase(paragraph, { locale: 'en-us' })
+
     if (index === 0) {
       const dropCap = `<span class=${styles.dropCap}><em>${paragraph.substr(0, 1)}</em></span>`
       paragraph = paragraph.replace(/^\w/, dropCap)
@@ -21,7 +23,7 @@ export default (props) => {
 
     return (
       <div className={styles.paragraphWrapper}
-          dangerouslySetInnerHTML={{ __html: typographicBase(marked(paragraph), { locale: 'en-us' }) }}
+          dangerouslySetInnerHTML={{ __html: marked(paragraph) }}
           key={index}
        />
     )
