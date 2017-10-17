@@ -88,7 +88,7 @@ export default class Performances extends React.Component {
           {months.map(month => {
             return (
           <section className={styles.monthWrapper} key={this.getFormattedMonth(month)}>
-            <h1 className={styles.stickyHeading}>{this.getFormattedMonth(month)}</h1>
+            <h3 className={styles.stickyHeading}>{this.getFormattedMonth(month)}</h3>
 
             <ol className={styles.performanceList}>
             {performances[month].map(({ node }, index) => {
@@ -99,8 +99,9 @@ export default class Performances extends React.Component {
                 <li className={styles.performance}>
                   <div className={styles.performanceWrapper}>
                     <div className={styles.performanceDetails}>
-                      <h2 className={styles.heading}>{typographicBase(node.title, { locale: 'en-us'})}</h2>
-                      <h3 className={styles.caption}>{this.getFormattedDate(node.date)}</h3>
+                      <h1 className={styles.heading}>{typographicBase(node.title, { locale: 'en-us'})}</h1>
+
+                      <h2 className={styles.caption}>{this.getFormattedDate(node.date)}</h2>
 
                       <div className={styles.paragraphWrapper} dangerouslySetInnerHTML={{ __html: marked(typographicBase(node.description.description, { locale: 'en-us'})) }} />
                     </div>

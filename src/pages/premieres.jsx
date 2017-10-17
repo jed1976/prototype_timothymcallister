@@ -34,13 +34,14 @@ export default (props) => {
       {years.map(year => {
         return (
       <section className={styles.contentWrapper} key={year}>
-        <h1 className={styles.stickyHeading}>{year}</h1>
+        <h3 className={styles.stickyHeading}>{year}</h3>
 
         <ol className={styles.list}>
         {premieres[year].map(({ node }) =>
         <LazyLoad height='100vh' key={node.id} offset={250} once>
           <li className={styles.content} key={node.id}>
             <h1 className={styles.heading}>{typographicBase(node.title, { locale: 'en-us'})}</h1>
+
             <h2 className={styles.caption}>{node.composer}</h2>
 
             <footer className={styles.detailFooter}>

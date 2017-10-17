@@ -16,13 +16,23 @@
   }
 }
 
+.headingLink {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 360ms ease;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
 .paragraphWrapper {
   margin-top: $s4;
 
   &:last-of-type {
     border-bottom-color: $primaryColor;
     border-bottom-style: solid;
-    border-bottom-width: 1px;    
+    border-bottom-width: 1px;
     padding-bottom: $s4;
   }
 }

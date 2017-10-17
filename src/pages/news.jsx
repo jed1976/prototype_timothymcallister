@@ -36,7 +36,7 @@ export default (props) => {
       {years.map(year => {
         return (
       <section className={styles.contentWrapper} key={year}>
-        <h1 className={styles.stickyHeading}>{year}</h1>
+        <h3 className={styles.stickyHeading}>{year}</h3>
 
         <ol className={styles.list}>
         {news[year].map(({ node }) =>
@@ -97,6 +97,9 @@ export const query = graphql`
           content {
             id
             content
+          }
+          fields {
+            slug
           }
         }
       }
