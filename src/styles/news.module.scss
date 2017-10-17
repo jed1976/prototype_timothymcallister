@@ -1,0 +1,35 @@
+@import '../styles/base';
+
+.contentWrapper {
+  background-color: $darkColor;
+
+  .heading {
+    color: $lightColor;
+  }
+}
+
+.contentWrapper:nth-child(even) {
+  background-color: $lightColor;
+
+  .heading {
+    color: $darkColor;
+  }
+}
+
+.paragraphWrapper {
+  margin-top: $s4;
+
+  &:last-of-type {
+    border-bottom-color: $primaryColor;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;    
+    padding-bottom: $s4;
+  }
+}
+
+@media #{$ns} {
+  .list {
+    margin-top: -$s6;
+    padding-bottom: $s5;
+  }
+}

@@ -17,24 +17,22 @@
   animation-name: slideIn;
   animation-duration: 1280ms;
   animation-timing-function: ease-in-out;
+  bottom: 25%;
   color: $primaryColor;
   font-family: $baskerville;
   font-size: $f0;
   font-style: italic;
   font-weight: $fw4;
-  margin: calc(#{$s6} + #{$s4}) 0 0 0;
+  position: absolute;
+  margin: 0;
   padding: 0 $s1; // Fix for Mobile Safari
-  text-align: right;
+  right: $s4;
   white-space: nowrap;
 }
 
 .titleWrapper {
-  align-items: center;
   bottom: 0;
-  display: flex;
   left: 0;
-  justify-content: flex-end;
-  padding: $s4;
   position: absolute;
   right: 0;
   top: 0;
@@ -42,12 +40,8 @@
 }
 
 @media #{$ns} {
-  .titleWrapper {
-    padding: $s5;
-  }
-
   .title {
     font-size: $f-title;
-    margin: calc(#{$s6} + #{$s7}) 0 0 0;
+    right: $s5;
   }
 }

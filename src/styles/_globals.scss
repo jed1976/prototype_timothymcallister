@@ -97,6 +97,7 @@ select {
   font-weight: $fw5;
   line-height: $lh-title;
   margin: 0 0 $s4 0;
+  @include measure;
 }
 
 .heading2 {
@@ -116,6 +117,16 @@ select {
 
 .paragraphWrapper {
   overflow: hidden;
+
+  a {
+    color: $lightColor;
+    text-decoration: none;
+    transition: color 360ms ease;
+  }
+
+  a:hover {
+    color: $primaryColor;
+  }
 
   p {
     color: $midColor;

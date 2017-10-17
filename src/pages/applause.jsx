@@ -5,12 +5,11 @@ import Hero from '../components/hero'
 import LazyLoad from 'react-lazyload'
 import Link from 'gatsby-link'
 import Quote from '../components/quote'
-import shuffle from 'shuffle-array'
 import styles from '../styles/applause.module.scss'
 
 export default (props) => {
   const pageData = props.data.allContentfulPage.edges[0].node
-  const quotes = shuffle(props.data.allContentfulQuote.edges)
+  const quotes = props.data.allContentfulQuote.edges
 
   return (
     <Container>
@@ -71,7 +70,11 @@ export const query = graphql`
       	tags: {
           eq: null
         }
-    	}
+    	},
+      sort: {
+        fields: [date],
+        order: DESC
+      }
     ) {
       edges {
         node {

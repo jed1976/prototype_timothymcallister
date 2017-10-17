@@ -5,7 +5,7 @@ import Hero from '../components/hero'
 import Img from 'gatsby-image'
 import LazyLoad from 'react-lazyload'
 import Link from 'gatsby-link'
-import styles from '../styles/photos.module.scss'
+import styles from '../styles/photosInfo.module.scss'
 
 export default (props) => {
   const pageData = props.data.allContentfulPage.edges[0].node

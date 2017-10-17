@@ -167,7 +167,7 @@ export default class Recording extends React.Component {
 
             <div
               className={styles.paragraphWrapper}
-              dangerouslySetInnerHTML={{ __html: typographicBase(marked(this.props.description), { locale: 'en-us' }) }} />
+              dangerouslySetInnerHTML={{ __html: marked(typographicBase(this.props.description, { locale: 'en-us' })) }} />
 
             {this.props.recordingUrl ?
             <footer className={styles.detailFooter}>
