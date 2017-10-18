@@ -10,7 +10,7 @@ import styles from '../styles/biography.module.scss'
 
 export default (props) => {
   const pageData = props.data.allContentfulPage.edges[0].node
-  const node = props.data.allContentfulBiography.edges[0].node
+  const node = props.data.contentfulBiography
   const paragraphs = node.biography.biography.split('\n\n')
 
   const renderedBiography = paragraphs.map((paragraph, index) => {
@@ -77,31 +77,26 @@ export default (props) => {
 
 export const query = graphql`
   query BiographyQuery {
-    allContentfulBiography {
-      edges {
-        node {
-          id
-          color
-          biography {
-            id
-            biography
-          }
-          longBiography {
-            id
-            file {
-              url
-              fileName
-              contentType
-            }
-          }
-          shortBiography {
-            id
-            file {
-              url
-              fileName
-              contentType
-            }
-          }
+    contentfulBiography {
+      id
+      biography {
+        id
+        biography
+      }
+      longBiography {
+        id
+        file {
+          url
+          fileName
+          contentType
+        }
+      }
+      shortBiography {
+        id
+        file {
+          url
+          fileName
+          contentType
         }
       }
     },

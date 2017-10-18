@@ -19,12 +19,24 @@
   }
 
   .quote {
-    color: inherit;
-    font-family: $baskerville;
-    font-size: $f3;
-    line-height: $lh-copy;
-    margin: 0 0 $s4 0;
-    @include measure;
+    a {
+      color: $primaryColor;
+      text-decoration: none;
+      transition: color 360ms ease;
+    }
+
+    a:hover {
+      color: $midColor;
+    }
+
+    p {
+      color: inherit;
+      font-family: $baskerville;
+      font-size: $f3;
+      line-height: $lh-copy;
+      margin: 0 0 $s4 0;
+      @include measure;
+    }
   }
 
   .source {

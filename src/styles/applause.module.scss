@@ -19,16 +19,16 @@
   min-height: 100vh;
   padding: $s6 $s4;
 
-  blockquote {    
+  blockquote {
     max-width: $w8;
   }
 }
 
-.quote:nth-child(odd) {
+.quote:nth-child(even) {
   background-color: $lightColor;
 }
 
-.quote:nth-child(even) {
+.quote:nth-child(odd) {
   background-color: $darkColor;
 
   blockquote {

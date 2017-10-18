@@ -1,9 +1,9 @@
 import React from 'react'
+import ContactCard from '../components/contact-card'
 import Container from '../components/container'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import Link from 'gatsby-link'
-import Mailto from 'react-protected-mailto'
 import styles from '../styles/contact.module.scss'
 
 export default (props) => {
@@ -24,22 +24,19 @@ export default (props) => {
         <li className={styles.item} key={node.id}>
           <h1 className={styles.stickyHeading}>{node.title}</h1>
 
-          <article className={styles.content}>
-            {node.name ? <h2 className={styles.heading}>{node.name}</h2> : ''}
-            {node.role ? <h3 className={styles.caption}>{node.role}</h3> : ''}
-            {node.organization ? <h4 className={styles.heading2}>{node.organization}</h4> : ''}
-            {node.unit ? <h4 className={styles.heading2}>{node.unit}</h4> : ''}
-
-            <address className={styles.address}>
-              <div>{node.address1}</div>
-              {node.address2 ? <div>{node.address2}</div> : ''}
-              <div>{node.city}, {node.state} {node.zipCode}</div>
-            </address>
-
-            <footer className={styles.detailFooter}>
-              <Mailto className={styles.link} email={node.emailAddress} />
-            </footer>
-          </article>
+          <ContactCard
+            className={styles.content}
+            name={node.name}
+            role={node.role}
+            organization={node.organization}
+            unit={node.unit}
+            address1={node.address1}
+            address2={node.address2}
+            city={node.city}
+            state={node.state}
+            zipCode={node.zipCode}
+            emailAddress={node.emailAddress}
+          />
         </li>
         )}
         </ol>
@@ -74,6 +71,11 @@ export const query = graphql`
     },
 
     allContentfulContactInfo(
+      filter: {
+        tags: {
+          eq: null
+        }
+      },
       sort: {
         fields: [title]
       }

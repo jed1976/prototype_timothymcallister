@@ -106,7 +106,7 @@ export default class Recording extends React.Component {
     const mediaButtonText = this.props.media ? 'Play Sample' : ''
 
     return (
-      <li className={styles.recording} key={this.props.id}>
+      <section className={styles.recording} key={this.props.id}>
         <header className={styles.imageLayout}>
           <Img
             outerWrapperClassName={styles.imageWrapper}
@@ -177,7 +177,7 @@ export default class Recording extends React.Component {
             }
           </div>
         </article>
-      </li>
+      </section>
     )
   }
 }

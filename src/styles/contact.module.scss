@@ -1,21 +1,8 @@
 @import '../styles/base';
 
-.address {
-  font-style: normal;
-  line-height: $lh-copy;
-}
-
-.caption {
-  margin-bottom: $s5;
-}
-
 .contentWrapper {
   background-color: $darkColor;
   color: $lightColor;
-}
-
-.heading2:last-of-type {
-  margin-bottom: $s3;
 }
 
 .item {
@@ -25,4 +12,11 @@
 .item:nth-child(even) {
   background-color: $lightColor;
   color: $darkColor;
+}
+
+@media #{$ns} {
+  .content {
+    margin-top: -$s6;
+    padding-bottom: $s5;
+  }
 }

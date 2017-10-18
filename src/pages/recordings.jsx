@@ -36,16 +36,18 @@ export default class Recordings extends React.Component {
         <ol className={styles.list}>
           {this.props.data.allContentfulRecording.edges.map(({ node }) =>
           <LazyLoad height='100vh' key={node.id} offset={250}>
-            <Recording
-              date={node.date}
-              description={node.description ? node.description.description : ""}
-              id={node.id}
-              imageSrc={node.image.responsiveResolution}
-              media={node.media ? node.media.file.url : ""}
-              onMediaToggle={this.onMediaToggle}
-              recordingUrl={node.recordingUrl}
-              title={node.title}
-            />
+            <li>
+              <Recording
+                date={node.date}
+                description={node.description ? node.description.description : ""}
+                id={node.id}
+                imageSrc={node.image.responsiveResolution}
+                media={node.media ? node.media.file.url : ""}
+                onMediaToggle={this.onMediaToggle}
+                recordingUrl={node.recordingUrl}
+                title={node.title}
+              />
+            </li>
           </LazyLoad>
           )}
         </ol>
@@ -67,7 +69,6 @@ export const query = graphql`
           id
           title
           date
-          color
           image {
             id
             responsiveResolution {

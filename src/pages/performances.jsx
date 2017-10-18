@@ -4,8 +4,8 @@ import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import LazyLoad from 'react-lazyload'
 import Link from 'gatsby-link'
-import typographicBase from 'typographic-base'
 import marked from 'marked'
+import typographicBase from 'typographic-base'
 import styles from '../styles/performances.module.scss'
 
 export default class Performances extends React.Component {

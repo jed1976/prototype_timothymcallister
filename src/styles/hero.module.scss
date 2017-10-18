@@ -17,7 +17,7 @@
   animation-name: slideIn;
   animation-duration: 1280ms;
   animation-timing-function: ease-in-out;
-  bottom: 25%;
+  bottom: 20%;
   color: $primaryColor;
   font-family: $baskerville;
   font-size: $f0;
@@ -27,7 +27,8 @@
   margin: 0;
   padding: 0 $s1; // Fix for Mobile Safari
   right: $s4;
-  white-space: nowrap;
+  text-align: right;
+  @include measure;
 }
 
 .titleWrapper {
