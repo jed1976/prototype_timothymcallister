@@ -102,6 +102,8 @@ export default (props) => {
 
         <section className={applauseStyles.contentWrapper}>
           <div className={applauseStyles.content}>
+            <h3 className={styles.stickyHeading}>Reviews</h3>
+
             <ol className={styles.list}>
             {quotes.map(({ node }, index) =>
             <LazyLoad height='100vh' key={node.id} offset={250} once>

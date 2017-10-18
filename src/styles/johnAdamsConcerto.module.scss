@@ -70,15 +70,12 @@
 }
 
 @media #{$ns} {
-  .content {    
-    margin-top: -$s7;
-    margin-bottom: $s5;
-  }
-
-  .cardContent {
+  .cardContent,
+  .content,
+  .list {
     margin-top: -$s6;
   }
-
+  
   .intro {
     max-width: $w7;
   }
