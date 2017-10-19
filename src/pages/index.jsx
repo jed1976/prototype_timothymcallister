@@ -1,8 +1,9 @@
+import { Container, Page, Section, Wrapper } from '../components/layout'
+
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
-import Link from 'gatsby-link'
+import List from '../components/list'
 import Logo from '../components/logo'
-import { Page } from '../components/layout'
 import React from 'react'
 import styles from '../styles/index.module.scss'
 
@@ -26,6 +27,9 @@ export default class Home extends React.Component {
 
   render() {
     const pageData = this.props.data.allContentfulPage.edges[0].node
+    const menuItems = this.props.data.allContentfulPage.edges
+      .filter(({ node}) => node.order > 0)
+      .map(({ node }) => ({ url: node.slug, title: node.title }))
 
     return (
       <Page hideLogo>
@@ -33,26 +37,15 @@ export default class Home extends React.Component {
           <title>{pageData.title}</title>
         </Helmet>
 
-        <div className={styles.section}>
+        <Wrapper className={styles.section}>
           <Hero className={styles.image} image={pageData.image.responsiveSizes} />
 
-          <div className={styles.text} ref={(textContainer) => this.textContainer = textContainer}>
-            <div className={styles.content}>
+          <Section className={styles.nav} ref={(textContainer) => this.textContainer = textContainer} theme="dark">
+            <Container className={styles.content}>
               <Logo size="large"></Logo>
 
               <nav className={styles.menu}>
-                <ol className={styles.menuList}>
-                  {this.props.data.allContentfulPage.edges
-                    .filter(({ node}) => node.order > 0)
-                    .map(({ node }) =>
-                  <li key={node.id}>
-                    {node.slug.match(/http/)
-                      ? <a href={node.slug}>{node.title}</a>
-                      : <Link to={node.slug}>{node.title}</Link>
-                    }
-                  </li>
-                  )}
-                </ol>
+                <List className={styles.menuList} items={menuItems} />
               </nav>
 
               <footer className={styles.socialFooter}>
@@ -68,9 +61,9 @@ export default class Home extends React.Component {
                   </svg>
                 </a>
               </footer>
-            </div>
-          </div>
-        </div>
+            </Container>
+          </Section>
+        </Wrapper>
       </Page>
     )
   }

@@ -1,5 +1,6 @@
 import { Caption, Heading } from '../components/typography'
 
+import Link from 'gatsby-link'
 import Mailto from 'react-protected-mailto'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -12,7 +13,9 @@ const List = props => {
         let content = item.title
 
         if (item.url) {
-          content = <a className={styles.link} download={item.download} href={item.url}>{item.title}</a>
+          content = item.url.match(/http/)
+            ? <a className={styles.link} download={item.download} href={item.url}>{item.title}</a>
+            : <Link className={styles.link} to={item.url}>{item.title}</Link>
 
           if (item.mailto)
             content = <Mailto className={styles.link} email={item.url} />
