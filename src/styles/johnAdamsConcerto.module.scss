@@ -1,100 +1,11 @@
 @import '../styles/base';
 
-.cardContent {
-  @extend .content;
-}
+.videoWrapper {
+  @include aspect-ratio;
+  @include aspect-ratio--16x9;
 
-.content,
-.cardContent {
-  max-width: $w6;
-}
-
-.contentWrapper,
-.videoSection {
-  background-color: $darkColor;
-}
-
-.darkSection {
-  background-color: $darkColor;
-  color: $lightColor;
-}
-
-.dropCap {
-  padding-right: $s3;
-}
-
-.item {
-  margin-bottom: $s5;
-}
-
-.lightSection {
-  background-color: $lightColor;
-  min-height: 100vh;
-}
-
-.intro {
-  align-items: center;
-  display: flex;
-  margin: 0 auto;
-  max-width: $w6;
-  min-height: 100vh;
-  padding: $s5 $s4;
-
-  .paragraphWrapper {
-    p {
-      color: $lightColor;
-      font-size: $f4;
-    }
-  }
-}
-
-.videoSection {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-  margin: 0 auto;
-  max-width: $w8;
-  padding: $s5 $s4;
-
-  .videoWrapper {
-    background-color: $midColor;
-    @include aspect-ratio;
-    @include aspect-ratio--16x9;
-
-    .video {
-      border: 0;
-      @include aspect-ratio--object;
-    }
-  }
-}
-
-@media #{$ns} {
-  .cardContent,
-  .content,
-  .list {
-    margin-top: -$s6;
-  }
-  
-  .intro {
-    max-width: $w7;
-  }
-
-  .intro,
-  .videoSection {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .item {
-    margin-bottom: $s6;
-  }
-
-  .intro {
-    .paragraphWrapper {
-      p {
-        font-size: $f3;
-      }
-    }
+  .video {
+    border: 0;
+    @include aspect-ratio--object;
   }
 }

@@ -1,42 +1,32 @@
-import React from 'react'
-import Container from '../components/container'
+import { Page, Section, Wrapper } from '../components/layout'
+
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import LazyLoad from 'react-lazyload'
 import Link from 'gatsby-link'
-import Quote from '../components/quote'
-import styles from '../styles/applause.module.scss'
+import { Quote } from '../components/typography'
+import React from 'react'
 
 export default (props) => {
   const pageData = props.data.allContentfulPage.edges[0].node
   const quotes = props.data.allContentfulQuote.edges
 
   return (
-    <Container>
+    <Page>
       <Helmet>
         <title>{pageData.title}</title>
       </Helmet>
 
       <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
-      <div className={styles.contentWrapper}>
-        <div className={styles.content}>
-          <ol className={styles.list}>
-          {quotes.map(({ node }, index) =>
-          <LazyLoad height='100vh' key={node.id} offset={250} once>
-            <li className={styles.quote}>
-              <Quote
-                author={node.author}
-                quote={node.quote.quote}
-                source={node.source}>
-              </Quote>
-            </li>
-          </LazyLoad>
-          )}
-          </ol>
-        </div>
-      </div>
-    </Container>
+      <Wrapper>
+        <Section centerContent padding theme="light">
+        {quotes.map(({ node }, index) =>
+          <Quote author={node.author} key={index} quote={node.quote.quote} source={node.source} />          
+        )}
+        </Section>
+      </Wrapper>
+    </Page>
   )
 }
 

@@ -1,13 +1,12 @@
-import React from 'react'
-import Container from '../components/container'
-import dateformat from 'dateformat'
+import { Caption, Heading, Paragraph, Subtitle } from '../components/typography'
+import { Container, Page, Section, Wrapper } from '../components/layout'
+
+import Article from '../components/article'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import LazyLoad from 'react-lazyload'
 import Link from 'gatsby-link'
-import marked from 'marked'
-import styles from '../styles/news.module.scss'
-import typographicBase from 'typographic-base'
+import React from 'react'
 
 export default (props) => {
   const pageData = props.data.allContentfulPage.edges[0].node
@@ -26,35 +25,29 @@ export default (props) => {
   })
 
   return (
-    <Container>
+    <Page>
       <Helmet>
         <title>{pageData.title}</title>
       </Helmet>
 
       <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
-      {years.map(year => {
-        return (
-      <section className={styles.contentWrapper} key={year}>
-        <h3 className={styles.stickyHeading}>{year}</h3>
+      <Wrapper>
+        {years.map((year, index) => {
+          const theme = index % 2 === 0 ? `light` : `dark`
 
-        <ol className={styles.list}>
-        {news[year].map(({ node }) =>
-        <LazyLoad height='100vh' key={node.id} offset={250} once>
-          <li className={styles.content} key={node.id}>
-            <h1 className={styles.heading}>{typographicBase(node.title, { locale: 'en-us'})}</h1>
+          return (
+        <Section centerContent padding key={year} theme={theme}>
+          <Subtitle content={year} />
 
-            <h2 className={styles.caption}>{dateformat(node.date, 'mmmm d, yyyy')}</h2>
-
-            <div className={styles.paragraphWrapper} dangerouslySetInnerHTML={{ __html: marked(typographicBase(node.content.content, { locale: 'en-us'})) }} />
-          </li>
-        </LazyLoad>
-        )}
-        </ol>
-      </section>
+          {news[year].map(({ node }) =>
+          <Article content={node.content.content} date={node.date} title={node.title} />
+          )}
+        </Section>
         )
-      })}
-    </Container>
+        })}
+      </Wrapper>
+    </Page>
   )
 }
 

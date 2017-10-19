@@ -1,23 +1,6 @@
 @import '../styles/base';
 
-.contentWrapper {
-  background-color: $darkColor;
-
-  blockquote {
-    color: $lightColor;
-    margin-bottom: $s4;
-  }
-}
-
-.detailFooter {
-  color: $lightColor;
-}
-
 @media #{$l} {
-  .content {
-    max-width: $w8;
-  }
-
   .columns {
     column-count: 2;
     column-gap: $s5;

@@ -1,11 +1,10 @@
-import React from 'react'
+import { Page, Wrapper } from '../components/layout'
+
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import LazyLoad from 'react-lazyload'
-import Container from '../components/container'
+import React from 'react'
 import Recording from '../components/recording'
-import marked from 'marked'
-import styles from '../styles/recordings.module.scss'
 
 export default class Recordings extends React.Component {
 
@@ -26,32 +25,30 @@ export default class Recordings extends React.Component {
     const pageData = this.props.data.allContentfulPage.edges[0].node
 
     return (
-      <Container>
+      <Page>
         <Helmet>
           <title>{pageData.title}</title>
         </Helmet>
 
         <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
-        <ol className={styles.list}>
+        <Wrapper>
           {this.props.data.allContentfulRecording.edges.map(({ node }) =>
           <LazyLoad height='100vh' key={node.id} offset={250}>
-            <li>
-              <Recording
-                date={node.date}
-                description={node.description ? node.description.description : ""}
-                id={node.id}
-                imageSrc={node.image.responsiveResolution}
-                media={node.media ? node.media.file.url : ""}
-                onMediaToggle={this.onMediaToggle}
-                recordingUrl={node.recordingUrl}
-                title={node.title}
-              />
-            </li>
+            <Recording
+              date={node.date}
+              description={node.description ? node.description.description : ""}
+              id={node.id}
+              imageSrc={node.image.responsiveResolution}
+              media={node.media ? node.media.file.url : ""}
+              onMediaToggle={this.onMediaToggle}
+              recordingUrl={node.recordingUrl}
+              title={node.title}
+            />
           </LazyLoad>
           )}
-        </ol>
-      </Container>
+        </Wrapper>
+      </Page>
     )
   }
 }

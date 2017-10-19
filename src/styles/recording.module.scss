@@ -1,29 +1,9 @@
 @import '../styles/base';
 
-.contentWrapper {
-  align-items: center;
-  background-color: $darkColor;
-  color: $lightColor;
-  display: flex;
-  min-height: 100vh;
-}
-
-.imageLayout {  
-  align-items: center;
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  margin: 0 auto;
-  max-width: $w5;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-
-  .imageWrapper {
-    overflow: hidden;
-    @include aspect-ratio;
-    @include aspect-ratio--1x1;
-  }
+.imageWrapper {
+  overflow: hidden;
+  @include aspect-ratio;
+  @include aspect-ratio--1x1;
 }
 
 .media {
@@ -82,11 +62,7 @@
 .mediaPlayer {
   align-items: center;
   display: flex;
-  margin-top: $s5;
-}
-
-.paragraphWrapper p {
-  margin: $s4 0;
+  margin: $s5 0 $s4 0;
 }
 
 .progressTrack {
@@ -100,16 +76,5 @@
     display: block;
     height: 1px;
     transition: all 480ms linear;
-  }
-}
-
-.recording {
-  background-color: $lightColor;
-  min-height: 100vh;
-}
-
-@media #{$ns} {
-  .imageLayout {
-    max-width: $w6;
   }
 }

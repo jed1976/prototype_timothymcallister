@@ -1,6 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { Title } from '../components/typography'
 import styles from '../styles/hero.module.scss'
 
 const Hero = props => {
@@ -17,7 +18,7 @@ const Hero = props => {
 
     {props.title
       ? <div className={styles.titleWrapper}>
-          <h1 className={styles.title}>{props.title}</h1>
+          <Title className={styles.title} content={props.title} />
         </div>
       : ''
     }

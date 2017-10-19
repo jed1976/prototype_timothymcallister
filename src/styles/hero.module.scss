@@ -18,17 +18,9 @@
   animation-duration: 1280ms;
   animation-timing-function: ease-in-out;
   bottom: 20%;
-  color: $primaryColor;
-  font-family: $baskerville;
-  font-size: $f0;
-  font-style: italic;
-  font-weight: $fw4;
   position: absolute;
-  margin: 0;
-  padding: 0 $s1; // Fix for Mobile Safari
   right: $s4;
   text-align: right;
-  @include measure;
 }
 
 .titleWrapper {
@@ -41,8 +33,7 @@
 }
 
 @media #{$ns} {
-  .title {
-    font-size: $f-title;
+  .title {    
     right: $s5;
   }
 }

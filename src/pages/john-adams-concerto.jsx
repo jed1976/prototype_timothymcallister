@@ -1,49 +1,42 @@
-import React from 'react'
+import { Caption, Heading, Paragraph, Subtitle } from '../components/typography'
+import { Container, Page, Section, Wrapper } from '../components/layout'
+
 import ContactCard from '../components/contact-card'
-import Container from '../components/container'
-import dateformat from 'dateformat'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import LazyLoad from 'react-lazyload'
-import Link from 'gatsby-link'
-import marked from 'marked'
-import Quote from '../components/quote'
+import { Quote } from '../components/typography'
+import React from 'react'
 import Recording from '../components/recording'
-import applauseStyles from '../styles/applause.module.scss'
+import dateformat from 'dateformat'
 import styles from '../styles/johnAdamsConcerto.module.scss'
-import typographicBase from 'typographic-base'
 
 export default (props) => {
-  const pageData = props.data.allContentfulPage.edges[0].node
   const bookingContact = props.data.contentfulContactInfo
-  const recording = props.data.contentfulRecording
   const interviewLinks = props.data.allContentfulInterviewLink.edges
+  const pageData = props.data.allContentfulPage.edges[0].node
   const quotes = props.data.allContentfulQuote.edges
-
-  let intro = pageData.description.description
-  intro = typographicBase(intro, { locale: 'en-us' })
-  const dropCap = `<span class=${styles.dropCap}><em>${intro.substr(0, 1)}</em></span>`
-  intro = intro.replace(/^\w/, dropCap)
+  const recording = props.data.contentfulRecording
 
   return (
-    <Container>
+    <Page>
       <Helmet>
         <title>{pageData.title}</title>
       </Helmet>
 
       <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
-      <div className={styles.contentWrapper}>
-        <header className={styles.intro}>
-          <div
-            className={styles.paragraphWrapper}
-            dangerouslySetInnerHTML={{ __html: marked(intro) }} />
-        </header>
+      <Wrapper>
+        <Section centerContent padding theme="dark">
+          <Container width="regular">
+            <Paragraph callout content={pageData.description.description} dropCap />
+          </Container>
+        </Section>
 
-        <section className={styles.lightSection}>
-          <h2 className={styles.stickyHeading}>Booking</h2>
+        <Section centerContent padding theme="light">
+          <Subtitle content="Booking" />
 
-          <div className={styles.cardContent}>
+          <Container>
             <ContactCard
               className={styles.contactCard}
               name={bookingContact.name}
@@ -57,16 +50,16 @@ export default (props) => {
               zipCode={bookingContact.zipCode}
               emailAddress={bookingContact.emailAddress}
             />
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <section className={styles.videoSection}>
-          <div className={styles.videoWrapper}>
+        <Section centerContent padding theme="dark">
+          <Container className={styles.videoWrapper} width="full">
             <LazyLoad height='100vh' offset={250}>
-              <iframe allowfullscreen className={styles.video} src="https://www.youtube-nocookie.com/embed/ChiynCzpuYQ?hd=1&amp;rel=0&amp;showinfo=0"></iframe>
+              <iframe allowFullScreen className={styles.video} src="https://www.youtube-nocookie.com/embed/ChiynCzpuYQ?hd=1&amp;rel=0&amp;showinfo=0"></iframe>
             </LazyLoad>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         <LazyLoad height='100vh' offset={250}>
           <Recording
@@ -80,47 +73,30 @@ export default (props) => {
           />
         </LazyLoad>
 
-        <section className={styles.lightSection}>
-          <h3 className={styles.stickyHeading}>Features</h3>
+        <Section padding theme="light">
+          <Subtitle content="Features" />
 
-          <div className={styles.content}>
-            <ol className={styles.list}>
-              {interviewLinks.map(({ node }) =>
-              <li className={styles.item} key={node.id}>
-                <h1 className={styles.heading}>{typographicBase(node.title, { locale: 'en-us'})}</h1>
+          {interviewLinks.map(({ node }) =>
+          <Container key={node.id}>
+            <Heading content={node.title} />
+            <Caption content={dateformat(node.date, 'mmmm d, yyyy')} />
 
-                <h2 className={styles.caption}>{dateformat(node.date, 'mmmm d, yyyy')}</h2>
+            <footer className={styles.detailFooter}>
+              <a className={styles.link} href={node.link}>{node.source}</a>
+            </footer>
+          </Container>
+          )}
+        </Section>
 
-                <footer className={styles.detailFooter}>
-                  <a className={styles.link} href={node.link}>{node.source}</a>
-                </footer>
-              </li>
-              )}
-            </ol>
-          </div>
-        </section>
+        <Section centerContent padding theme="dark">
+          <Subtitle content="Reviews" />
 
-        <section className={applauseStyles.contentWrapper}>
-          <div className={applauseStyles.content}>
-            <h3 className={styles.stickyHeading}>Reviews</h3>
-
-            <ol className={styles.list}>
-            {quotes.map(({ node }, index) =>
-            <LazyLoad height='100vh' key={node.id} offset={250} once>
-              <li className={applauseStyles.quote}>
-                <Quote
-                  author={node.author}
-                  quote={node.quote.quote}
-                  source={node.source}>
-                </Quote>
-              </li>
-            </LazyLoad>
-            )}
-            </ol>
-          </div>
-        </section>
-      </div>
-    </Container>
+          {quotes.map(({ node }, index) =>
+            <Quote author={node.author} key={index} quote={node.quote.quote} source={node.source} />
+          )}
+        </Section>
+      </Wrapper>
+    </Page>
   )
 }
 

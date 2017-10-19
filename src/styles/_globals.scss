@@ -16,28 +16,6 @@ select {
               sans-serif;
 }
 
-.caption {
-  color: $primaryColor;
-  display: block;
-  font-size: $f6;
-  font-weight: $fw5;
-  letter-spacing: $tracked;
-  line-height: $lh-title;
-  text-transform: uppercase;
-}
-
-.content {
-  margin: 0 auto;
-  padding: $s5 $s4;
-  max-width: $w6;
-}
-
-.contentWrapper {
-  position: relative;
-  transform: translate3d(0, 0, 0);
-  z-index: 999;
-}
-
 .detailFooter {
   margin-top: $s4;
   order: 2;
@@ -69,105 +47,12 @@ select {
   }
 }
 
-.dropCap {
-  float: left;
-  height: $h3;
-  margin: 0;
-  padding: $s2 $s2 $s2 0;
-  text-align: center;
-  width: $w3;
-
-  em {
-    display: inline-block;
-    color: $primaryColor;
-    font-family: $baskerville;
-    font-size: $f-headline;
-    font-style: italic;
-    font-weight: $fw4;
-    line-height: .75;
-    vertical-align: top;
-  }
-}
-
-.heading {
-  color: inherit;
-  display: block;
-  font-family: $baskerville;
-  font-size: $f2;
-  font-style: italic;
-  font-weight: $fw5;
-  line-height: $lh-title;
-  margin: 0 0 $s4 0;
-  @include measure;
-}
-
-.heading2 {
-  color: inherit;
-  display: block;
-  font-size: $f4;
-  font-weight: $fw7;
-  line-height: $lh-title;
-  margin: 0;
-}
-
-.list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.paragraphWrapper {
-  overflow: hidden;
-
-  a {
-    color: $lightColor;
-    text-decoration: none;
-    transition: color 360ms ease;
-  }
-
-  a:hover {
-    color: $primaryColor;
-  }
-
-  p {
-    color: $midColor;
-    font-size: $f5;
-    font-weight: $fw4;
-    line-height: $lh-copy;
-    margin: 0 0 $s4 0;
-  }
-
-  strong {
-    color: $lightColor;
-  }
-}
-
-.stickyHeading {
-  color: $primaryColor;
-  display: block;
-  font-size: $f3;
-  font-weight: $fw4;
-  line-height: $lh-title;
-  margin: 0;
-  padding: calc(#{$s3} + #{$s3} ) $s4;
-  text-transform: uppercase;
+.imageLayout {
+  width: $w5;
 }
 
 @media #{$ns} {
-  .content {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .stickyHeading {
-    font-size: $f1;
-    left: 0;
-    padding: calc(#{$s4} + #{$s2}) $s3;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    -webkit-writing-mode: vertical-rl;
-    writing-mode: vertical-rl;
-    z-index: 9999;
+  .imageLayout {
+    width: $w6;
   }
 }

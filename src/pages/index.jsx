@@ -1,9 +1,9 @@
-import React from 'react'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
-import Container from '../components/container'
-import Logo from '../components/logo'
 import Link from 'gatsby-link'
+import Logo from '../components/logo'
+import { Page } from '../components/layout'
+import React from 'react'
 import styles from '../styles/index.module.scss'
 
 export default class Home extends React.Component {
@@ -28,7 +28,7 @@ export default class Home extends React.Component {
     const pageData = this.props.data.allContentfulPage.edges[0].node
 
     return (
-      <Container hideLogo>
+      <Page hideLogo>
         <Helmet>
           <title>{pageData.title}</title>
         </Helmet>
@@ -71,7 +71,7 @@ export default class Home extends React.Component {
             </div>
           </div>
         </div>
-      </Container>
+      </Page>
     )
   }
 }

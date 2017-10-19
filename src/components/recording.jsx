@@ -1,9 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import { Caption, Heading, Paragraph } from '../components/typography'
+import { Container, Section } from '../components/layout'
+
 import Img from 'gatsby-image'
+import PropTypes from 'prop-types'
+import React from 'react'
 import dateformat from 'dateformat'
-import typographicBase from 'typographic-base'
-import marked from 'marked'
 import styles from '../styles/recording.module.scss'
 
 export default class Recording extends React.Component {
@@ -106,20 +107,22 @@ export default class Recording extends React.Component {
     const mediaButtonText = this.props.media ? 'Play Sample' : ''
 
     return (
-      <section className={styles.recording} key={this.props.id}>
-        <header className={styles.imageLayout}>
-          <Img
-            outerWrapperClassName={styles.imageWrapper}
-            className={styles.image}
-            sizes={this.props.imageSrc}
-          />
-        </header>
+      <article key={this.props.id}>
+        <Section centerContent padding sticky theme="light">
+          <Container className={styles.imageLayout}>
+            <Img
+              outerWrapperClassName={styles.imageWrapper}
+              className={styles.image}
+              sizes={this.props.imageSrc}
+            />
+          </Container>
+        </Section>
 
-        <article className={styles.contentWrapper}>
-          <div className={styles.content}>
-            <h1 className={styles.heading}>{typographicBase(this.props.title, { locale: 'en-us'})}</h1>
+        <Section centerContent padding theme="dark">
+          <Container>
+            <Heading content={this.props.title} />
 
-            <h2 className={styles.caption}>{date}</h2>
+            <Caption content={date} />
 
             {this.props.media ?
             <div className={styles.mediaPlayer} ref={mediaPlayer => this.mediaPlayer = mediaPlayer}>
@@ -165,9 +168,7 @@ export default class Recording extends React.Component {
               src={this.props.media}
             ></audio>
 
-            <div
-              className={styles.paragraphWrapper}
-              dangerouslySetInnerHTML={{ __html: marked(typographicBase(this.props.description, { locale: 'en-us' })) }} />
+            <Paragraph content={this.props.description} />
 
             {this.props.recordingUrl ?
             <footer className={styles.detailFooter}>
@@ -175,9 +176,9 @@ export default class Recording extends React.Component {
             </footer>
             : ''
             }
-          </div>
-        </article>
-      </section>
+          </Container>
+        </Section>
+      </article>
     )
   }
 }

@@ -1,37 +1,20 @@
-import React from 'react'
-import Container from '../components/container'
+import { Container, Page, Section, Wrapper } from '../components/layout'
+import { Paragraph, Quote } from '../components/typography'
+
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import Link from 'gatsby-link'
-import Quote from '../components/quote'
-import typographicBase from 'typographic-base'
-import marked from 'marked'
+import React from 'react'
 import styles from '../styles/biography.module.scss'
 
 export default (props) => {
   const pageData = props.data.allContentfulPage.edges[0].node
   const node = props.data.contentfulBiography
   const paragraphs = node.biography.biography.split('\n\n')
-
-  const renderedBiography = paragraphs.map((paragraph, index) => {
-    paragraph = typographicBase(paragraph, { locale: 'en-us' })
-
-    if (index === 0) {
-      const dropCap = `<span class=${styles.dropCap}><em>${paragraph.substr(0, 1)}</em></span>`
-      paragraph = paragraph.replace(/^\w/, dropCap)
-    }
-
-    return (
-      <div className={styles.paragraphWrapper}
-          dangerouslySetInnerHTML={{ __html: marked(paragraph) }}
-          key={index}
-       />
-    )
-  })
-
   const quotes = props.data.allContentfulQuote.edges
   const primaryQuote = quotes[0].node
   const secondaryQuote = quotes[1].node
+  const renderedBiography = paragraphs.map((paragraph, index) => <Paragraph content={paragraph} dropCap={index === 0} key={index} />)
 
   renderedBiography.splice(2, 0,
     <Quote
@@ -52,26 +35,28 @@ export default (props) => {
   )
 
   return (
-    <Container>
+    <Page>
       <Helmet>
         <title>{pageData.title}</title>
       </Helmet>
 
       <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
-      <article className={styles.contentWrapper}>
-        <div className={styles.content}>
-          <div className={styles.columns}>
-            {renderedBiography}
-          </div>
+      <Wrapper>
+        <Section theme="dark" padding>
+          <Container width="wide">
+            <div className={styles.columns}>
+              {renderedBiography}
+            </div>
 
-          <footer className={styles.detailFooter}>
-            <a className={styles.link} href={node.shortBiography.file.url}>Short Biography</a>
-            <a className={styles.link} href={node.longBiography.file.url}>Long Biography</a>
-          </footer>
-        </div>
-      </article>
-    </Container>
+            <footer className={styles.detailFooter}>
+              <a className={styles.link} href={node.shortBiography.file.url}>Short Biography</a>
+              <a className={styles.link} href={node.longBiography.file.url}>Long Biography</a>
+            </footer>
+          </Container>
+        </Section>
+      </Wrapper>
+    </Page>
   )
 }
 

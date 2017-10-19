@@ -1,0 +1,76 @@
+@import '../styles/base';
+
+.container {
+  margin: 0 auto;
+  max-width: $w6;
+  width: 100%;
+}
+
+.container[data-width="regular"] {
+  max-width: $w7;  
+}
+
+.container[data-width="full"] {
+  margin: 0;
+  max-width: none;
+  width: 100%;
+}
+
+.page {
+  @include fade;
+  min-height: 100vh;
+}
+
+.section {
+  transform: translate3d(0, 0, 0);
+
+  &[data-theme="dark"] {
+    background-color: $darkColor;
+    color: $lightColor;
+  }
+
+  &[data-theme="light"] {
+    background-color: $lightColor;
+    color: $darkColor;
+  }
+
+  &[data-center="true"] {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+  }
+
+  &[data-padding="true"] {
+    padding: $s5 $s4;
+  }
+
+  &[data-sticky="true"] {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    transform: none;
+  }
+}
+
+.wrapper {
+  background-color: $lightColor;
+  min-height: 100vh;
+  position: relative;
+  transform: translate3d(0, 0, 0);
+  z-index: 1;
+}
+
+
+@media #{$ns} {
+  .container {
+    max-width: $w6;
+  }
+}
+
+@media #{$l} {
+  .container[data-width="wide"] {
+    max-width: $w8;
+  }
+}

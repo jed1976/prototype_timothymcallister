@@ -1,10 +1,10 @@
-import React from 'react'
-import Container from '../components/container'
+import { Caption, Heading, Subtitle } from '../components/typography'
+import { Container, Page, Section, Wrapper } from '../components/layout'
+
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
-import LazyLoad from 'react-lazyload'
 import Link from 'gatsby-link'
-import typographicBase from 'typographic-base'
+import React from 'react'
 import styles from '../styles/premieres.module.scss'
 
 export default (props) => {
@@ -24,37 +24,36 @@ export default (props) => {
   })
 
   return (
-    <Container>
+    <Page>
       <Helmet>
         <title>{pageData.title}</title>
       </Helmet>
 
       <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
-      {years.map(year => {
-        return (
-      <section className={styles.contentWrapper} key={year}>
-        <h3 className={styles.stickyHeading}>{year}</h3>
+      <Wrapper padding>
+        {years.map((year, index) => {
+          const theme = index % 2 === 0 ? `light` : `dark`
 
-        <ol className={styles.list}>
-        {premieres[year].map(({ node }) =>
-        <LazyLoad height='100vh' key={node.id} offset={250} once>
-          <li className={styles.content} key={node.id}>
-            <h1 className={styles.heading}>{typographicBase(node.title, { locale: 'en-us'})}</h1>
+          return (
+        <Section key={year} padding theme={theme}>
+          <Subtitle content={year} />
 
-            <h2 className={styles.caption}>{node.composer}</h2>
+          {premieres[year].map(({ node }) =>
+          <Container key={node.id}>
+            <Heading content={node.title} />
+            <Caption content={node.composer} />
 
             <footer className={styles.detailFooter}>
               <span className={styles.link}>{node.category}</span>
             </footer>
-          </li>
-        </LazyLoad>
-        )}
-        </ol>
-      </section>
-        )
-      })}
-    </Container>
+          </Container>
+          )}
+        </Section>
+          )
+        })}
+      </Wrapper>
+    </Page>
   )
 }
 

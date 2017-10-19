@@ -1,47 +1,50 @@
-import React from 'react'
+import { Container, Page, Section, Wrapper } from '../components/layout'
+
 import ContactCard from '../components/contact-card'
-import Container from '../components/container'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
-import Link from 'gatsby-link'
-import styles from '../styles/contact.module.scss'
+import React from 'react'
+import { Subtitle } from '../components/typography'
 
 export default (props) => {
   const pageData = props.data.allContentfulPage.edges[0].node
   const contactInfo = props.data.allContentfulContactInfo.edges
 
   return (
-    <Container>
+    <Page>
       <Helmet>
         <title>{pageData.title}</title>
       </Helmet>
 
       <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
-      <div className={styles.contentWrapper}>
-        <ol className={styles.list}>
-        {contactInfo.map(({ node }) =>
-        <li className={styles.item} key={node.id}>
-          <h1 className={styles.stickyHeading}>{node.title}</h1>
+      <Wrapper>
+        {contactInfo.map(({ node }, index) => {
+          const theme = index % 2 === 0 ? `light` : `dark`
 
-          <ContactCard
-            className={styles.content}
-            name={node.name}
-            role={node.role}
-            organization={node.organization}
-            unit={node.unit}
-            address1={node.address1}
-            address2={node.address2}
-            city={node.city}
-            state={node.state}
-            zipCode={node.zipCode}
-            emailAddress={node.emailAddress}
-          />
-        </li>
-        )}
-        </ol>
-      </div>
-    </Container>
+          return (
+        <Section centerContent key={index} padding theme={theme}>
+          <Subtitle content={node.title} />
+
+          <Container>
+            <ContactCard
+              name={node.name}
+              role={node.role}
+              organization={node.organization}
+              unit={node.unit}
+              address1={node.address1}
+              address2={node.address2}
+              city={node.city}
+              state={node.state}
+              zipCode={node.zipCode}
+              emailAddress={node.emailAddress}
+            />
+          </Container>
+        </Section>
+        )
+      })}
+      </Wrapper>
+    </Page>
   )
 }
 

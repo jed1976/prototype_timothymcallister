@@ -1,13 +1,5 @@
 @import '../styles/base';
 
-.contentWrapper {
-  background-color: $lightColor;
-}
-
-.detailFooter {
-  margin-top: 0;
-}
-
 .mapImage {
   background-position: center;
   background-repeat: no-repeat;
@@ -20,38 +12,8 @@
   @include aspect-ratio--1x1;
 }
 
-.monthWrapper:nth-child(odd) {
-  background-color: $darkColor;
-
-  .heading,
-  .link {
-    color: $lightColor;
-  }
-}
-
-.paragraphWrapper {
-  margin-top: $s4;
-}
-
 .performance {
-  align-items: center;
-  display: flex;
-  min-height: 100vh;
-}
-
-.performanceList {
-  clear: both;
-  list-style: none;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-}
-
-.performanceWrapper {
-  margin: 0 auto;
-  max-width: $w6;
-  padding: $s4;
-  text-decoration: none;
+  margin-bottom: $s6;
 }
 
 .yearSelector {
@@ -67,24 +29,27 @@
   float: right;
   font-size: $f3;
   font-weight: $fw4;
-  margin: $s4;
   outline: 0;
   padding-right: $s3;
+  position: absolute;
+  right: $s4;
   text-align: right;
+  top: $s5;
+  z-index: 1;
   -moz-appearance: none;
   -webkit-appearance: none;
 }
 
 @media #{$ns} {
-  .performanceList {
-    margin-top: -$s7;
+  .performance {
+    margin-bottom: $s7;
   }
 
   .yearSelector {
     font-size: $f2;
+    margin-top: $s5;
     position: -webkit-sticky;
     position: sticky;
-    top: $s4;
   }
 }
 
@@ -94,25 +59,27 @@
     width: 50%;
   }
 
-  .performance:nth-child(odd) {
-    .map {
-      order: 1;
-      padding-left: $s4;
+  .performance {
+    &:nth-child(even) {
+      .map {
+        order: 1;
+        padding-left: $s4;
+      }
+
+      .performanceDetails {
+        order: 0;
+      }
     }
 
-    .performanceDetails {
-      order: 0;
-    }
-  }
+    &:nth-child(odd) {
+      .map {
+        order: 0;
+        padding-right: $s4;
+      }
 
-  .performance:nth-child(even) {
-    .map {
-      order: 0;
-      padding-right: $s4;
-    }
-
-    .performanceDetails {
-      order: 1;
+      .performanceDetails {
+        order: 1;
+      }
     }
   }
 
@@ -120,7 +87,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-bottom: $s7;
     max-width: inherit;
-    width: $w8;
   }
 }

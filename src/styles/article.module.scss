@@ -1,0 +1,15 @@
+@import '../styles/base';
+
+.article {
+  margin-bottom: $s5;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+@media #{$ns} {
+  .article {
+    margin-bottom: $s6;
+  }
+}

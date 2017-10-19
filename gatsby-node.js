@@ -3,7 +3,7 @@ const path = require('path')
 const download = require('image-downloader')
 const slugg = require('slugg')
 
-const mapboxAPIKey = `pk.eyJ1IjoiaGFuZHdoaXR0bGVkIiwiYSI6ImNqOGcxOGhkcTA2bGszMm82YWprcHF5ZWMifQ.d4k3x4NJtNt6CEPWxnWTwg`
+const mapboxAPIKey = `pk.eyJ1IjoiaGFuZHdoaXR0bGVkIiwiYSI6ImNqOHgza3J3eDF3aDAyeG8ybGdncGp1bTMifQ.dilYN_wj3BlIyC1oSXpHTg`
 const pinImage = encodeURIComponent('https://images.contentful.com/xi6f0m2riap0/slkjct7o4gyqYau20m8SI/11d48e939b7644b948bb3c28f13705f6/marker.png')
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
@@ -30,6 +30,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
               .then(({ filename, image }) => {
                 console.log('Map file saved to: ', filename)
               }).catch((err) => {
+                console.log('ERROR')
                 throw err
               })
           }

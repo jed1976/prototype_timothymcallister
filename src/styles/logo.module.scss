@@ -1,6 +1,6 @@
 @import '../styles/base';
 
-.header {
+.logo {
   color: inherit;
   position: fixed;
   left: $s3;
@@ -49,7 +49,7 @@
   }
 }
 
-.header[data-size="large"] {
+.logo[data-size="large"] {
   color: $lightColor;
   pointer-events: none;
   position: static;
@@ -65,7 +65,7 @@
 }
 
 @media #{$ns} {
-  .header {
+  .logo {
     left: $s4;
     top: $s4;
   }

@@ -1,11 +1,10 @@
-import React from 'react'
-import Container from '../components/container'
+import { Caption, Heading, Paragraph, Subtitle } from '../components/typography'
+import { Container, Page, Section, Wrapper } from '../components/layout'
+
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import LazyLoad from 'react-lazyload'
-import Link from 'gatsby-link'
-import marked from 'marked'
-import typographicBase from 'typographic-base'
+import React from 'react'
 import styles from '../styles/performances.module.scss'
 
 export default class Performances extends React.Component {
@@ -35,19 +34,19 @@ export default class Performances extends React.Component {
   }
 
   getFormattedMonth(month) {
-    return new Date(`${month+1}/01/01`).toLocaleString('en-us', { month: 'long' })
+    return new Date(`${month+1}/1/17`).toLocaleString('en-us', { month: 'long' })
   }
 
   onChange(e) {
     this.setState({
       currentYear: e.target.value
     })
-    this.contentWrapper.scrollIntoView()
+
+    this.wrapper.scrollIntoView()
   }
 
   render() {
     const pageData = this.props.data.allContentfulPage.edges[0].node
-
     const performances = {}
 
     const performancesForCurrentYear = this.props.data.allContentfulPerformance.edges
@@ -69,14 +68,14 @@ export default class Performances extends React.Component {
     })
 
     return (
-      <Container>
+      <Page>
         <Helmet>
           <title>{pageData.title}</title>
         </Helmet>
 
         <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
-        <div className={styles.contentWrapper} ref={(contentWrapper) => this.contentWrapper = contentWrapper}>
+        <Wrapper ref={wrapper => this.wrapper = wrapper}>
           <select
             className={styles.yearSelector}
             defaultValue={this.state.currentYear}
@@ -85,51 +84,51 @@ export default class Performances extends React.Component {
               {years.map(year => <option key={year} value={year}>{year}</option>)}
           </select>
 
-          {months.map(month => {
-            return (
-          <section className={styles.monthWrapper} key={this.getFormattedMonth(month)}>
-            <h3 className={styles.stickyHeading}>{this.getFormattedMonth(month)}</h3>
+          {months.map((month, index) => {
+            const theme = index % 2 === 0 ? `light` : `dark`
 
-            <ol className={styles.performanceList}>
+            return (
+          <Section key={index} padding theme={theme}>
+            <Subtitle content={this.getFormattedMonth(month)} />
+
             {performances[month].map(({ node }, index) => {
               const url = this.getEventURL(node.locationName, node.location)
+              const futureDate = new Date(node.date) >= new Date()
 
               return (
-              <LazyLoad height='100vh' key={node.id} offset={250} once>
-                <li className={styles.performance}>
-                  <div className={styles.performanceWrapper}>
-                    <div className={styles.performanceDetails}>
-                      <h1 className={styles.heading}>{typographicBase(node.title, { locale: 'en-us'})}</h1>
+              <article className={styles.performance}>
+                <Container className={styles.performanceWrapper} width="wide">
+                  <div className={styles.performanceDetails}>
+                    <Heading className={styles.text} content={node.title} />
+                    <Caption content={this.getFormattedDate(node.date)} />
+                    <Paragraph content={node.description.description} />
+                  </div>
 
-                      <h2 className={styles.caption}>{this.getFormattedDate(node.date)}</h2>
-
-                      <div className={styles.paragraphWrapper} dangerouslySetInnerHTML={{ __html: marked(typographicBase(node.description.description, { locale: 'en-us'})) }} />
-                    </div>
-
-                    <div className={styles.map}>
+                  <div className={styles.map}>
+                    <LazyLoad height='100vh' key={node.id} offset={500} once>
                       <a className={styles.mapWrapper} href={url}>
                         <div className={styles.mapImage} style={{ backgroundImage: `url('/static/${node.fields.mapImage}')` }}></div>
                       </a>
-                    </div>
-
-                    <footer className={styles.detailFooter}>
-                      <a className={styles.link} href={url}>{node.locationName}</a>
-                      {node.ticketInformation
-                        ? <a className={styles.link} href={node.ticketInformation}>Ticket Information</a>
-                        : ''
-                      }
-                    </footer>
+                    </LazyLoad>
                   </div>
-                </li>
-              </LazyLoad>
+
+                  <footer className={styles.detailFooter}>
+                    <a className={styles.link} href={url}>{node.locationName}</a>
+                    {node.ticketInformation && futureDate
+                      ? <a className={styles.link} href={node.ticketInformation}>Ticket Information</a>
+                      : ''
+                    }
+                  </footer>
+                </Container>
+              </article>
               )
             })}
-            </ol>
-          </section>
+
+          </Section>
           )
           })}
-        </div>
-      </Container>
+        </Wrapper>
+      </Page>
     )
   }
 }

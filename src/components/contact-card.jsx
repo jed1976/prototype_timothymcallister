@@ -1,16 +1,17 @@
-import React from 'react'
+import { Caption, Heading, Heading2 } from '../components/typography'
+
 import Mailto from 'react-protected-mailto'
 import PropTypes from 'prop-types'
+import React from 'react'
 import styles from '../styles/contactCard.module.scss'
-import typographicBase from 'typographic-base'
 
 const ContactCard = props => {
   return (
     <article className={`${styles.card} ${props.className}`}>
-      {props.name ? <h2 className={styles.heading}>{props.name}</h2> : ''}
-      {props.role ? <h3 className={styles.caption}>{props.role}</h3> : ''}
-      {props.organization ? <h4 className={styles.heading2}>{props.organization}</h4> : ''}
-      {props.unit ? <h4 className={styles.heading2}>{props.unit}</h4> : ''}
+      {props.name ? <Heading content={props.name} /> : ''}
+      {props.role ? <Caption className={styles.caption} content={props.role} /> : ''}
+      {props.organization ? <Heading2 className={styles.heading2} content={props.organization} /> : ''}
+      {props.unit ? <Heading2 className={styles.heading2} content={props.unit} /> : ''}
 
       <address className={styles.address}>
         <div>{props.address1}</div>

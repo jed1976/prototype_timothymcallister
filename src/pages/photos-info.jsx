@@ -1,53 +1,53 @@
-import React from 'react'
-import Container from '../components/container'
+import { Container, Page, Section, Wrapper } from '../components/layout'
+
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import Img from 'gatsby-image'
-import LazyLoad from 'react-lazyload'
 import Link from 'gatsby-link'
+import React from 'react'
 import styles from '../styles/photosInfo.module.scss'
 
 export default (props) => {
   const pageData = props.data.allContentfulPage.edges[0].node
   const photos = props.data.allContentfulImages.edges
   const biography = props.data.allContentfulBiography.edges[0].node
+  let theme
 
   return (
-    <Container>
+    <Page>
       <Helmet>
         <title>{pageData.title}</title>
       </Helmet>
 
       <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
-      <div className={styles.contentWrapper}>
-        <div className={styles.content}>
-          <ol className={styles.list}>
-            {photos.map(({ node }) =>
-            <LazyLoad height='100vh' key={node.id} offset={250} once>
-              <li className={styles.item}>
-                <div className={styles.itemWrapper}>
-                  <Img sizes={node.image.responsiveResolution} />
+      <Wrapper>
+      {photos.map(({ node }, index) => {
+        theme = index % 2 === 0 ? `dark` : `light`
 
-                  <footer className={styles.detailFooter}>
-                    <a className={styles.link} download href={node.image.responsiveResolution.src}>Download</a>
-                  </footer>
-                </div>
-              </li>
-            </LazyLoad>
-            )}
-            <li className={styles.item} key={new Date().toISOString()}>
-              <div className={styles.itemWrapper}>
-                <footer className={styles.detailFooter}>
-                  <a className={styles.link} href={biography.shortBiography.file.url}>Short Biography</a>
-                  <a className={styles.link} href={biography.longBiography.file.url}>Long Biography</a>
-                </footer>
-              </div>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </Container>
+        return (
+        <Section centerContent key={index} padding sticky theme={theme}>
+          <Container className={styles.imageLayout}>
+            <Img sizes={node.image.responsiveResolution} />
+
+            <footer className={styles.detailFooter}>
+              <a className={styles.link} download href={node.image.responsiveResolution.src}>Download</a>
+            </footer>
+          </Container>
+        </Section>
+        )
+      })}
+
+        <Section centerContent padding sticky theme={theme === 'dark' ? 'light' : 'dark'}>
+          <Container className={styles.imageLayout}>
+            <footer className={styles.detailFooter}>
+              <a className={styles.link} href={biography.shortBiography.file.url}>Short Biography</a>
+              <a className={styles.link} href={biography.longBiography.file.url}>Long Biography</a>
+            </footer>
+          </Container>
+        </Section>
+      </Wrapper>
+    </Page>
   )
 }
 

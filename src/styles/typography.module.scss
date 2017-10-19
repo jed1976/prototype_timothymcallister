@@ -1,0 +1,201 @@
+@import '../styles/base';
+
+.blockquote {
+  border-left-color: $primaryColor;
+  border-left-style: solid;
+  border-left-width: $bw3;
+  margin: $s4 auto;
+  max-width: $w6;
+  padding-left: $s4;
+
+  &[data-spacing="small"] {
+    margin: $s3 auto;
+  }
+
+  &[data-spacing="large"] {
+    margin: $s5 auto;
+  }
+
+  .quote {
+    color: inherit;
+    font-family: $baskerville;
+    font-size: $f3;
+    line-height: $lh-copy;
+    margin: 0 0 $s4 0;
+    @include measure;
+
+    a {
+      color: $primaryColor;
+      text-decoration: none;
+      transition: color 360ms ease;
+    }
+
+    a:hover {
+      color: $midColor;
+    }
+  }
+
+  .author {
+    color: $primaryColor;
+    font-weight: $fw4;
+    letter-spacing: $tracked;
+    line-height: $lh-title;
+    margin: 0 0 $s3 0;
+    text-transform: uppercase;
+  }
+
+  .source {
+    color: $primaryColor;
+    font-size: $f7;
+    font-style: italic;
+    font-weight: $fw4;
+    line-height: $lh-copy;
+    margin: 0;
+    @include measure;
+  }
+}
+
+.caption {
+  color: $primaryColor;
+  display: block;
+  font-size: $f6;
+  font-weight: $fw5;
+  letter-spacing: $tracked;
+  line-height: $lh-title;
+  text-transform: uppercase;
+  @include measure;
+}
+
+.heading {
+  color: inherit;
+  display: block;
+  font-family: $baskerville;
+  font-size: $f2;
+  font-style: italic;
+  font-weight: $fw5;
+  line-height: $lh-title;
+  margin: 0 0 $s4 0;
+  @include measure;
+}
+
+.heading2 {
+  color: inherit;
+  display: block;
+  font-size: $f4;
+  font-weight: $fw7;
+  line-height: $lh-title;
+  margin: 0 0 $s1 0;
+  @include measure;
+}
+
+.paragraph {
+  color: $midColor;
+  font-size: $f5;
+  font-weight: $fw4;
+  line-height: $lh-copy;
+  margin: 0 0 $s4 0;
+  overflow: hidden;
+
+  .dropCap {
+    float: left;
+    height: $h3;
+    margin: 0;
+    padding: $s2 $s2 $s2 0;
+    text-align: center;
+    width: $w3;
+
+    em {
+      display: inline-block;
+      color: $primaryColor;
+      font-family: $baskerville;
+      font-size: $f-headline;
+      font-style: italic;
+      font-weight: $fw4;
+      line-height: .75;
+      vertical-align: top;
+    }
+  }
+
+  a {
+    color: $primaryColor;
+    text-decoration: none;
+  }
+
+  strong {
+    color: $lightColor;
+  }
+
+  &[data-callout="true"] {
+    color: $lightColor;
+    font-size: $f4;
+
+    .dropCap {
+      padding-right: $s3 !important;
+    }
+  }
+}
+
+.subtitle {
+  align-self: flex-start;
+  color: $primaryColor;
+  font-size: $f3;
+  font-weight: $fw4;
+  line-height: $lh-title;
+  margin: 0 0 $s5 0;
+  text-transform: uppercase;
+}
+
+.title {
+  color: $primaryColor;
+  font-family: $baskerville;
+  font-size: $f0;
+  font-style: italic;
+  font-weight: $fw4;
+  margin: 0;
+  padding: 0 $s1; // Fix for Mobile Safari
+  @include measure;
+}
+
+
+@media #{$ns} {
+  .blockquote {
+    margin: $s5 auto;
+
+    &[data-spacing="small"] {
+      margin: $s4 auto;
+    }
+
+    &[data-spacing="large"] {
+      margin: $s6 auto;
+    }
+  }
+
+  .paragraph {
+    &[data-callout="true"] {
+      font-size: $f3;
+    }
+  }
+
+  .subtitle {
+    font-size: $f1;
+    margin: 0;
+    position: -webkit-sticky;
+    position: sticky;
+    top: $s5;
+    -ms-writing-mode: tb-rl;
+    -ms-writing-mode: vertical-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+    z-index: 9999;
+  }
+
+  .title {
+    font-size: $f-title;
+  }
+}
+
+@media #{$l} {
+  .quote {
+    font-size: $f2;
+  }
+}
