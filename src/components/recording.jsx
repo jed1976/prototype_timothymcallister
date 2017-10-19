@@ -2,6 +2,7 @@ import { Caption, Heading, Paragraph } from '../components/typography'
 import { Container, Section } from '../components/layout'
 
 import Img from 'gatsby-image'
+import List from '../components/list'
 import PropTypes from 'prop-types'
 import React from 'react'
 import dateformat from 'dateformat'
@@ -103,9 +104,6 @@ export default class Recording extends React.Component {
   }
 
   render() {
-    const date = dateformat(this.props.date, 'mmmm d, yyyy')
-    const mediaButtonText = this.props.media ? 'Play Sample' : ''
-
     return (
       <article key={this.props.id}>
         <Section centerContent padding sticky theme="light">
@@ -122,7 +120,7 @@ export default class Recording extends React.Component {
           <Container>
             <Heading content={this.props.title} />
 
-            <Caption content={date} />
+            <Caption content={dateformat(this.props.date, 'mmmm d, yyyy')} />
 
             {this.props.media ?
             <div className={styles.mediaPlayer} ref={mediaPlayer => this.mediaPlayer = mediaPlayer}>
@@ -170,11 +168,9 @@ export default class Recording extends React.Component {
 
             <Paragraph content={this.props.description} />
 
-            {this.props.recordingUrl ?
-            <footer className={styles.detailFooter}>
-              <a className={styles.link} href={this.props.recordingUrl}>More Information</a>
-            </footer>
-            : ''
+            {this.props.recordingUrl
+              ? <List items={[ { url: this.props.recordingUrl, title: 'More Information' } ]} />
+              : ''
             }
           </Container>
         </Section>

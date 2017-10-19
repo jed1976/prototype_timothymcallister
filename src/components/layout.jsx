@@ -36,7 +36,7 @@ class Wrapper extends React.Component {
 
   render() {
     return (
-      <div className={`${styles.wrapper} ${this.props.className}`} ref={wrapper => this.wrapper = wrapper} {...this.props}>
+      <div className={`${styles.wrapper} ${this.props.className}`} ref={wrapper => this.wrapper = wrapper}>
         {this.props.children}
       </div>
     )

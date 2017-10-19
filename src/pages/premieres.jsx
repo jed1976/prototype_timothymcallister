@@ -1,10 +1,11 @@
-import { Caption, Heading, Subtitle } from '../components/typography'
 import { Container, Page, Section, Wrapper } from '../components/layout'
 
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
+import InfoCard from '../components/info-card'
 import Link from 'gatsby-link'
 import React from 'react'
+import { Subtitle } from '../components/typography'
 import styles from '../styles/premieres.module.scss'
 
 export default (props) => {
@@ -39,16 +40,13 @@ export default (props) => {
         <Section key={year} padding theme={theme}>
           <Subtitle content={year} />
 
-          {premieres[year].map(({ node }) =>
-          <Container key={node.id}>
-            <Heading content={node.title} />
-            <Caption content={node.composer} />
-
-            <footer className={styles.detailFooter}>
-              <span className={styles.link}>{node.category}</span>
-            </footer>
-          </Container>
-          )}
+          {premieres[year].map(({ node }) => {
+            return (
+            <Container key={node.id}>
+              <InfoCard title={node.title} spacing="large" subtitle={node.composer} footerItems={[ { title: node.category }]} />
+            </Container>
+            )
+          })}
         </Section>
           )
         })}

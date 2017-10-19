@@ -4,6 +4,7 @@ import { Container, Page, Section, Wrapper } from '../components/layout'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import LazyLoad from 'react-lazyload'
+import List from '../components/list'
 import React from 'react'
 import styles from '../styles/performances.module.scss'
 
@@ -92,8 +93,14 @@ export default class Performances extends React.Component {
             <Subtitle content={this.getFormattedMonth(month)} />
 
             {performances[month].map(({ node }, index) => {
-              const url = this.getEventURL(node.locationName, node.location)
-              const futureDate = new Date(node.date) >= new Date()
+              const items = [{
+                url: this.getEventURL(node.locationName, node.location),
+                title: node.locationName
+              }]
+
+              if (node.ticketInformation && new Date(node.date) >= new Date()) {
+                items.push({ url: node.ticketInformation, title: 'Ticket Information' })
+              }
 
               return (
               <article className={styles.performance}>
@@ -106,19 +113,13 @@ export default class Performances extends React.Component {
 
                   <div className={styles.map}>
                     <LazyLoad height='100vh' key={node.id} offset={500} once>
-                      <a className={styles.mapWrapper} href={url}>
+                      <div className={styles.mapWrapper}>
                         <div className={styles.mapImage} style={{ backgroundImage: `url('/static/${node.fields.mapImage}')` }}></div>
-                      </a>
+                      </div>
                     </LazyLoad>
                   </div>
 
-                  <footer className={styles.detailFooter}>
-                    <a className={styles.link} href={url}>{node.locationName}</a>
-                    {node.ticketInformation && futureDate
-                      ? <a className={styles.link} href={node.ticketInformation}>Ticket Information</a>
-                      : ''
-                    }
-                  </footer>
+                  <List className={styles.list} items={items} />
                 </Container>
               </article>
               )

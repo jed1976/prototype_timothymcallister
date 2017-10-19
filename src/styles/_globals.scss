@@ -16,37 +16,6 @@ select {
               sans-serif;
 }
 
-.detailFooter {
-  margin-top: $s4;
-  order: 2;
-  width: 100%;
-
-  .link {
-    color: inherit;
-    display: block;
-    font-family: $baskerville;
-    font-size: $f4;
-    font-style: italic;
-    font-weight: $fw4;
-    line-height: $lh-copy;
-    margin: 0;
-    padding: $s3 0;
-    text-align: left;
-    text-decoration: none;
-    transition: color 360ms ease;
-  }
-
-  .link:first-of-type {
-    border-bottom-color: $primaryColor;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-  }
-
-  a.link:hover {
-    color: $midColor;
-  }
-}
-
 .imageLayout {
   width: $w5;
 }

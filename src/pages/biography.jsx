@@ -3,7 +3,7 @@ import { Paragraph, Quote } from '../components/typography'
 
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
-import Link from 'gatsby-link'
+import List from '../components/list'
 import React from 'react'
 import styles from '../styles/biography.module.scss'
 
@@ -15,6 +15,19 @@ export default (props) => {
   const primaryQuote = quotes[0].node
   const secondaryQuote = quotes[1].node
   const renderedBiography = paragraphs.map((paragraph, index) => <Paragraph content={paragraph} dropCap={index === 0} key={index} />)
+  const biographyDocuments = [
+    {
+      download: true,
+      url: node.shortBiography.file.url,
+      title: 'Short Biography'
+    },
+
+    {
+      download: true,
+      url: node.longBiography.file.url,
+      title: 'Full Biography'
+    }
+  ]
 
   renderedBiography.splice(2, 0,
     <Quote
@@ -49,10 +62,7 @@ export default (props) => {
               {renderedBiography}
             </div>
 
-            <footer className={styles.detailFooter}>
-              <a className={styles.link} href={node.shortBiography.file.url}>Short Biography</a>
-              <a className={styles.link} href={node.longBiography.file.url}>Long Biography</a>
-            </footer>
+            <List items={biographyDocuments} />
           </Container>
         </Section>
       </Wrapper>

@@ -1,0 +1,39 @@
+@import '../styles/base';
+
+.list {
+  list-style: none;
+  margin-top: $s4;
+  padding: 0;
+  width: 100%;
+
+  .item {
+    border-bottom-color: $primaryColor;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    color: inherit;
+    display: block;
+    font-family: $baskerville;
+    font-size: $f4;
+    font-style: italic;
+    font-weight: $fw4;
+    line-height: $lh-copy;
+    margin: 0;
+    padding: $s3 0;
+    text-align: left;
+    text-decoration: none;
+  }
+
+  .item:nth-child(2) {
+    border-bottom: 0;
+  }
+
+  .link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 360ms ease;
+
+    &:hover {
+      color: $midColor;
+    }
+  }
+}

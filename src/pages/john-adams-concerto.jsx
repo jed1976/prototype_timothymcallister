@@ -4,6 +4,7 @@ import { Container, Page, Section, Wrapper } from '../components/layout'
 import ContactCard from '../components/contact-card'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
+import InfoCard from '../components/info-card'
 import LazyLoad from 'react-lazyload'
 import { Quote } from '../components/typography'
 import React from 'react'
@@ -78,12 +79,7 @@ export default (props) => {
 
           {interviewLinks.map(({ node }) =>
           <Container key={node.id}>
-            <Heading content={node.title} />
-            <Caption content={dateformat(node.date, 'mmmm d, yyyy')} />
-
-            <footer className={styles.detailFooter}>
-              <a className={styles.link} href={node.link}>{node.source}</a>
-            </footer>
+            <InfoCard footerItems={[ { url: node.link, title: node.source }]} title={node.title} subtitle={dateformat(node.date, 'mmmm d, yyyy')} />
           </Container>
           )}
         </Section>

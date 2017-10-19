@@ -1,0 +1,27 @@
+@import '../styles/base';
+
+.infoCard {
+  margin-bottom: $s4;
+
+  &[data-spacing="small"] {
+    margin-bottom: $s3;
+  }
+
+  &[data-spacing="large"] {
+    margin-bottom: $s5;
+  }
+}
+
+@media #{$ns} {
+  .infoCard {
+    margin-bottom: $s5;
+
+    &[data-spacing="small"] {
+      margin-bottom: $s4;
+    }
+
+    &[data-spacing="large"] {
+      margin-bottom: $s6;
+    }
+  }
+}

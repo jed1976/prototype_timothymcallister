@@ -3,7 +3,7 @@ import { Container, Page, Section, Wrapper } from '../components/layout'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import Img from 'gatsby-image'
-import Link from 'gatsby-link'
+import List from '../components/list'
 import React from 'react'
 import styles from '../styles/photosInfo.module.scss'
 
@@ -11,6 +11,19 @@ export default (props) => {
   const pageData = props.data.allContentfulPage.edges[0].node
   const photos = props.data.allContentfulImages.edges
   const biography = props.data.allContentfulBiography.edges[0].node
+  const biographyDocuments = [
+    {
+      download: true,
+      url: biography.shortBiography.file.url,
+      title: 'Short Biography'
+    },
+
+    {
+      download: true,
+      url: biography.longBiography.file.url,
+      title: 'Full Biography'
+    }
+  ]
   let theme
 
   return (
@@ -30,9 +43,11 @@ export default (props) => {
           <Container className={styles.imageLayout}>
             <Img sizes={node.image.responsiveResolution} />
 
-            <footer className={styles.detailFooter}>
-              <a className={styles.link} download href={node.image.responsiveResolution.src}>Download</a>
-            </footer>
+            <List items={[ {
+              download: true,
+              url: node.image.responsiveResolution.src,
+              title: 'Download' }
+            ]} />
           </Container>
         </Section>
         )
@@ -40,10 +55,7 @@ export default (props) => {
 
         <Section centerContent padding sticky theme={theme === 'dark' ? 'light' : 'dark'}>
           <Container className={styles.imageLayout}>
-            <footer className={styles.detailFooter}>
-              <a className={styles.link} href={biography.shortBiography.file.url}>Short Biography</a>
-              <a className={styles.link} href={biography.longBiography.file.url}>Long Biography</a>
-            </footer>
+            <List items={biographyDocuments} />
           </Container>
         </Section>
       </Wrapper>

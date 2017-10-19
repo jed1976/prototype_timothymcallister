@@ -1,6 +1,6 @@
 import { Caption, Heading, Heading2 } from '../components/typography'
 
-import Mailto from 'react-protected-mailto'
+import List from '../components/list'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styles from '../styles/contactCard.module.scss'
@@ -19,9 +19,7 @@ const ContactCard = props => {
         <div>{props.city}, {props.state} {props.zipCode}</div>
       </address>
 
-      <footer className={styles.detailFooter}>
-        <Mailto className={styles.link} email={props.emailAddress} />
-      </footer>
+      <List items={[ { url: props.emailAddress, mailto: true, title: props.emailAddress } ]} />
     </article>
   )
 }
