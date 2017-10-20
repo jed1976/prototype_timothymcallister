@@ -2,6 +2,7 @@ import { Caption, Heading, Paragraph } from '../components/typography'
 import { Container, Section } from '../components/layout'
 
 import Img from 'gatsby-image'
+import LazyLoad from 'react-lazyload'
 import List from '../components/list'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -28,7 +29,7 @@ export default class Recording extends React.Component {
   }
 
   componentDidMount() {
-    this.media.style.display = 'none'
+    this.mediaPlayer.style.display = 'flex'
     window.addEventListener('beforeunload', this.onUnload)
   }
 
@@ -148,19 +149,21 @@ export default class Recording extends React.Component {
               : ''
             }
 
-            <audio
-              className={styles.media}
-              controls
-              onEnded={this.onEnded}
-              onLoadStart={this.onLoadStart}
-              onLoadedData={this.onLoadedData}
-              onPause={this.onPause}
-              onPlay={this.onPlay}
-              onTimeUpdate={this.onTimeUpdate}
-              preload="none"
-              ref={media => this.media = media}
-              src={this.props.media}
-            ></audio>
+            <LazyLoad height={50} key={this.props.id} offset={500}>
+              <audio
+                className={styles.media}
+                controls
+                onEnded={this.onEnded}
+                onLoadStart={this.onLoadStart}
+                onLoadedData={this.onLoadedData}
+                onPause={this.onPause}
+                onPlay={this.onPlay}
+                onTimeUpdate={this.onTimeUpdate}
+                preload="none"
+                ref={media => this.media = media}
+                src={this.props.media}
+              ></audio>
+            </LazyLoad>
 
             <Paragraph content={this.props.description} />
 

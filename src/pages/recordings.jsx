@@ -2,7 +2,6 @@ import { Page, Wrapper } from '../components/layout'
 
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
-import LazyLoad from 'react-lazyload'
 import React from 'react'
 import Recording from '../components/recording'
 
@@ -34,18 +33,16 @@ export default class Recordings extends React.Component {
 
         <Wrapper>
           {this.props.data.allContentfulRecording.edges.map(({ node }) =>
-          <LazyLoad height='100vh' key={node.id} offset={250}>
-            <Recording
-              date={node.date}
-              description={node.description ? node.description.description : ""}
-              id={node.id}
-              imageSrc={node.image.responsiveResolution}
-              media={node.media ? node.media.file.url : ""}
-              onMediaToggle={this.onMediaToggle}
-              recordingUrl={node.recordingUrl}
-              title={node.title}
-            />
-          </LazyLoad>
+          <Recording
+            date={node.date}
+            description={node.description ? node.description.description : ""}
+            id={node.id}
+            imageSrc={node.image.responsiveResolution}
+            media={node.media ? node.media.file.url : ""}
+            onMediaToggle={this.onMediaToggle}
+            recordingUrl={node.recordingUrl}
+            title={node.title}
+          />
           )}
         </Wrapper>
       </Page>

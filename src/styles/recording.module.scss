@@ -7,7 +7,7 @@
 }
 
 .media {
-  width: 100%;
+  display: none;
 }
 
 .mediaButton {
@@ -61,7 +61,7 @@
 
 .mediaPlayer {
   align-items: center;
-  display: flex;
+  display: none;
   margin: $s5 0 $s4 0;
 }
 
