@@ -34,7 +34,8 @@
 
 @media #{$ns} {
   .title {
+    bottom: 25%;
     right: $s5;
-    width: $w-two-thirds;
+    width: 90%;
   }
 }
