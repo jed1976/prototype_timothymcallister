@@ -36,7 +36,7 @@ export default (props) => {
 
       <Wrapper>
       {photos.map(({ node }, index) => {
-        theme = index % 2 === 0 ? `dark` : `light`
+        theme = index % 2 === 0 ? `light` : `dark`
 
         return (
         <Section centerContent key={index} padding sticky theme={theme}>

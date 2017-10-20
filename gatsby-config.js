@@ -82,7 +82,6 @@ module.exports = {
             allContentfulPage {
               edges {
                 node {
-                  id
                   title
                   slug
                 }
