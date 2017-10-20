@@ -38,6 +38,7 @@ export default class Recordings extends React.Component {
             description={node.description ? node.description.description : ""}
             id={node.id}
             imageSrc={node.image.responsiveResolution}
+            key={node.id}
             media={node.media ? node.media.file.url : ""}
             onMediaToggle={this.onMediaToggle}
             recordingUrl={node.recordingUrl}
