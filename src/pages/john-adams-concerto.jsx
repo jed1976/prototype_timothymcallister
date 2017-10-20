@@ -34,9 +34,7 @@ export default (props) => {
           </Container>
         </Section>
 
-        <Section centerContent padding theme="light">
-          <Subtitle content="Booking" />
-
+        <Section padding theme="light" title="Booking">
           <Container>
             <ContactCard
               className={styles.contactCard}
@@ -74,21 +72,27 @@ export default (props) => {
           />
         </LazyLoad>
 
-        <Section padding theme="light">
-          <Subtitle content="Features" />
-
+        <Section padding theme="light" title="Features">
+          <Container>
           {interviewLinks.map(({ node }) =>
-          <Container key={node.id}>
-            <InfoCard footerItems={[ { url: node.link, title: node.source }]} title={node.title} subtitle={dateformat(node.date, 'mmmm d, yyyy')} />
-          </Container>
+          <InfoCard
+            footerItems={[ { url: node.link, title: node.source }]}
+            key={node.id}
+            title={node.title}
+            spacing="large"
+            subtitle={dateformat(node.date, 'mmmm d, yyyy')} />
           )}
+          </Container>
         </Section>
 
-        <Section centerContent padding theme="dark">
-          <Subtitle content="Reviews" />
-
+        <Section padding theme="dark" title="Reviews">
           {quotes.map(({ node }, index) =>
-            <Quote author={node.author} key={index} quote={node.quote.quote} source={node.source} />
+            <Quote
+              author={node.author}
+              key={index}
+              quote={node.quote.quote}
+              spacing="large"
+              source={node.source} />
           )}
         </Section>
       </Wrapper>

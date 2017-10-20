@@ -22,7 +22,12 @@ export default (props) => {
       <Wrapper>
         <Section centerContent padding theme="light">
         {quotes.map(({ node }, index) =>
-          <Quote author={node.author} key={index} quote={node.quote.quote} source={node.source} />          
+          <Quote
+            author={node.author}
+            key={index}
+            quote={node.quote.quote}
+            spacing="large"
+            source={node.source} />
         )}
         </Section>
       </Wrapper>

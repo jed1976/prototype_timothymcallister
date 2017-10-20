@@ -1,6 +1,7 @@
 import Logo from '../components/logo'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { Subtitle } from '../components/typography'
 import styles from '../styles/layout.module.scss'
 
 // Page -> Wrapper -> Section -> Container
@@ -26,10 +27,6 @@ Page.defaultProps = {
 // Wrapper
 class Wrapper extends React.Component {
 
-  constructor(props) {
-    super(props)
-  }
-
   scrollIntoView() {
     this.wrapper.scrollIntoView()
   }
@@ -45,17 +42,31 @@ class Wrapper extends React.Component {
 
 
 // Section
-const Section = props => {
-  return (
-  <div
-    className={`${styles.section} ${props.className}`}
-    data-center={props.centerContent}
-    data-padding={props.padding}
-    data-sticky={props.sticky}
-    data-theme={props.theme}>
-    {props.children}
-  </div>
-  )
+class Section extends React.Component {
+
+  scrollIntoView() {
+    this.section.scrollIntoView()
+  }
+
+  render() {
+    return (
+    <div
+      className={`${styles.section} ${this.props.className}`}
+      data-center={this.props.centerContent}
+      data-padding={this.props.padding}
+      data-sticky={this.props.sticky}
+      data-theme={this.props.theme}
+      ref={section => this.section = section}
+    >
+      {this.props.title !== ''
+        ? <Subtitle content={this.props.title} />
+        : ''
+      }
+
+      {this.props.children}
+    </div>
+    )
+  }
 }
 
 Section.PropTypes = {
@@ -63,13 +74,15 @@ Section.PropTypes = {
   padding: PropTypes.bool,
   sticky: PropTypes.bool,
   theme: PropTypes.oneOf(['light', 'dark']),
+  title: PropTypes.string,
 }
 
 Section.defaultProps = {
   centerContent: false,
   padding: false,
   sticky: false,
-  theme: 'light'
+  theme: 'light',
+  title: ''
 }
 
 

@@ -3,6 +3,10 @@
 .infoCard {
   margin-bottom: $s4;
 
+  &:last-of-type {
+    margin-bottom: 0 !important;
+  }
+
   &[data-spacing="small"] {
     margin-bottom: $s3;
   }

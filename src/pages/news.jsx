@@ -37,11 +37,13 @@ export default (props) => {
           const theme = index % 2 === 0 ? `light` : `dark`
 
           return (
-        <Section centerContent padding key={year} theme={theme}>
-          <Subtitle content={year} />
-
+        <Section padding key={year} theme={theme} title={year}>
           {news[year].map(({ node }) =>
-          <Article content={node.content.content} date={node.date} title={node.title} />
+          <Article
+            content={node.content.content}
+            date={node.date}
+            key={node.id}
+            title={node.title} />
           )}
         </Section>
         )

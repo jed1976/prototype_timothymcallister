@@ -89,9 +89,7 @@ export default class Performances extends React.Component {
             const theme = index % 2 === 0 ? `light` : `dark`
 
             return (
-          <Section key={index} padding theme={theme}>
-            <Subtitle content={this.getFormattedMonth(month)} />
-
+          <Section key={index} padding theme={theme} title={this.getFormattedMonth(month)}>
             {performances[month].map(({ node }, index) => {
               const items = [{
                 url: this.getEventURL(node.locationName, node.location),
@@ -103,7 +101,7 @@ export default class Performances extends React.Component {
               }
 
               return (
-              <article className={styles.performance}>
+              <article className={styles.performance} key={node.id}>
                 <Container className={styles.performanceWrapper} width="wide">
                   <div className={styles.performanceDetails}>
                     <Heading className={styles.text} content={node.title} />

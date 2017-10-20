@@ -13,7 +13,7 @@ const List = props => {
         let content = item.title
 
         if (item.url) {
-          content = item.url.match(/http/)
+          content = item.url.match(/http/) || item.url.match(/\/\//)
             ? <a className={styles.link} download={item.download} href={item.url}>{item.title}</a>
             : <Link className={styles.link} to={item.url}>{item.title}</Link>
 

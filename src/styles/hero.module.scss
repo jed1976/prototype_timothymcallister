@@ -17,7 +17,7 @@
   animation-name: slideIn;
   animation-duration: 1280ms;
   animation-timing-function: ease-in-out;
-  bottom: 20%;
+  bottom: 27.5%;
   position: absolute;
   right: $s4;
   text-align: right;
@@ -33,7 +33,8 @@
 }
 
 @media #{$ns} {
-  .title {    
+  .title {
     right: $s5;
+    width: $w-two-thirds;
   }
 }

@@ -3,11 +3,12 @@
 .container {
   margin: 0 auto;
   max-width: $w6;
+  transform: translate3d(0, 0, 0);
   width: 100%;
 }
 
 .container[data-width="regular"] {
-  max-width: $w7;  
+  max-width: $w7;
 }
 
 .container[data-width="full"] {

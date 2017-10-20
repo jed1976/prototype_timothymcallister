@@ -14,8 +14,8 @@ const Article = props => {
         <Heading content={props.title} />
         <Caption content={dateformat(props.date, 'mmmm d, yyyy')} />
 
-        {props.content.split('\n\n').map(paragraphs =>
-          <Paragraph content={paragraphs} />
+        {props.content.split('\n\n').map((paragraphs, index) =>
+          <Paragraph content={paragraphs} key={index} />
         )}
       </Container>
     </article>

@@ -6,7 +6,6 @@ import InfoCard from '../components/info-card'
 import Link from 'gatsby-link'
 import React from 'react'
 import { Subtitle } from '../components/typography'
-import styles from '../styles/premieres.module.scss'
 
 export default (props) => {
   const pageData = props.data.allContentfulPage.edges[0].node
@@ -37,16 +36,19 @@ export default (props) => {
           const theme = index % 2 === 0 ? `light` : `dark`
 
           return (
-        <Section key={year} padding theme={theme}>
-          <Subtitle content={year} />
-
+        <Section key={year} padding theme={theme} title={year}>
+          <Container>
           {premieres[year].map(({ node }) => {
             return (
-            <Container key={node.id}>
-              <InfoCard title={node.title} spacing="large" subtitle={node.composer} footerItems={[ { title: node.category }]} />
-            </Container>
+            <InfoCard
+              footerItems={[ { title: node.category }]}
+              key={node.id}
+              spacing="large"
+              subtitle={node.composer}
+              title={node.title}  />
             )
           })}
+          </Container>
         </Section>
           )
         })}

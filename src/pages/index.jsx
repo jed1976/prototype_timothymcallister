@@ -17,11 +17,9 @@ export default class Home extends React.Component {
     const routeAction = window.localStorage.getItem('routeAction')
 
     setTimeout(() => {
-      if (routeAction === 'PUSH') {
-        this.textContainer.scrollIntoView()
-      } else {
-        window.scrollTo(0, 0)
-      }
+      routeAction === 'PUSH'
+        ? this.textContainer.scrollIntoView()
+        : window.scrollTo(0, 0)
     }, 50)
   }
 

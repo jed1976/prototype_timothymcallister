@@ -4,16 +4,16 @@
   border-left-color: $primaryColor;
   border-left-style: solid;
   border-left-width: $bw3;
-  margin: $s4 auto;
+  margin: $s5 auto;
   max-width: $w6;
   padding-left: $s4;
 
   &[data-spacing="small"] {
-    margin: $s3 auto;
+    margin: $s4 auto;
   }
 
   &[data-spacing="large"] {
-    margin: $s5 auto;
+    margin: $s6 auto;
   }
 
   .quote {
@@ -158,18 +158,6 @@
 
 
 @media #{$ns} {
-  .blockquote {
-    margin: $s5 auto;
-
-    &[data-spacing="small"] {
-      margin: $s4 auto;
-    }
-
-    &[data-spacing="large"] {
-      margin: $s6 auto;
-    }
-  }
-
   .paragraph {
     &[data-callout="true"] {
       font-size: $f3;
@@ -177,6 +165,7 @@
   }
 
   .subtitle {
+    float: left;
     font-size: $f1;
     margin: 0;
     position: -webkit-sticky;

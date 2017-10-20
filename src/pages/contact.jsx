@@ -23,9 +23,7 @@ export default (props) => {
           const theme = index % 2 === 0 ? `light` : `dark`
 
           return (
-        <Section centerContent key={index} padding theme={theme}>
-          <Subtitle content={node.title} />
-
+        <Section key={index} padding theme={theme} title={node.title}>
           <Container>
             <ContactCard
               name={node.name}

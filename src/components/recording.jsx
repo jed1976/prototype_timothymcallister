@@ -108,11 +108,7 @@ export default class Recording extends React.Component {
       <article key={this.props.id}>
         <Section centerContent padding sticky theme="light">
           <Container className={styles.imageLayout}>
-            <Img
-              outerWrapperClassName={styles.imageWrapper}
-              className={styles.image}
-              sizes={this.props.imageSrc}
-            />
+            <Img sizes={this.props.imageSrc} />
           </Container>
         </Section>
 
