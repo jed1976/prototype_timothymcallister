@@ -1,4 +1,9 @@
 import React from 'react'
+import appleTouchIcon from './images/apple-touch-icon.png'
+import favicon from './images/favicon.ico'
+import favicon16 from './images/favicon-16x16.png'
+import favicon32 from './images/favicon-32x32.png'
+import safariPinnedTab from './images/safari-pinned-tab.svg'
 
 let stylesStr
 if (process.env.NODE_ENV === `production`) {
@@ -25,17 +30,18 @@ module.exports = class HTML extends React.Component {
         <head>
           {/* Meta */}
           <meta charSet="utf-8" />
+          <meta name="referrer" content="origin" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
           <meta name="apple-mobile-web-app-title" content="Timothy McAllister" />
           <meta name="application-name" content="Timothy McAllister" />
 
           {/* Links */}
-          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff6347" />
-
+          <link rel="shortcut icon" href={favicon} />
+          <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon} />
+          <link rel="icon" type="image/png" sizes="32x32" href={favicon32} />
+          <link rel="icon" type="image/png" sizes="16x16" href={favicon16} />
+          <link rel="mask-icon" href={safariPinnedTab} color="#ff6347" />
 
           {this.props.headComponents}
           {css}
