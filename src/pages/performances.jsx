@@ -10,7 +10,6 @@ import SEO from '../components/seo'
 import styles from '../styles/performances.module.scss'
 
 export default class Performances extends React.Component {
-
   constructor(props) {
     super(props)
 
