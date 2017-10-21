@@ -6,6 +6,7 @@ import LazyLoad from 'react-lazyload'
 import Link from 'gatsby-link'
 import { Quote } from '../components/typography'
 import React from 'react'
+import SEO from '../components/seo'
 
 export default (props) => {
   const pageData = props.data.contentfulPage
@@ -13,11 +14,10 @@ export default (props) => {
 
   return (
     <Page>
-      <Helmet>
-        <title>{pageData.title} - {props.data.site.siteMetadata.title}</title>
-        <meta name="description" content={pageData.description.description} />
-        <link rel="canonical" href={`${props.data.site.siteMetadata.siteUrl}${pageData.slug}`} />
-      </Helmet>
+      <SEO
+        description={pageData.description.description}
+        slug={pageData.slug}
+        title={pageData.title} />
 
       <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
@@ -39,13 +39,6 @@ export default (props) => {
 
 export const query = graphql`
   query ApplauseQuery {
-    site {
-      siteMetadata {
-        siteUrl
-        title
-      }
-    },
-
     contentfulPage(
       slug: {
         eq: "/applause"

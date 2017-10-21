@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import List from '../components/list'
 import React from 'react'
+import SEO from '../components/seo'
 import styles from '../styles/biography.module.scss'
 
 export default (props) => {
@@ -49,11 +50,10 @@ export default (props) => {
 
   return (
     <Page>
-      <Helmet>
-        <title>{pageData.title} - {props.data.site.siteMetadata.title}</title>
-        <meta name="description" content={pageData.description.description} />
-        <link rel="canonical" href={`${props.data.site.siteMetadata.siteUrl}${pageData.slug}`} />
-      </Helmet>
+      <SEO
+        description={pageData.description.description}
+        slug={pageData.slug}
+        title={pageData.title} />
 
       <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
@@ -74,13 +74,6 @@ export default (props) => {
 
 export const query = graphql`
   query BiographyQuery {
-    site {
-      siteMetadata {
-        siteUrl
-        title
-      }
-    },
-
     contentfulBiography {
       id
       biography {

@@ -9,6 +9,7 @@ import LazyLoad from 'react-lazyload'
 import { Quote } from '../components/typography'
 import React from 'react'
 import Recording from '../components/recording'
+import SEO from '../components/seo'
 import dateformat from 'dateformat'
 import styles from '../styles/johnAdamsConcerto.module.scss'
 
@@ -21,11 +22,10 @@ export default (props) => {
 
   return (
     <Page>
-      <Helmet>
-        <title>{pageData.title} - {props.data.site.siteMetadata.title}</title>
-        <meta name="description" content={pageData.description.description} />
-        <link rel="canonical" href={`${props.data.site.siteMetadata.siteUrl}${pageData.slug}`} />
-      </Helmet>
+      <SEO
+        description={pageData.description.description}
+        slug={pageData.slug}
+        title={pageData.title} />
 
       <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
@@ -104,13 +104,6 @@ export default (props) => {
 
 export const query = graphql`
   query JohnAdamsConcertoQuery {
-    site {
-      siteMetadata {
-        siteUrl
-        title
-      }
-    },
-
     contentfulPage(
       slug: {
         eq: "/john-adams-concerto"

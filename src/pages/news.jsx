@@ -7,6 +7,7 @@ import Hero from '../components/hero'
 import LazyLoad from 'react-lazyload'
 import Link from 'gatsby-link'
 import React from 'react'
+import SEO from '../components/seo'
 
 export default (props) => {
   const pageData = props.data.contentfulPage
@@ -24,15 +25,14 @@ export default (props) => {
       .filter(({ node }) => new Date(node.date).getUTCFullYear() === year)
   })
 
-  const lastestNews = props.data.allContentfulNews.edges[0].node.title
+  const metaDescription = props.data.allContentfulNews.edges[0].node.title
 
   return (
     <Page>
-      <Helmet>
-        <title>{pageData.title} - {props.data.site.siteMetadata.title}</title>
-        <meta name="description" content={lastestNews} />
-        <link rel="canonical" href={`${props.data.site.siteMetadata.siteUrl}${pageData.slug}`} />
-      </Helmet>
+      <SEO
+        description={metaDescription}
+        slug={pageData.slug}
+        title={pageData.title} />
 
       <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
@@ -59,13 +59,6 @@ export default (props) => {
 
 export const query = graphql`
   query NewsQuery {
-    site {
-      siteMetadata {
-        siteUrl
-        title
-      }
-    },
-
     contentfulPage(
       slug: {
         eq: "/news"

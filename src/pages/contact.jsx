@@ -4,6 +4,7 @@ import ContactCard from '../components/contact-card'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import React from 'react'
+import SEO from '../components/seo'
 import { Subtitle } from '../components/typography'
 
 export default (props) => {
@@ -12,11 +13,10 @@ export default (props) => {
 
   return (
     <Page>
-      <Helmet>
-        <title>{pageData.title} - {props.data.site.siteMetadata.title}</title>
-        <meta name="description" content={pageData.description.description} />
-        <link rel="canonical" href={`${props.data.site.siteMetadata.siteUrl}${pageData.slug}`} />
-      </Helmet>
+      <SEO
+        description={pageData.description.description}
+        slug={pageData.slug}
+        title={pageData.title} />
 
       <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
@@ -50,13 +50,6 @@ export default (props) => {
 
 export const query = graphql`
   query ContactQuery {
-    site {
-      siteMetadata {
-        siteUrl
-        title
-      }
-    },
-
     contentfulPage(
       slug: {
         eq: "/contact"

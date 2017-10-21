@@ -5,6 +5,7 @@ import Hero from '../components/hero'
 import List from '../components/list'
 import Logo from '../components/logo'
 import React from 'react'
+import SEO from '../components/seo'
 import styles from '../styles/index.module.scss'
 
 export default class Home extends React.Component {
@@ -31,11 +32,10 @@ export default class Home extends React.Component {
 
     return (
       <Page hideLogo>
-        <Helmet>
-          <title>{this.props.data.site.siteMetadata.title}</title>
-          <meta name="description" content={pageData.description.description} />
-          <link rel="canonical" href={`${this.props.data.site.siteMetadata.siteUrl}${pageData.slug}`} />
-        </Helmet>
+        <SEO
+          description={pageData.description.description}
+          slug={pageData.slug}
+          title={pageData.title} />
 
         <Wrapper className={styles.section}>
           <Hero className={styles.image} image={pageData.image.responsiveSizes} />
@@ -74,8 +74,6 @@ export const query = graphql`
     site {
       siteMetadata {
         facebook
-        siteUrl
-        title
         twitter
       }
     },

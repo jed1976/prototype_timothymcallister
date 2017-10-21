@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import Hero from '../components/hero'
 import React from 'react'
 import Recording from '../components/recording'
+import SEO from '../components/seo'
 
 export default class Recordings extends React.Component {
 
@@ -25,11 +26,10 @@ export default class Recordings extends React.Component {
 
     return (
       <Page>
-        <Helmet>
-          <title>{pageData.title} - {this.props.data.site.siteMetadata.title}</title>
-          <meta name="description" content={pageData.description.description} />
-          <link rel="canonical" href={`${this.props.data.site.siteMetadata.siteUrl}${pageData.slug}`} />
-        </Helmet>
+        <SEO
+          description={pageData.description.description}
+          slug={pageData.slug}
+          title={pageData.title} />
 
         <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
@@ -55,13 +55,6 @@ export default class Recordings extends React.Component {
 
 export const query = graphql`
   query Recordings {
-    site {
-      siteMetadata {
-        siteUrl
-        title
-      }
-    },
-
     allContentfulRecording(
       sort: {
         fields: [date],

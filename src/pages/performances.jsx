@@ -6,6 +6,7 @@ import Hero from '../components/hero'
 import LazyLoad from 'react-lazyload'
 import List from '../components/list'
 import React from 'react'
+import SEO from '../components/seo'
 import styles from '../styles/performances.module.scss'
 
 export default class Performances extends React.Component {
@@ -70,11 +71,10 @@ export default class Performances extends React.Component {
 
     return (
       <Page>
-        <Helmet>
-          <title>{pageData.title} - {this.props.data.site.siteMetadata.title}</title>
-          <meta name="description" content={pageData.description.description} />
-          <link rel="canonical" href={`${this.props.data.site.siteMetadata.siteUrl}${pageData.slug}`} />
-        </Helmet>
+        <SEO
+          description={pageData.description.description}
+          slug={pageData.slug}
+          title={pageData.title} />
 
         <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
@@ -136,13 +136,6 @@ export default class Performances extends React.Component {
 
 export const query = graphql`
   query PerformancesQuery {
-    site {
-      siteMetadata {
-        siteUrl
-        title
-      }
-    },
-
     allContentfulPerformance(
       sort: {
         fields: [date, title],
