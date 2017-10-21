@@ -13,11 +13,17 @@ export default class Performances extends React.Component {
   constructor(props) {
     super(props)
 
-    const currentYear = window.localStorage.getItem('currentYear') || new Date().getUTCFullYear()
-
     this.onChange = this.onChange.bind(this)
     this.state = {
-      currentYear: currentYear
+      currentYear: new Date().getUTCFullYear()
+    }
+  }
+
+  componentDidMount() {
+    const currentYear = window.localStorage.currentYear
+
+    if (currentYear) {
+      this.setState({ currentYear: currentYear })
     }
   }
 
@@ -42,11 +48,11 @@ export default class Performances extends React.Component {
   }
 
   onChange(e) {
-    this.setState({
-      currentYear: e.target.value
-    })
-
     window.localStorage.setItem('currentYear', e.target.value)
+
+    this.setState({
+      currentYear: window.localStorage.currentYear
+    })
 
     this.wrapper.scrollIntoView()
   }
@@ -86,8 +92,8 @@ export default class Performances extends React.Component {
         <Wrapper ref={wrapper => this.wrapper = wrapper}>
           <select
             className={styles.yearSelector}
-            defaultValue={this.state.currentYear}
             name="yearSelector"
+            value={this.state.currentYear}
             onChange={(e) => this.onChange(e)}>
               {years.map(year => <option key={year} value={year}>{year}</option>)}
           </select>
