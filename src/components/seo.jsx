@@ -16,9 +16,17 @@ const SEO = props => {
       <meta name="description" content={props.description} />
       <link rel="canonical" href={url} />
 
-      <meta property="og:title" content={title} />
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content={`@${config.twitter_username}`} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={props.description} />
+      <meta name="twitter:image" content={props.image} />
+
+      {/* Open Graph */}
       <meta property="og:site_name" content={config.title} />
       <meta property="og:url" content={url} />
+      <meta property="og:title" content={title} />
       <meta property="og:description" content={props.description} />
       {props.image ? <meta property="og:image" content={props.image} /> : '' }
     </Helmet>
