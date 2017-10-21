@@ -27,6 +27,7 @@ const SEO = props => {
       <meta property="og:site_name" content={config.title} />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
+      <meta property="og:type" content="website" />
       <meta property="og:description" content={props.description} />
       {props.image ? <meta property="og:image" content={props.image} /> : '' }
     </Helmet>
