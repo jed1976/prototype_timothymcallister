@@ -34,6 +34,7 @@ export default class Home extends React.Component {
       <Page hideLogo>
         <SEO
           description={pageData.description.description}
+          image={pageData.image.responsiveSizes.src}
           slug={pageData.slug}
           title={pageData.title} />
 

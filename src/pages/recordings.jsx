@@ -28,6 +28,7 @@ export default class Recordings extends React.Component {
       <Page>
         <SEO
           description={pageData.description.description}
+          image={pageData.image.responsiveSizes.src}
           slug={pageData.slug}
           title={pageData.title} />
 

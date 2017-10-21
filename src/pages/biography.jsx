@@ -52,6 +52,7 @@ export default (props) => {
     <Page>
       <SEO
         description={pageData.description.description}
+        image={pageData.image.responsiveSizes.src}
         slug={pageData.slug}
         title={pageData.title} />
 
