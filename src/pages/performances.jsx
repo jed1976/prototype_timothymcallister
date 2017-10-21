@@ -13,9 +13,12 @@ export default class Performances extends React.Component {
 
   constructor(props) {
     super(props)
+
+    const currentYear = window.localStorage.getItem('currentYear') || new Date().getUTCFullYear()
+
     this.onChange = this.onChange.bind(this)
     this.state = {
-      currentYear: new Date().getUTCFullYear()
+      currentYear: currentYear
     }
   }
 
@@ -43,6 +46,8 @@ export default class Performances extends React.Component {
     this.setState({
       currentYear: e.target.value
     })
+
+    window.localStorage.setItem('currentYear', e.target.value)
 
     this.wrapper.scrollIntoView()
   }
