@@ -3,4 +3,5 @@ module.exports = {
   twitter: `http://twitter.com/McAllisterSax`,
   facebook: `http://www.facebook.com/timothy.mcallister`,
   siteUrl: `https://timothymcallister.com`,
+  dateFormat: `mmmm d, yyyy`,
 }

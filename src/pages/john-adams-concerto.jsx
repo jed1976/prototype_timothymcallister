@@ -10,6 +10,7 @@ import { Quote } from '../components/typography'
 import React from 'react'
 import Recording from '../components/recording'
 import SEO from '../components/seo'
+import config from '../../data/site'
 import dateformat from 'dateformat'
 import styles from '../styles/johnAdamsConcerto.module.scss'
 
@@ -82,7 +83,7 @@ export default (props) => {
             key={node.id}
             title={node.title}
             spacing="large"
-            subtitle={dateformat(node.date, 'mmmm d, yyyy')} />
+            subtitle={dateformat(node.date, config.dateFormat)} />
           )}
           </Container>
         </Section>

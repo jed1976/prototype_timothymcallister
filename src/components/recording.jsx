@@ -6,6 +6,7 @@ import LazyLoad from 'react-lazyload'
 import List from '../components/list'
 import PropTypes from 'prop-types'
 import React from 'react'
+import config from '../../data/site'
 import dateformat from 'dateformat'
 import styles from '../styles/recording.module.scss'
 
@@ -120,7 +121,7 @@ export default class Recording extends React.Component {
           <Container>
             <Heading content={this.props.title} />
 
-            <Caption content={dateformat(this.props.date, 'mmmm d, yyyy')} />
+            <Caption content={dateformat(this.props.date, config.dateFormat)} />
 
             {this.props.media ?
             <div className={styles.mediaPlayer} ref={mediaPlayer => this.mediaPlayer = mediaPlayer}>
