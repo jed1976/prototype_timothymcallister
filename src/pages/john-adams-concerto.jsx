@@ -15,7 +15,7 @@ import styles from '../styles/johnAdamsConcerto.module.scss'
 export default (props) => {
   const bookingContact = props.data.contentfulContactInfo
   const interviewLinks = props.data.allContentfulInterviewLink.edges
-  const pageData = props.data.allContentfulPage.edges[0].node
+  const pageData = props.data.contentfulPage
   const quotes = props.data.allContentfulQuote.edges
   const recording = props.data.contentfulRecording
 
@@ -111,30 +111,24 @@ export const query = graphql`
       }
     },
 
-    allContentfulPage(
-      filter: {
-        slug: {
-          eq: "/john-adams-concerto"
-        }
+    contentfulPage(
+      slug: {
+        eq: "/john-adams-concerto"
       }
     ) {
-      edges {
-        node {
-          id
-          slug
-          title
-          description {
-            id
-            description
-          }
-          image {
-            responsiveSizes(maxWidth: 2048, quality: 75) {
-              aspectRatio
-              src
-              srcSet
-              sizes
-            }
-          }
+      id
+      slug
+      description {
+        id
+        description
+      }
+      title
+      image {
+        responsiveSizes(maxWidth: 2048, quality: 75) {
+          aspectRatio
+          src
+          srcSet
+          sizes
         }
       }
     },

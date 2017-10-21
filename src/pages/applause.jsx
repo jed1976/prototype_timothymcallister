@@ -8,7 +8,7 @@ import { Quote } from '../components/typography'
 import React from 'react'
 
 export default (props) => {
-  const pageData = props.data.allContentfulPage.edges[0].node
+  const pageData = props.data.contentfulPage
   const quotes = props.data.allContentfulQuote.edges
 
   return (
@@ -46,30 +46,24 @@ export const query = graphql`
       }
     },
 
-    allContentfulPage(
-      filter: {
-        slug: {
-          eq: "/applause"
-        }
+    contentfulPage(
+      slug: {
+        eq: "/applause"
       }
     ) {
-      edges {
-        node {
-          id
-          slug
-          description {
-            id
-            description
-          }
-          title
-          image {
-            responsiveSizes(maxWidth: 2048, quality: 75) {
-              aspectRatio
-              src
-              srcSet
-              sizes
-            }
-          }
+      id
+      slug
+      description {
+        id
+        description
+      }
+      title
+      image {
+        responsiveSizes(maxWidth: 2048, quality: 75) {
+          aspectRatio
+          src
+          srcSet
+          sizes
         }
       }
     },

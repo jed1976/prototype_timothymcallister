@@ -8,7 +8,7 @@ import React from 'react'
 import { Subtitle } from '../components/typography'
 
 export default (props) => {
-  const pageData = props.data.allContentfulPage.edges[0].node
+  const pageData = props.data.contentfulPage
 
   const years = props.data.allContentfulPremiere.edges
     .map(({ node }) => new Date(node.date).getUTCFullYear())
@@ -80,33 +80,26 @@ export const query = graphql`
       }
     },
 
-    allContentfulPage(
-      filter: {
-        slug: {
-          eq: "/premieres"
-        }
+    contentfulPage(
+      slug: {
+        eq: "/premieres"
       }
     ) {
-      edges {
-        node {
-          id
-          slug
-          description {
-            id
-            description
-          }
-          title
-          image {
-            responsiveSizes(maxWidth: 2048, quality: 75) {
-              aspectRatio
-              base64
-              src
-              srcSet
-              sizes
-            }
-          }
+      id
+      slug
+      description {
+        id
+        description
+      }
+      title
+      image {
+        responsiveSizes(maxWidth: 2048, quality: 75) {
+          aspectRatio
+          src
+          srcSet
+          sizes
         }
       }
-    }
+    },
   }
 `

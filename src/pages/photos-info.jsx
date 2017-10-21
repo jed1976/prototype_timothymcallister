@@ -8,7 +8,7 @@ import React from 'react'
 import styles from '../styles/photosInfo.module.scss'
 
 export default (props) => {
-  const pageData = props.data.allContentfulPage.edges[0].node
+  const pageData = props.data.contentfulPage
   const photos = props.data.allContentfulImages.edges
   const biography = props.data.allContentfulBiography.edges[0].node
   const biographyDocuments = [
@@ -74,30 +74,24 @@ export const query = graphql`
       }
     },
 
-    allContentfulPage(
-      filter: {
-        slug: {
-          eq: "/photos-info"
-        }
+    contentfulPage(
+      slug: {
+        eq: "/photos-info"
       }
     ) {
-      edges {
-        node {
-          id
-          slug
-          description {
-            id
-            description
-          }
-          title
-          image {
-            responsiveSizes(maxWidth: 2048, quality: 75) {
-              aspectRatio
-              src
-              srcSet
-              sizes
-            }
-          }
+      id
+      slug
+      description {
+        id
+        description
+      }
+      title
+      image {
+        responsiveSizes(maxWidth: 2048, quality: 75) {
+          aspectRatio
+          src
+          srcSet
+          sizes
         }
       }
     },

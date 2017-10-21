@@ -21,7 +21,7 @@ export default class Recordings extends React.Component {
   }
 
   render() {
-    const pageData = this.props.data.allContentfulPage.edges[0].node
+    const pageData = this.props.data.contentfulPage
 
     return (
       <Page>
@@ -98,33 +98,26 @@ export const query = graphql`
       }
     },
 
-    allContentfulPage(
-      filter: {
-        slug: {
-          eq: "/recordings"
-        },
-      },
+    contentfulPage(
+      slug: {
+        eq: "/recordings"
+      }
     ) {
-      edges {
-        node {
-          id
-          slug
-          description {
-            id
-            description
-          }
-          title
-          image {
-            responsiveSizes(maxWidth: 2048, quality: 75) {
-              aspectRatio
-              base64
-              src
-              srcSet
-              sizes
-            }
-          }
+      id
+      slug
+      description {
+        id
+        description
+      }
+      title
+      image {
+        responsiveSizes(maxWidth: 2048, quality: 75) {
+          aspectRatio
+          src
+          srcSet
+          sizes
         }
       }
-    }
+    },
   }
 `

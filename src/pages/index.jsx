@@ -24,7 +24,7 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const pageData = this.props.data.allContentfulPage.edges[1].node
+    const pageData = this.props.data.contentfulPage
     const menuItems = this.props.data.allContentfulPage.edges
       .filter(({ node}) => node.order > 0)
       .map(({ node }) => ({ url: node.slug, title: node.title }))
@@ -77,6 +77,28 @@ export const query = graphql`
         siteUrl
         title
         twitter
+      }
+    },
+
+    contentfulPage(
+      slug: {
+        eq: "/"
+      }
+    ) {
+      id
+      slug
+      description {
+        id
+        description
+      }
+      title
+      image {
+        responsiveSizes(maxWidth: 2048, quality: 75) {
+          aspectRatio
+          src
+          srcSet
+          sizes
+        }
       }
     },
 

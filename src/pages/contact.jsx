@@ -7,7 +7,7 @@ import React from 'react'
 import { Subtitle } from '../components/typography'
 
 export default (props) => {
-  const pageData = props.data.allContentfulPage.edges[0].node
+  const pageData = props.data.contentfulPage
   const contactInfo = props.data.allContentfulContactInfo.edges
 
   return (
@@ -57,30 +57,24 @@ export const query = graphql`
       }
     },
 
-    allContentfulPage(
-      filter: {
-        slug: {
-          eq: "/contact"
-        }
+    contentfulPage(
+      slug: {
+        eq: "/contact"
       }
     ) {
-      edges {
-        node {
-          id
-          slug
-          description {
-            id
-            description
-          }
-          title
-          image {
-            responsiveSizes(maxWidth: 2048, quality: 75) {
-              aspectRatio
-              src
-              srcSet
-              sizes
-            }
-          }
+      id
+      slug
+      description {
+        id
+        description
+      }
+      title
+      image {
+        responsiveSizes(maxWidth: 2048, quality: 75) {
+          aspectRatio
+          src
+          srcSet
+          sizes
         }
       }
     },

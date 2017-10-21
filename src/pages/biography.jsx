@@ -8,7 +8,7 @@ import React from 'react'
 import styles from '../styles/biography.module.scss'
 
 export default (props) => {
-  const pageData = props.data.allContentfulPage.edges[0].node
+  const pageData = props.data.contentfulPage
   const node = props.data.contentfulBiography
   const paragraphs = node.biography.biography.split('\n\n')
   const quotes = props.data.allContentfulQuote.edges
@@ -130,33 +130,26 @@ export const query = graphql`
       }
     },
 
-    allContentfulPage(
-      filter: {
-        slug: {
-          eq: "/biography"
-        }
+    contentfulPage(
+      slug: {
+        eq: "/biography"
       }
     ) {
-      edges {
-        node {
-          id
-          slug
-          description {
-            id
-            description
-          }
-          title
-          image {
-            responsiveSizes(maxWidth: 2048, quality: 75) {
-              aspectRatio
-              base64
-              src
-              srcSet
-              sizes
-            }
-          }
+      id
+      slug
+      description {
+        id
+        description
+      }
+      title
+      image {
+        responsiveSizes(maxWidth: 2048, quality: 75) {
+          aspectRatio
+          src
+          srcSet
+          sizes
         }
       }
-    }
+    },
   }
 `

@@ -47,7 +47,7 @@ export default class Performances extends React.Component {
   }
 
   render() {
-    const pageData = this.props.data.allContentfulPage.edges[0].node
+    const pageData = this.props.data.contentfulPage
     const performances = {}
 
     const performancesForCurrentYear = this.props.data.allContentfulPerformance.edges
@@ -170,33 +170,26 @@ export const query = graphql`
       }
     },
 
-    allContentfulPage(
-      filter: {
-        slug: {
-          eq: "/performances"
-        }
+    contentfulPage(
+      slug: {
+        eq: "/performances"
       }
     ) {
-      edges {
-        node {
-          id
-          slug
-          description {
-            id
-            description
-          }
-          title
-          image {
-            responsiveSizes(maxWidth: 2048, quality: 75) {
-              aspectRatio
-              base64
-              src
-              srcSet
-              sizes
-            }
-          }
+      id
+      slug
+      description {
+        id
+        description
+      }
+      title
+      image {
+        responsiveSizes(maxWidth: 2048, quality: 75) {
+          aspectRatio
+          src
+          srcSet
+          sizes
         }
       }
-    }
+    },
   }
 `
