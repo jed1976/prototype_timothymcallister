@@ -50,7 +50,6 @@
 }
 
 .logo[data-size="large"] {
-  color: $lightColor;
   pointer-events: none;
   position: static;
 
@@ -62,6 +61,14 @@
   .title {
     font-size: $f3;
   }
+}
+
+.logo[data-theme="dark"] {
+  color: $darkColor;
+}
+
+.logo[data-theme="light"] {
+  color: $lightColor;
 }
 
 @media #{$ns} {

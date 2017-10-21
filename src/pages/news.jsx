@@ -24,10 +24,14 @@ export default (props) => {
       .filter(({ node }) => new Date(node.date).getUTCFullYear() === year)
   })
 
+  const lastestNews = props.data.allContentfulNews.edges[0].node.title
+
   return (
     <Page>
       <Helmet>
-        <title>{pageData.title}</title>
+        <title>{pageData.title} - {props.data.site.siteMetadata.title}</title>
+        <meta name="description" content={lastestNews} />
+        <link rel="canonical" href={`${props.data.site.siteMetadata.siteUrl}${pageData.slug}`} />
       </Helmet>
 
       <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
@@ -55,6 +59,13 @@ export default (props) => {
 
 export const query = graphql`
   query NewsQuery {
+    site {
+      siteMetadata {
+        siteUrl
+        title
+      }
+    },
+
     allContentfulPage(
       filter: {
         slug: {
@@ -65,6 +76,11 @@ export const query = graphql`
       edges {
         node {
           id
+          slug
+          description {
+            id
+            description
+          }
           title
           image {
             responsiveSizes(maxWidth: 2048, quality: 75) {

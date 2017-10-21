@@ -1,5 +1,6 @@
 import React from 'react'
 import appleTouchIcon from './images/apple-touch-icon.png'
+import config from '../data/site'
 import favicon from './images/favicon.ico'
 import favicon16 from './images/favicon-16x16.png'
 import favicon32 from './images/favicon-32x32.png'
@@ -25,6 +26,9 @@ module.exports = class HTML extends React.Component {
         />
       )
     }
+
+    const title = config.title
+
     return (
       <html>
         <head>
@@ -33,8 +37,10 @@ module.exports = class HTML extends React.Component {
           <meta name="referrer" content="origin" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-          <meta name="apple-mobile-web-app-title" content="Timothy McAllister" />
-          <meta name="application-name" content="Timothy McAllister" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-title" content={title} />
+          <meta name="application-name" content={title} />
+          <meta name="format-detection" content="telephone=no" />
 
           {/* Links */}
           <link rel="shortcut icon" href={favicon} />

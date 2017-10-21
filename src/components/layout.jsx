@@ -10,7 +10,7 @@ import styles from '../styles/layout.module.scss'
 const Page = props => {
   return (
   <main className={styles.page}>
-    {props.hideLogo ? '' : <Logo size={props.logoSize}></Logo> }
+    {props.hideLogo ? '' : <Logo size={props.logoSize} theme={props.theme}></Logo> }
     {props.children}
   </main>
   )
@@ -18,10 +18,12 @@ const Page = props => {
 
 Page.PropTypes = {
   hideLogo: PropTypes.bool,
+  theme: PropTypes.oneOf(['dark', 'light']),
 }
 
 Page.defaultProps = {
-  hideLogo: false
+  hideLogo: false,
+  theme: 'dark'
 }
 
 // Wrapper

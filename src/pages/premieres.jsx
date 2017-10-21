@@ -26,7 +26,9 @@ export default (props) => {
   return (
     <Page>
       <Helmet>
-        <title>{pageData.title}</title>
+        <title>{pageData.title} - {props.data.site.siteMetadata.title}</title>
+        <meta name="description" content={pageData.description.description} />
+        <link rel="canonical" href={`${props.data.site.siteMetadata.siteUrl}${pageData.slug}`} />
       </Helmet>
 
       <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
@@ -59,6 +61,13 @@ export default (props) => {
 
 export const query = graphql`
   query PremieresQuery {
+    site {
+      siteMetadata {
+        siteUrl
+        title
+      }
+    },
+
     allContentfulPremiere(sort: { fields: [date, title], order: DESC }) {
       edges {
         node {
@@ -81,6 +90,11 @@ export const query = graphql`
       edges {
         node {
           id
+          slug
+          description {
+            id
+            description
+          }
           title
           image {
             responsiveSizes(maxWidth: 2048, quality: 75) {

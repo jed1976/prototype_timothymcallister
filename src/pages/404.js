@@ -1,36 +1,27 @@
-import { Page, Section, Wrapper } from '../components/layout'
+import { Caption, Heading, Paragraph, Subtitle } from '../components/typography'
+import { Container, Page, Section, Wrapper } from '../components/layout'
 
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
-import LazyLoad from 'react-lazyload'
 import Link from 'gatsby-link'
 import { Quote } from '../components/typography'
 import React from 'react'
 
 export default (props) => {
   const pageData = props.data.allContentfulPage.edges[0].node
-  const quotes = props.data.allContentfulQuote.edges
+  const quote = props.data.contentfulQuote
 
   return (
-    <Page>
+    <Page theme="light">
       <Helmet>
         <title>{pageData.title} - {props.data.site.siteMetadata.title}</title>
-        <meta name="description" content={pageData.description.description} />
-        <link rel="canonical" href={`${props.data.site.siteMetadata.siteUrl}${pageData.slug}`} />
       </Helmet>
 
       <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
 
       <Wrapper>
         <Section centerContent padding theme="light">
-        {quotes.map(({ node }, index) =>
-          <Quote
-            author={node.author}
-            key={index}
-            quote={node.quote.quote}
-            spacing="large"
-            source={node.source} />
-        )}
+          <Quote author={quote.author} quote={quote.quote.quote} source={quote.source} />
         </Section>
       </Wrapper>
     </Page>
@@ -38,7 +29,7 @@ export default (props) => {
 }
 
 export const query = graphql`
-  query ApplauseQuery {
+  query PageNotFoundQuery {
     site {
       siteMetadata {
         siteUrl
@@ -49,7 +40,7 @@ export const query = graphql`
     allContentfulPage(
       filter: {
         slug: {
-          eq: "/applause"
+          eq: "/404"
         }
       }
     ) {
@@ -74,29 +65,13 @@ export const query = graphql`
       }
     },
 
-    allContentfulQuote(
-      filter: {
-      	tags: {
-          eq: null
-        }
-    	},
-      sort: {
-        fields: [date],
-        order: DESC
+    contentfulQuote(tags: { eq:"404"}) {
+      quote {
+        id
+        quote
       }
-    ) {
-      edges {
-        node {
-          id
-          quote {
-            id
-            quote
-          }
-          author
-          source
-          tags
-        }
-      }
+      author
+      source
     }
   }
 `

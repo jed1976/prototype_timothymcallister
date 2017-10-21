@@ -22,7 +22,9 @@ export default (props) => {
   return (
     <Page>
       <Helmet>
-        <title>{pageData.title}</title>
+        <title>{pageData.title} - {props.data.site.siteMetadata.title}</title>
+        <meta name="description" content={pageData.description.description} />
+        <link rel="canonical" href={`${props.data.site.siteMetadata.siteUrl}${pageData.slug}`} />
       </Helmet>
 
       <Hero image={pageData.image.responsiveSizes} title={pageData.title} />
@@ -102,6 +104,13 @@ export default (props) => {
 
 export const query = graphql`
   query JohnAdamsConcertoQuery {
+    site {
+      siteMetadata {
+        siteUrl
+        title
+      }
+    },
+
     allContentfulPage(
       filter: {
         slug: {
@@ -112,6 +121,7 @@ export const query = graphql`
       edges {
         node {
           id
+          slug
           title
           description {
             id

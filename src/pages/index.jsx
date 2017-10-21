@@ -24,7 +24,7 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const pageData = this.props.data.allContentfulPage.edges[0].node
+    const pageData = this.props.data.allContentfulPage.edges[1].node
     const menuItems = this.props.data.allContentfulPage.edges
       .filter(({ node}) => node.order > 0)
       .map(({ node }) => ({ url: node.slug, title: node.title }))
@@ -32,7 +32,9 @@ export default class Home extends React.Component {
     return (
       <Page hideLogo>
         <Helmet>
-          <title>{pageData.title}</title>
+          <title>{this.props.data.site.siteMetadata.title}</title>
+          <meta name="description" content={pageData.description.description} />
+          <link rel="canonical" href={`${this.props.data.site.siteMetadata.siteUrl}${pageData.slug}`} />
         </Helmet>
 
         <Wrapper className={styles.section}>
@@ -40,7 +42,7 @@ export default class Home extends React.Component {
 
           <Section className={styles.nav} ref={(textContainer) => this.textContainer = textContainer} theme="dark">
             <Container className={styles.content}>
-              <Logo size="large"></Logo>
+              <Logo size="large" theme="light"></Logo>
 
               <nav className={styles.menu}>
                 <List className={styles.menuList} items={menuItems} />
@@ -72,6 +74,7 @@ export const query = graphql`
     site {
       siteMetadata {
         facebook
+        siteUrl
         title
         twitter
       }
@@ -85,6 +88,11 @@ export const query = graphql`
       edges {
         node {
           id
+          slug
+          description {
+            id
+            description
+          }
           image {
             responsiveSizes(maxWidth: 2048, quality: 75) {
               aspectRatio

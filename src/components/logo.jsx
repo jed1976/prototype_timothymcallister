@@ -5,7 +5,7 @@ import styles from '../styles/logo.module.scss'
 
 const Logo = props => {
   return (
-    <nav className={styles.logo} data-size={props.size}>
+    <nav className={styles.logo} data-size={props.size} data-theme={props.theme}>
       <Link className={styles.link} to="/">
         <h2 className={styles.title}>Timothy M
           <span className={styles.lowerCase}>c</span>Allister
@@ -18,10 +18,12 @@ const Logo = props => {
 
 Logo.PropTypes = {
   size: PropTypes.oneOf(['small', 'large']),
+  theme: PropTypes.oneOf(['dark', 'light']),
 }
 
 Logo.defaultProps = {
-  size: 'small'
+  size: 'small',
+  theme: 'dark'
 }
 
 export default Logo

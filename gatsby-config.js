@@ -1,9 +1,12 @@
+const config = require('./data/site')
+
+
 module.exports = {
   siteMetadata: {
-    title: `Timothy McAllister`,
-    twitter: `http://twitter.com/McAllisterSax`,
-    facebook: `http://www.facebook.com/timothy.mcallister`,
-    siteUrl: `https://timothymcallister.com`,
+    title: config.title,
+    twitter: config.twitter,
+    facebook: config.facebook,
+    siteUrl: config.siteUrl,
   },
   plugins: [
     `gatsby-plugin-catch-links`,
