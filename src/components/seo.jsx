@@ -34,7 +34,7 @@ const SEO = props => {
   )
 }
 
-SEO.PropTypes = {
+SEO.propTypes = {
   description: PropTypes.string,
   image: PropTypes.image,
   slug: PropTypes.string,

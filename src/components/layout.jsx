@@ -16,7 +16,7 @@ const Page = props => {
   )
 }
 
-Page.PropTypes = {
+Page.propTypes = {
   hideLogo: PropTypes.bool,
   theme: PropTypes.oneOf(['dark', 'light']),
 }

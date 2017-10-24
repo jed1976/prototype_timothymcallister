@@ -11,7 +11,7 @@ const SectionHeading = props => {
   return <CustomTag className={`${styles[props.class]} ${props.className}`} dangerouslySetInnerHTML={{ __html: typographicBase(props.content.toString(), { locale: 'en-us'}) }} />
 }
 
-SectionHeading.PropTypes = {
+SectionHeading.propTypes = {
   class: PropTypes.string,
   level: PropTypes.number,
   content: PropTypes.string,
@@ -62,7 +62,7 @@ const Paragraph = props => {
   return <p className={`${styles.paragraph} ${props.className}`} dangerouslySetInnerHTML={{ __html: content.toString() }} data-callout={props.callout} />
 }
 
-Paragraph.PropTypes = {
+Paragraph.propTypes = {
   callout: PropTypes.bool,
   content: PropTypes.string,
   dropCap: PropTypes.bool,
@@ -86,7 +86,7 @@ const Quote = props => {
   )
 }
 
-Quote.PropTypes = {
+Quote.propTypes = {
   author: PropTypes.string,
   quote: PropTypes.string,
   source: PropTypes.string,
@@ -95,7 +95,7 @@ Quote.PropTypes = {
 
 Quote.defaultProps = {
   author: 'Author',
-  quote: 'Quote',  
+  quote: 'Quote',
   spacing: 'medium'
 }
 

@@ -30,7 +30,7 @@ const List = props => {
   )
 }
 
-List.PropTypes = {
+List.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object),
 }
 

@@ -16,7 +16,7 @@ const Logo = props => {
   )
 }
 
-Logo.PropTypes = {
+Logo.propTypes = {
   size: PropTypes.oneOf(['small', 'large']),
   theme: PropTypes.oneOf(['dark', 'light']),
 }

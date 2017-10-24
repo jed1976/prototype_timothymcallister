@@ -23,7 +23,7 @@ const Article = props => {
   )
 }
 
-Article.PropTypes = {
+Article.propTypes = {
   title: PropTypes.string,
   date: PropTypes.string,
   content: PropTypes.string,

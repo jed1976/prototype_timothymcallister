@@ -24,7 +24,7 @@ const ContactCard = props => {
   )
 }
 
-ContactCard.PropTypes = {
+ContactCard.propTypes = {
   name: PropTypes.string,
   role: PropTypes.string,
   organization: PropTypes.string,

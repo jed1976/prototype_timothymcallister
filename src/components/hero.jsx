@@ -26,7 +26,7 @@ const Hero = props => {
   )
 }
 
-Hero.PropTypes = {
+Hero.propTypes = {
   image: PropTypes.string,
   title: PropTypes.string,
 }

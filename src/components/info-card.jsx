@@ -15,7 +15,7 @@ const InfoCard = props => {
   )
 }
 
-InfoCard.PropTypes = {
+InfoCard.propTypes = {
   footerItems: PropTypes.arrayOf(PropTypes.object),
   spacing: PropTypes.oneOf(['small', 'medium', 'large']),
   subtitle: PropTypes.string,
