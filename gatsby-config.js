@@ -11,8 +11,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-catch-links`,
 
-    `gatsby-plugin-netlify`,
-
     `gatsby-plugin-sass`,
 
     {
@@ -102,5 +100,7 @@ module.exports = {
           }
         }),
     },
+
+    `gatsby-plugin-netlify` //  MUST BE LAST IN THE ARRAY
   ],
 }
