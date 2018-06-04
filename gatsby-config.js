@@ -28,33 +28,33 @@ module.exports = {
       },
     },
 
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: 'Timothy McAllister',
-        short_name: 'Timothy McAllister',
-        start_url: '/',
-        background_color: '#000000',
-        theme_color: '#000000',
-        display: 'minimal-ui',
-        icons: [
-          {
-            // Everything in /static will be copied to an equivalent
-            // directory in /public during development and build, so
-            // assuming your favicons are in /static/favicons,
-            // you can reference them here
-            src: `./src/images/android-chrome-192x192.png`,
-            sizes: `192x192`,
-            type: `image/png`,
-          },
-          {
-            src: `./src/images/android-chrome-512x512.png`,
-            sizes: `512x512`,
-            type: `image/png`,
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-manifest`,
+    //   options: {
+    //     name: 'Timothy McAllister',
+    //     short_name: 'Timothy McAllister',
+    //     start_url: '/',
+    //     background_color: '#000000',
+    //     theme_color: '#000000',
+    //     display: 'minimal-ui',
+    //     icons: [
+    //       {
+    //         // Everything in /static will be copied to an equivalent
+    //         // directory in /public during development and build, so
+    //         // assuming your favicons are in /static/favicons,
+    //         // you can reference them here
+    //         src: `./src/images/android-chrome-192x192.png`,
+    //         sizes: `192x192`,
+    //         type: `image/png`,
+    //       },
+    //       {
+    //         src: `./src/images/android-chrome-512x512.png`,
+    //         sizes: `512x512`,
+    //         type: `image/png`,
+    //       },
+    //     ],
+    //   },
+    // },
 
     // `gatsby-plugin-offline`,
 
